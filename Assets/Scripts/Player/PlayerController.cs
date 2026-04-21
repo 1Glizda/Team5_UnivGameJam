@@ -164,6 +164,27 @@ namespace RW.MonumentValley
                 // loop through all Nodes
                 for (int i = 0; i < path.Count; i++)
                 {
+                    // Check for corner cutting (skipping a node)
+                    if (i + 1 < path.Count)
+                    {
+                        Node cornerNode = path[i];
+                        Node targetNode = path[i + 1];
+
+                        // Determine if skipping cornerNode forms a diagonal jump from our current position
+                        bool isDiagonal = Mathf.Abs(targetNode.transform.position.x - transform.position.x) > 0.1f && 
+                                          Mathf.Abs(targetNode.transform.position.z - transform.position.z) > 0.1f;
+
+                        if (isDiagonal)
+                        {
+                            // We can skip the corner node if it's tagged "skipable"
+                            // (If the corner node doesn't exist, it wouldn't be in the path anyway, so this covers the user's manual path setups)
+                            if (cornerNode.CompareTag("Skipable"))
+                            {
+                                i++; // Skip the corner!
+                            }
+                        }
+                    }
+
                     // use the current Node as the next waypoint
                     nextNode = path[i];
 
