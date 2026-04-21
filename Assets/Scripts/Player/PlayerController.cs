@@ -46,7 +46,7 @@ namespace RW.MonumentValley
         [SerializeField] private float moveTime = 0.5f;
 
         // dynamic zoomies mechanic
-        private float currentZoomieMultiplier = 1.0f;
+        private float currentZoomieMultiplier = 0.5f;
 
         // click indicator
         [SerializeField] Cursor cursor;
