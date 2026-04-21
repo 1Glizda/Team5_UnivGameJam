@@ -1,4 +1,4 @@
-﻿
+
 /*
  * Copyright (c) 2020 Razeware LLC
  * 
@@ -44,6 +44,9 @@ namespace RW.MonumentValley
         //  time to move one unit
         [Range(0.25f, 2f)]
         [SerializeField] private float moveTime = 0.5f;
+
+        // dynamic zoomies mechanic
+        private float currentZoomieMultiplier = 0.5f;
 
         // click indicator
         [SerializeField] Cursor cursor;
@@ -95,6 +98,8 @@ namespace RW.MonumentValley
             {
                 c.clickAction += OnClick;
             }
+
+            StartCoroutine(RandomZoomiesRoutine());
         }
 
         private void OnDisable()
@@ -159,6 +164,27 @@ namespace RW.MonumentValley
                 // loop through all Nodes
                 for (int i = 0; i < path.Count; i++)
                 {
+                    // Check for corner cutting (skipping a node)
+                    if (i + 1 < path.Count)
+                    {
+                        Node cornerNode = path[i];
+                        Node targetNode = path[i + 1];
+
+                        // Determine if skipping cornerNode forms a diagonal jump from our current position
+                        bool isDiagonal = Mathf.Abs(targetNode.transform.position.x - transform.position.x) > 0.1f && 
+                                          Mathf.Abs(targetNode.transform.position.z - transform.position.z) > 0.1f;
+
+                        if (isDiagonal)
+                        {
+                            // We can skip the corner node if it's tagged "skipable"
+                            // (If the corner node doesn't exist, it wouldn't be in the path anyway, so this covers the user's manual path setups)
+                            if (cornerNode.CompareTag("Skipable"))
+                            {
+                                i++; // Skip the corner!
+                            }
+                        }
+                    }
+
                     // use the current Node as the next waypoint
                     nextNode = path[i];
 
@@ -185,15 +211,39 @@ namespace RW.MonumentValley
 
             // validate move time
             moveTime = Mathf.Clamp(moveTime, 0.1f, 5f);
+            
+            // Cat-like jump mechanics logic
+            Vector3 targetPos = targetNode.transform.position;
+            
+            // Determine if the move is a jump:
+            // 1. Vertical difference (1 block up or down)
+            bool isElevationJump = Mathf.Abs(targetPos.y - startPosition.y) > 0.1f;
+            // 2. Diagonal horizontal movement (corner cutting)
+            bool isDiagonalJump = Mathf.Abs(targetPos.x - startPosition.x) > 0.1f && Mathf.Abs(targetPos.z - startPosition.z) > 0.1f;
+            
+            bool isJumping = isElevationJump || isDiagonalJump;
+            
+            // Configure cat-like bouncy jump height - adjust as needed
+            float jumpHeight = isElevationJump ? 1.25f : 0.75f;
 
             while (elapsedTime < moveTime && targetNode != null && !HasReachedNode(targetNode))
             {
 
-                elapsedTime += Time.deltaTime;
+                // dynamically speed up elapsed time tracking using the multiplier
+                elapsedTime += Time.deltaTime / currentZoomieMultiplier;
                 float lerpValue = Mathf.Clamp(elapsedTime / moveTime, 0f, 1f);
 
-                Vector3 targetPos = targetNode.transform.position;
-                transform.position = Vector3.Lerp(startPosition, targetPos, lerpValue);
+                // Start with linear interpolation
+                Vector3 currentPos = Vector3.Lerp(startPosition, targetPos, lerpValue);
+                
+                // Add the jump arc if applicable
+                if (isJumping)
+                {
+                    float jumpOffset = Mathf.Sin(lerpValue * Mathf.PI) * jumpHeight;
+                    currentPos.y += jumpOffset;
+                }
+
+                transform.position = currentPos;
 
                 // if over halfway, change parent to next node
                 if (lerpValue > 0.51f)
@@ -292,21 +342,54 @@ namespace RW.MonumentValley
             isControlEnabled = state;
         }
 
-        public void TeleportToNode(Node targetNode)
+        // background routine to casually check for randomly triggering the zoomies
+        private IEnumerator RandomZoomiesRoutine()
         {
-            if (targetNode == null)
-                return;
+            while (true)
+            {
+                // Only roll for zoomies while currently moving and not already zooming
+                if (isMoving && currentZoomieMultiplier == 1.0f)
+                {
+                    // 15% chance to start zoomies
+                    if (Random.value < 0.15f) 
+                    {
+                        yield return StartCoroutine(ExecuteZoomiesBurst());
+                    }
+                }
+                yield return new WaitForSeconds(0.5f); // Check twice a second
+            }
+        }
 
-            StopAllCoroutines();
+        // eases in and out of a 5x speed boost
+        private IEnumerator ExecuteZoomiesBurst()
+        {
+            float easeTime = 0.5f; // half a second to accelerate
+            float burstDuration = Random.Range(1f, 2.5f); // 1-2.5 seconds of pure sprint
+            
+            // Ease In (Accelerate)
+            float t = 0;
+            while (t < easeTime)
+            {
+                t += Time.deltaTime;
+                // smoothstep from 1.0 down to 0.2 (which means 5x faster since we divide by it)
+                currentZoomieMultiplier = Mathf.SmoothStep(1.0f, 0.2f, t / easeTime);
+                yield return null;
+            }
 
-            isMoving = false;
+            // Sprint
+            currentZoomieMultiplier = 0.2f;
+            yield return new WaitForSeconds(burstDuration);
 
-            transform.position = targetNode.transform.position;
-            transform.parent = targetNode.transform;
-
-            currentNode = targetNode;
-
-            UpdateAnimation();
+            // Ease Out (Decelerate)
+            t = 0;
+            while (t < easeTime)
+            {
+                t += Time.deltaTime;
+                currentZoomieMultiplier = Mathf.SmoothStep(0.2f, 1.0f, t / easeTime);
+                yield return null;
+            }
+            
+            currentZoomieMultiplier = 1.0f;
         }
     }
 }

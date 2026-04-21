@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialFinal.unity
     guid: 432c91bc4629a4dceaf1f398e1c2da62
+  - enabled: 1
+    path: Assets/Scenes/AlternateLevel.unity
+    guid: 513e44188d7ff4055bd74e070845f327
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

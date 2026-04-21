@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,6 +58,18 @@ namespace RW.MonumentValley
         // invoked before ending the level
         public UnityEvent endLevelEvent;
 
+        [Header("Collectibles")]
+        public int collectedCount = 0;
+        public UnityEvent onCollectibleGathered;
+
+        public void AddCollectible()
+        {
+            collectedCount++;
+            if (onCollectibleGathered != null)
+            {
+                onCollectibleGathered.Invoke();
+            }
+        }
 
         private void Awake()
         {

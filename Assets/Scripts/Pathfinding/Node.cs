@@ -1,4 +1,4 @@
-﻿
+
 /*
  * Copyright (c) 2020 Razeware LLC
  * 
@@ -70,6 +70,18 @@ namespace RW.MonumentValley
             new Vector3(-1f, 0f, 0f),
             new Vector3(0f, 0f, 1f),
             new Vector3(0f, 0f, -1f),
+
+            // One block up (straight)
+            new Vector3(1f, 1f, 0f),
+            new Vector3(-1f, 1f, 0f),
+            new Vector3(0f, 1f, 1f),
+            new Vector3(0f, 1f, -1f),
+
+            // One block down (straight)
+            new Vector3(1f, -1f, 0f),
+            new Vector3(-1f, -1f, 0f),
+            new Vector3(0f, -1f, 1f),
+            new Vector3(0f, -1f, -1f),
         };
          
         private void Start()
