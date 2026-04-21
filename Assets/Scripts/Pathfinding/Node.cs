@@ -1,4 +1,4 @@
-﻿
+
 /*
  * Copyright (c) 2020 Razeware LLC
  * 
@@ -63,13 +63,32 @@ namespace RW.MonumentValley
         public Node PreviousNode { get { return previousNode; } set { previousNode = value; } }
         public List<Edge> Edges => edges;
 
-        // 3d compass directions to check for horizontal neighbors automatically(east/west/north/south)
+        // 3d compass directions to check for neighbors automatically
         public static Vector3[] neighborDirections =
         {
+            // Standard horizontal directions (east/west/north/south)
             new Vector3(1f, 0f, 0f),
             new Vector3(-1f, 0f, 0f),
             new Vector3(0f, 0f, 1f),
             new Vector3(0f, 0f, -1f),
+            
+            // Corner cutting (diagonal horizontally only)
+            new Vector3(1f, 0f, 1f),
+            new Vector3(-1f, 0f, 1f),
+            new Vector3(1f, 0f, -1f),
+            new Vector3(-1f, 0f, -1f),
+
+            // One block up (straight)
+            new Vector3(1f, 1f, 0f),
+            new Vector3(-1f, 1f, 0f),
+            new Vector3(0f, 1f, 1f),
+            new Vector3(0f, 1f, -1f),
+
+            // One block down (straight)
+            new Vector3(1f, -1f, 0f),
+            new Vector3(-1f, -1f, 0f),
+            new Vector3(0f, -1f, 1f),
+            new Vector3(0f, -1f, -1f),
         };
          
         private void Start()
