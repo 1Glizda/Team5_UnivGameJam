@@ -291,5 +291,22 @@ namespace RW.MonumentValley
         {
             isControlEnabled = state;
         }
+
+        public void TeleportToNode(Node targetNode)
+        {
+            if (targetNode == null)
+                return;
+
+            StopAllCoroutines();
+
+            isMoving = false;
+
+            transform.position = targetNode.transform.position;
+            transform.parent = targetNode.transform;
+
+            currentNode = targetNode;
+
+            UpdateAnimation();
+        }
     }
 }
