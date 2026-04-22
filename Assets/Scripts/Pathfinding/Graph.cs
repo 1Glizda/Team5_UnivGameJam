@@ -45,6 +45,8 @@ namespace RW.MonumentValley
         [SerializeField] private Node goalNode;
         public Node GoalNode => goalNode;
 
+        public List<Node> GetAllNodes() => allNodes;
+
         private void Awake()
         {
             allNodes = FindObjectsOfType<Node>().ToList();

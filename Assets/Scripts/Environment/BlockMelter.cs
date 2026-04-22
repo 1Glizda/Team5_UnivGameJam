@@ -10,6 +10,9 @@ namespace RW.MonumentValley
         public float meltDuration = 2.5f;
         public GameObject acidSizzleParticles;
         public GameObject acidPuddlePrefab;
+        
+        [Tooltip("If true, the puddle covers the exact surfaces of blocks underneath. If false, it spawns a single puddle at the bottom of THIS block.")]
+        public bool fillUnderlyingSurfaces = true;
 
         private Material blockMat;
         private bool isMelting = false;
@@ -68,13 +71,14 @@ namespace RW.MonumentValley
             if (acidPuddlePrefab != null)
             {
                 // Spawn a puddle on the TOP face of this block
-                Vector3 topPuddlePos = transform.position + (Vector3.up * 0.51f);
+                Vector3 topPuddlePos = transform.position + (Vector3.up * (startScale.y / 2f + 0.01f));
                 SpawnPuddle(topPuddlePos, this.transform, startScale, false);
 
                 // Bottom Puddles (permanent)
-                if (isBottomBlock)
+                if (isBottomBlock || !fillUnderlyingSurfaces)
                 {
-                    SpawnPuddle(startPos - Vector3.up * 0.48f, null, startScale, true);
+                    // Spawn a single footprint perfectly at the bottom of the melting block
+                    SpawnPuddle(startPos - new Vector3(0, startScale.y / 2f - 0.02f, 0), null, startScale, true);
                 }
                 else
                 {

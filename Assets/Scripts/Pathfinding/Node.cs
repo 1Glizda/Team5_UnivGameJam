@@ -148,16 +148,25 @@ namespace RW.MonumentValley
             // If this node is physically covered by a block, it cannot be walked on. Do not establish connections from it.
             if (IsCovered()) return;
 
-            // search through possible neighbor offsets
-            foreach (Vector3 direction in neighborDirections)
+            // Freeform Distance Check: Instead of strict 1.0 unit grid vectors, we check all nodes in the graph
+            // and automatically connect to any node that is within a traversable distance (e.g. 2.5 units).
+            if (graph != null)
             {
-                Node newNode = graph?.FindNodeAt(transform.position + direction);
-
-                // add to edges list if not already included, not excluded, and importantly: the target node is NOT covered by a block!
-                if (newNode != null && !HasNeighbor(newNode) && !excludedNodes.Contains(newNode) && !newNode.IsCovered())
+                foreach (Node otherNode in graph.GetAllNodes())
                 {
-                    Edge newEdge = new Edge { neighbor = newNode, isActive = true };
-                    edges.Add(newEdge);
+                    if (otherNode == this || otherNode == null) continue;
+
+                    float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
+                    
+                    // If the node is within 2.5 units (sqrMagnitude 6.25), consider it a neighbor!
+                    if (distSqr <= 6.25f)
+                    {
+                        if (!HasNeighbor(otherNode) && !excludedNodes.Contains(otherNode) && !otherNode.IsCovered())
+                        {
+                            Edge newEdge = new Edge { neighbor = otherNode, isActive = true };
+                            edges.Add(newEdge);
+                        }
+                    }
                 }
             }
         }

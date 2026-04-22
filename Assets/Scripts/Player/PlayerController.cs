@@ -46,7 +46,7 @@ namespace RW.MonumentValley
         [SerializeField] private float moveTime = 0.5f;
 
         // dynamic zoomies mechanic
-        private float currentZoomieMultiplier = 0.5f;
+        private float currentZoomieMultiplier = 0.2f;
 
         // click indicator
         [SerializeField] Cursor cursor;
@@ -118,8 +118,9 @@ namespace RW.MonumentValley
                 return;
             }
 
-            // find the best path to the any Nodes under the Clickable; gives the user some flexibility
-            List<Node> newPath = pathfinder.FindBestPath(currentNode, clickable.ChildNodes);
+            // For custom continuous meshes with many nodes, find the specific node closest to where the user clicked!
+            Node targetNode = graph.FindClosestNode(clickable.ChildNodes, position);
+            List<Node> newPath = pathfinder.FindPath(currentNode, targetNode);
 
             // if we are already moving and we click again, stop all previous Animation/motion
             if (isMoving)
@@ -164,24 +165,15 @@ namespace RW.MonumentValley
                 // loop through all Nodes
                 for (int i = 0; i < path.Count; i++)
                 {
-                    // Check for corner cutting (skipping a node)
+                    // Check if we should skip the current node in the path
                     if (i + 1 < path.Count)
                     {
-                        Node cornerNode = path[i];
-                        Node targetNode = path[i + 1];
+                        Node nextNodeToCheck = path[i];
 
-                        // Determine if skipping cornerNode forms a diagonal jump from our current position
-                        bool isDiagonal = Mathf.Abs(targetNode.transform.position.x - transform.position.x) > 0.1f && 
-                                          Mathf.Abs(targetNode.transform.position.z - transform.position.z) > 0.1f;
-
-                        if (isDiagonal)
+                        // The user requested to skip ONLY the nodes that have the tag "Skipable"
+                        if (nextNodeToCheck.CompareTag("Skipable"))
                         {
-                            // We can skip the corner node if it's tagged "skipable"
-                            // (If the corner node doesn't exist, it wouldn't be in the path anyway, so this covers the user's manual path setups)
-                            if (cornerNode.CompareTag("Skipable"))
-                            {
-                                i++; // Skip the corner!
-                            }
+                            i++; // Skip this node and aim for the one after it!
                         }
                     }
 
@@ -212,19 +204,14 @@ namespace RW.MonumentValley
             // validate move time
             moveTime = Mathf.Clamp(moveTime, 0.1f, 5f);
             
-            // Cat-like jump mechanics logic
             Vector3 targetPos = targetNode.transform.position;
             
-            // Determine if the move is a jump:
-            // 1. Vertical difference (1 block up or down)
-            bool isElevationJump = Mathf.Abs(targetPos.y - startPosition.y) > 0.1f;
-            // 2. Diagonal horizontal movement (corner cutting)
-            bool isDiagonalJump = Mathf.Abs(targetPos.x - startPosition.x) > 0.1f && Mathf.Abs(targetPos.z - startPosition.z) > 0.1f;
-            
-            bool isJumping = isElevationJump || isDiagonalJump;
+            // The user requested to jump if the target node has the tag "Jumpable", 
+            // OR if the node we are launching from (currentNode) is "Jumpable"!
+            bool isJumping = targetNode.CompareTag("Jumpable") || (currentNode != null && currentNode.CompareTag("Jumpable"));
             
             // Configure cat-like bouncy jump height - adjust as needed
-            float jumpHeight = isElevationJump ? 1.25f : 0.75f;
+            float jumpHeight = isJumping ? 1.25f : 0.0f;
 
             while (elapsedTime < moveTime && targetNode != null && !HasReachedNode(targetNode))
             {
