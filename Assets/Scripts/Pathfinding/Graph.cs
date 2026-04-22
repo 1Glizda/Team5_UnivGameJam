@@ -59,6 +59,9 @@ namespace RW.MonumentValley
         // locate the specific Node at target position within rounding error
         public Node FindNodeAt(Vector3 pos)
         {
+            // Clean up any destroyed nodes before searching
+            allNodes.RemoveAll(node => node == null);
+
             foreach (Node n in allNodes)
             {
                 Vector3 diff = n.transform.position - pos;
@@ -136,13 +139,13 @@ namespace RW.MonumentValley
         // Recalculates all connections dynamically (used when blocks melt or move)
         public void RebuildGraph()
         {
+            // First, purge any completely destroyed blocks from our map
+            allNodes.RemoveAll(node => node == null);
+
             foreach (Node n in allNodes)
             {
-                if (n != null)
-                {
-                    n.Edges.Clear(); // Clear old edges
-                    n.FindNeighbors(); // Recalculate using current physical state
-                }
+                n.Edges.Clear(); // Clear old edges
+                n.FindNeighbors(); // Recalculate using current physical state
             }
         }
     }

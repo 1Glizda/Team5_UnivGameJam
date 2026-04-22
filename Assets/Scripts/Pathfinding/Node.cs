@@ -133,6 +133,9 @@ namespace RW.MonumentValley
                 // Ignore our own colliders or any child visual meshes
                 if (col.transform != this.transform && !col.transform.IsChildOf(this.transform))
                 {
+                    // If it's an acid puddle, it's a flat hazard, NOT a solid blocking block! We can traverse over it.
+                    if (col.GetComponent<AcidPuddle>() != null || col.GetComponentInParent<AcidPuddle>() != null) continue;
+
                     return true; // We found a distinct Level block sitting immediately above us!
                 }
             }

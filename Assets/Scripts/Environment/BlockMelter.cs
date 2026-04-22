@@ -180,6 +180,14 @@ namespace RW.MonumentValley
             GameObject puddle = Instantiate(acidPuddlePrefab, pos, Quaternion.Euler(90, 0, 0));
             puddle.transform.localScale = new Vector3(sourceScale.x, sourceScale.z, sourceScale.y); // Match block X/Z explicitly
             
+            // Put the puddle on the "Ignore Raycast" layer so it never blocks the player's mouse clicks!
+            int ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
+            puddle.layer = ignoreRaycastLayer;
+            foreach (Transform child in puddle.GetComponentsInChildren<Transform>(true))
+            {
+                child.gameObject.layer = ignoreRaycastLayer;
+            }
+
             // Parent it now, keeping the global size exactly as we set it
             if (parent != null) puddle.transform.SetParent(parent, true);
 
