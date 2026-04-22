@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8162687d592304f74a893a818acb5273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.CollectibleSpawner
-  spawnNodes: []
+  spawnPoints: []
   spawnHeightOffset: 1
   sphereScale: 0.4
   customMaterial: {fileID: 0}
