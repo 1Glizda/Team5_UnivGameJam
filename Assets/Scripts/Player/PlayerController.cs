@@ -195,6 +195,10 @@ namespace RW.MonumentValley
 
                     // move to the next Node
                     yield return StartCoroutine(MoveToNodeRoutine(transform.position, nextNode));
+                    
+                    // WebGL Safety: Ensure we yield at least once per node to prevent 
+                    // a 'Maximum call stack size exceeded' error if many nodes are skipped synchronously
+                    yield return null;
                 }
             }
 
