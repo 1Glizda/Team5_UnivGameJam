@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,6 +45,8 @@ namespace RW.MonumentValley
         [SerializeField] private Node goalNode;
         public Node GoalNode => goalNode;
 
+        public List<Node> GetAllNodes() => allNodes;
+
         private void Awake()
         {
             allNodes = FindObjectsOfType<Node>().ToList();
@@ -59,6 +61,9 @@ namespace RW.MonumentValley
         // locate the specific Node at target position within rounding error
         public Node FindNodeAt(Vector3 pos)
         {
+            // Clean up any destroyed nodes before searching
+            allNodes.RemoveAll(node => node == null);
+
             foreach (Node n in allNodes)
             {
                 Vector3 diff = n.transform.position - pos;
@@ -130,6 +135,19 @@ namespace RW.MonumentValley
                 {
                     n.FindNeighbors();
                 }
+            }
+        }
+
+        // Recalculates all connections dynamically (used when blocks melt or move)
+        public void RebuildGraph()
+        {
+            // First, purge any completely destroyed blocks from our map
+            allNodes.RemoveAll(node => node == null);
+
+            foreach (Node n in allNodes)
+            {
+                n.Edges.Clear(); // Clear old edges
+                n.FindNeighbors(); // Recalculate using current physical state
             }
         }
     }

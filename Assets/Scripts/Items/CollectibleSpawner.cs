@@ -3,10 +3,18 @@ using UnityEngine;
 
 namespace RW.MonumentValley
 {
+    [System.Serializable]
+    public class CollectibleSpawnData
+    {
+        public Node node;
+        [Tooltip("Optional: Specific blocks to melt. If left empty, it tries to melt the block underneath it.")]
+        public List<BlockMelter> targetMelters;
+    }
+
     public class CollectibleSpawner : MonoBehaviour
     {
         [Header("Nodes to spawn collectibles on")]
-        public List<Node> spawnNodes;
+        public List<CollectibleSpawnData> spawnPoints;
 
         [Header("Visual Settings")]
         public float spawnHeightOffset = 1.0f;
@@ -30,6 +38,7 @@ namespace RW.MonumentValley
             UnityEditor.EditorApplication.delayCall += () =>
             {
                 if (this == null) return; // Prevent errors if the spawner itself was deleted
+                if (Application.isPlaying) return; // CRITICAL: Do not overwrite runtime objects!
 
                 // Destroy old preview spheres
                 for (int i = transform.childCount - 1; i >= 0; i--)
@@ -40,16 +49,16 @@ namespace RW.MonumentValley
                     }
                 }
 
-                if (spawnNodes == null || spawnNodes.Count == 0) return;
+                if (spawnPoints == null || spawnPoints.Count == 0) return;
 
                 // Procedurally draw new preview spheres directly in the Scene!
-                foreach (Node node in spawnNodes)
+                foreach (CollectibleSpawnData data in spawnPoints)
                 {
-                    if (node == null) continue;
+                    if (data == null || data.node == null) continue;
 
                     GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     sphere.transform.parent = this.transform; // Child them to the Spawner
-                    sphere.transform.position = node.transform.position + (Vector3.up * spawnHeightOffset);
+                    sphere.transform.position = data.node.transform.position + (Vector3.up * spawnHeightOffset);
                     sphere.transform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
                     DestroyImmediate(sphere.GetComponent<Collider>()); // No colliders needed
 
@@ -65,11 +74,12 @@ namespace RW.MonumentValley
 
         private void SpawnCollectibles()
         {
-            if (spawnNodes == null || spawnNodes.Count == 0) return;
+            if (spawnPoints == null || spawnPoints.Count == 0) return;
 
-            foreach (Node node in spawnNodes)
+            foreach (CollectibleSpawnData data in spawnPoints)
             {
-                if (node == null) continue;
+                if (data == null || data.node == null) continue;
+                Node node = data.node;
 
                 // 1. Create primitive sphere
                 GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -94,6 +104,22 @@ namespace RW.MonumentValley
 
                 // 3. Attach Collectible logic
                 Collectible collectible = sphere.AddComponent<Collectible>();
+                
+                // If specific melters are assigned in the inspector, use them. Otherwise, look for one on the node itself.
+                if (data.targetMelters != null && data.targetMelters.Count > 0)
+                {
+                    collectible.linkedMelters = new List<BlockMelter>(data.targetMelters);
+                }
+                else
+                {
+                    BlockMelter melter = node.GetComponentInChildren<BlockMelter>();
+                    if (melter == null) melter = node.GetComponentInParent<BlockMelter>();
+
+                    if (melter != null)
+                    {
+                        collectible.linkedMelters.Add(melter);
+                    }
+                }
                 
                 // 4. Link the collection to the Node's gameEvent
                 // Now, when PlayerController invokes node.gameEvent, it will trigger Collect!
