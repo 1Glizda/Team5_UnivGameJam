@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -129,6 +129,19 @@ namespace RW.MonumentValley
                 if (n != null)
                 {
                     n.FindNeighbors();
+                }
+            }
+        }
+
+        // Recalculates all connections dynamically (used when blocks melt or move)
+        public void RebuildGraph()
+        {
+            foreach (Node n in allNodes)
+            {
+                if (n != null)
+                {
+                    n.Edges.Clear(); // Clear old edges
+                    n.FindNeighbors(); // Recalculate using current physical state
                 }
             }
         }

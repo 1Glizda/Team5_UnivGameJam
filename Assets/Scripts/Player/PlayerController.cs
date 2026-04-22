@@ -246,14 +246,16 @@ namespace RW.MonumentValley
                 transform.position = currentPos;
 
                 // if over halfway, change parent to next node
-                if (lerpValue > 0.51f)
+                if (lerpValue > 0.51f && currentNode != targetNode)
                 {
                     transform.parent = targetNode.transform;
                     currentNode = targetNode;
 
-                    // invoke UnityEvent associated with next Node
-                    targetNode.gameEvent.Invoke();
-                    //Debug.Log("invoked GameEvent from targetNode: " + targetNode.name);
+                    // invoke UnityEvent associated with next Node ONCE
+                    if (targetNode.gameEvent != null)
+                    {
+                        targetNode.gameEvent.Invoke();
+                    }
                 }
 
                 // wait one frame

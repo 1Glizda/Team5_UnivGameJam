@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 namespace RW.MonumentValley
 {
@@ -12,6 +13,9 @@ namespace RW.MonumentValley
 
         private Vector3 startPos;
         public UnityEvent onCollect;
+        
+        [HideInInspector]
+        public List<BlockMelter> linkedMelters = new List<BlockMelter>();
 
         private void Start()
         {
@@ -39,6 +43,17 @@ namespace RW.MonumentValley
             if (onCollect != null)
             {
                 onCollect.Invoke();
+            }
+
+            if (linkedMelters != null)
+            {
+                foreach (BlockMelter melter in linkedMelters)
+                {
+                    if (melter != null)
+                    {
+                        melter.TriggerMelt();
+                    }
+                }
             }
 
             // Destroy the visual object
