@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ca39f7c36fc85343bab8fa36ec9f1e2
+guid: 09164e9238e251d4ca78dbb93c049277
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -8,22 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Corners
-    second: {fileID: 2100000, guid: afef482008b51e24ba53330b5373f939, type: 2}
+    second: {fileID: 2100000, guid: f10469d3cb1e1174fb0f9e0b6ce8fb87, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Default
-    second: {fileID: 2100000, guid: 36d9c7295c2249f4fa51eb0ace2e6a5c, type: 2}
+    second: {fileID: 2100000, guid: 43a0d0566d2223947aefaba518e719bb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: c19a8146105143548afc413f5c09c5db, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Outline
-    second: {fileID: 2100000, guid: 3b1c440fcadf8eb469a691babad1733d, type: 2}
+      name: Vortex
+    second: {fileID: 2100000, guid: 271531c51b2a2f1448cbecd5d6dc7281, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
