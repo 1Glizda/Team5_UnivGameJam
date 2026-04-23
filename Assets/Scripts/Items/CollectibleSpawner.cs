@@ -23,12 +23,30 @@ namespace RW.MonumentValley
 
         private void Start()
         {
-            // Clean up any Editor-generated preview visuals before spawning the runtime items
-            for (int i = transform.childCount - 1; i >= 0; i--)
+            // At runtime, the spheres already exist because OnValidate created them persistently!
+            // We just need to link them to their Node's gameEvent.
+            if (spawnPoints == null) return;
+
+            foreach (CollectibleSpawnData data in spawnPoints)
             {
-                DestroyImmediate(transform.GetChild(i).gameObject);
+                if (data == null || data.node == null) continue;
+
+                string expectedName = "Collectible_" + data.node.name;
+                Transform childSphere = transform.Find(expectedName);
+                
+                if (childSphere != null)
+                {
+                    Collectible collectible = childSphere.GetComponent<Collectible>();
+                    if (collectible != null)
+                    {
+                        if (data.node.gameEvent == null)
+                        {
+                            data.node.gameEvent = new UnityEngine.Events.UnityEvent();
+                        }
+                        data.node.gameEvent.AddListener(collectible.Collect);
+                    }
+                }
             }
-            SpawnCollectibles();
         }
 
         private void OnValidate()
@@ -40,95 +58,72 @@ namespace RW.MonumentValley
                 if (this == null) return; // Prevent errors if the spawner itself was deleted
                 if (Application.isPlaying) return; // CRITICAL: Do not overwrite runtime objects!
 
-                // Destroy old preview spheres
-                for (int i = transform.childCount - 1; i >= 0; i--)
-                {
-                    if (transform.GetChild(i) != null)
-                    {
-                        DestroyImmediate(transform.GetChild(i).gameObject);
-                    }
-                }
+                if (spawnPoints == null) return;
 
-                if (spawnPoints == null || spawnPoints.Count == 0) return;
+                List<GameObject> activeSpheres = new List<GameObject>();
 
-                // Procedurally draw new preview spheres directly in the Scene!
+                // Procedurally draw and update spheres directly in the Scene, and keep them persistent!
                 foreach (CollectibleSpawnData data in spawnPoints)
                 {
                     if (data == null || data.node == null) continue;
 
-                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    sphere.transform.parent = this.transform; // Child them to the Spawner
+                    string expectedName = "Collectible_" + data.node.name;
+                    Transform existingSphere = transform.Find(expectedName);
+                    GameObject sphere;
+
+                    if (existingSphere != null)
+                    {
+                        sphere = existingSphere.gameObject;
+                    }
+                    else
+                    {
+                        // Create a brand new persistent sphere
+                        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        sphere.name = expectedName;
+                        sphere.transform.parent = this.transform; 
+                        DestroyImmediate(sphere.GetComponent<Collider>()); // No colliders needed
+                        
+                        // Add the Collectible script IN THE EDITOR so the user can click it and configure it!
+                        Collectible collectible = sphere.AddComponent<Collectible>();
+                        
+                        // Pre-fill the linked melter
+                        if (data.targetMelters != null && data.targetMelters.Count > 0)
+                        {
+                            collectible.linkedMelter = data.targetMelters[0];
+                        }
+                        else
+                        {
+                            BlockMelter melter = data.node.GetComponentInChildren<BlockMelter>();
+                            if (melter == null) melter = data.node.GetComponentInParent<BlockMelter>();
+                            collectible.linkedMelter = melter;
+                        }
+                    }
+
+                    activeSpheres.Add(sphere);
+
+                    // Update position and scale
                     sphere.transform.position = data.node.transform.position + (Vector3.up * spawnHeightOffset);
                     sphere.transform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
-                    DestroyImmediate(sphere.GetComponent<Collider>()); // No colliders needed
 
+                    // Update material
                     if (customMaterial != null)
                     {
                         Renderer rend = sphere.GetComponent<Renderer>();
-                        if (rend != null) rend.material = customMaterial;
+                        if (rend != null) rend.sharedMaterial = customMaterial;
+                    }
+                }
+
+                // Destroy old spheres that are no longer in the spawn list
+                for (int i = transform.childCount - 1; i >= 0; i--)
+                {
+                    Transform child = transform.GetChild(i);
+                    if (!activeSpheres.Contains(child.gameObject))
+                    {
+                        DestroyImmediate(child.gameObject);
                     }
                 }
             };
 #endif
-        }
-
-        private void SpawnCollectibles()
-        {
-            if (spawnPoints == null || spawnPoints.Count == 0) return;
-
-            foreach (CollectibleSpawnData data in spawnPoints)
-            {
-                if (data == null || data.node == null) continue;
-                Node node = data.node;
-
-                // 1. Create primitive sphere
-                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                sphere.transform.parent = this.transform;
-                
-                // 2. Position it above the node
-                sphere.transform.position = node.transform.position + (Vector3.up * spawnHeightOffset);
-                sphere.transform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
-                
-                // Remove the collider so it doesn't block player clicks or raycasts
-                Destroy(sphere.GetComponent<Collider>());
-
-                // Assign material if provided
-                if (customMaterial != null)
-                {
-                    Renderer rend = sphere.GetComponent<Renderer>();
-                    if (rend != null)
-                    {
-                        rend.material = customMaterial;
-                    }
-                }
-
-                // 3. Attach Collectible logic
-                Collectible collectible = sphere.AddComponent<Collectible>();
-                
-                // If specific melters are assigned in the inspector, use them. Otherwise, look for one on the node itself.
-                if (data.targetMelters != null && data.targetMelters.Count > 0)
-                {
-                    collectible.linkedMelters = new List<BlockMelter>(data.targetMelters);
-                }
-                else
-                {
-                    BlockMelter melter = node.GetComponentInChildren<BlockMelter>();
-                    if (melter == null) melter = node.GetComponentInParent<BlockMelter>();
-
-                    if (melter != null)
-                    {
-                        collectible.linkedMelters.Add(melter);
-                    }
-                }
-                
-                // 4. Link the collection to the Node's gameEvent
-                // Now, when PlayerController invokes node.gameEvent, it will trigger Collect!
-                if (node.gameEvent == null)
-                {
-                    node.gameEvent = new UnityEngine.Events.UnityEvent();
-                }
-                node.gameEvent.AddListener(collectible.Collect);
-            }
         }
     }
 }

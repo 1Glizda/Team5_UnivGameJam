@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1da6a8b19ceac44c7bdef80bc46d6b86, type: 2}
+  - {fileID: 2100000, guid: 672ac09b8ca4642b6bf21fcf84215b2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,5 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.AcidPuddle
   fadeDuration: 2
   targetScaleMultiplier: 1.2
-  noiseSpeed: 1.5
-  noiseAmount: 0.05
+  noiseSpeed: 1
+  noiseAmount: 0.15
