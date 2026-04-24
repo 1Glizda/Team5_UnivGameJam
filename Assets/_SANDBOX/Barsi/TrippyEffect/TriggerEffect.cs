@@ -29,7 +29,7 @@ public class TriggerEffect : MonoBehaviour
             fullscreenMaterial.SetVector("_PlayerPos", player.transform.position);
         }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isActive = !isActive;
             if (fullscreenMaterial != null)
