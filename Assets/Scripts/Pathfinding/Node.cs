@@ -1,4 +1,4 @@
-﻿
+
 /*
  * Copyright (c) 2020 Razeware LLC
  * 
@@ -70,6 +70,18 @@ namespace RW.MonumentValley
             new Vector3(-1f, 0f, 0f),
             new Vector3(0f, 0f, 1f),
             new Vector3(0f, 0f, -1f),
+
+            // One block up (straight)
+            new Vector3(1f, 1f, 0f),
+            new Vector3(-1f, 1f, 0f),
+            new Vector3(0f, 1f, 1f),
+            new Vector3(0f, 1f, -1f),
+
+            // One block down (straight)
+            new Vector3(1f, -1f, 0f),
+            new Vector3(-1f, -1f, 0f),
+            new Vector3(0f, -1f, 1f),
+            new Vector3(0f, -1f, -1f),
         };
          
         private void Start()
@@ -105,19 +117,56 @@ namespace RW.MonumentValley
             }
         }
 
+        // Checks if this Node is physically covered by another block on top of it
+        public bool IsCovered()
+        {
+            int levelLayerIndex = LayerMask.NameToLayer("Level");
+
+            // We check the exact spatial center of the block that would be placed above this one (y + 1.0f).
+            // OverlapSphere is infinitely more reliable than a Raycast here because it doesn't care about backfaces or origin points!
+            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1.0f, 0.2f);
+            foreach (Collider col in colliders)
+            {
+                // Only consider blocks that are on the "Level" layer
+                if (levelLayerIndex != -1 && col.gameObject.layer != levelLayerIndex) continue;
+
+                // Ignore our own colliders or any child visual meshes
+                if (col.transform != this.transform && !col.transform.IsChildOf(this.transform))
+                {
+                    // If it's an acid puddle, it's a flat hazard, NOT a solid blocking block! We can traverse over it.
+                    if (col.GetComponent<AcidPuddle>() != null || col.GetComponentInParent<AcidPuddle>() != null) continue;
+
+                    return true; // We found a distinct Level block sitting immediately above us!
+                }
+            }
+            return false;
+        }
+
         // fill out edge connections to neighboring nodes automatically
         public void FindNeighbors()
         {
-            // search through possible neighbor offsets
-            foreach (Vector3 direction in neighborDirections)
-            {
-                Node newNode = graph?.FindNodeAt(transform.position + direction);
+            // If this node is physically covered by a block, it cannot be walked on. Do not establish connections from it.
+            if (IsCovered()) return;
 
-                // add to edges list if not already included and not excluded specifically
-                if (newNode != null && !HasNeighbor(newNode) && !excludedNodes.Contains(newNode))
+            // Freeform Distance Check: Instead of strict 1.0 unit grid vectors, we check all nodes in the graph
+            // and automatically connect to any node that is within a traversable distance (e.g. 2.5 units).
+            if (graph != null)
+            {
+                foreach (Node otherNode in graph.GetAllNodes())
                 {
-                    Edge newEdge = new Edge { neighbor = newNode, isActive = true };
-                    edges.Add(newEdge);
+                    if (otherNode == this || otherNode == null) continue;
+
+                    float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
+                    
+                    // If the node is within 2.5 units (sqrMagnitude 6.25), consider it a neighbor!
+                    if (distSqr <= 6.25f)
+                    {
+                        if (!HasNeighbor(otherNode) && !excludedNodes.Contains(otherNode) && !otherNode.IsCovered())
+                        {
+                            Edge newEdge = new Edge { neighbor = otherNode, isActive = true };
+                            edges.Add(newEdge);
+                        }
+                    }
                 }
             }
         }

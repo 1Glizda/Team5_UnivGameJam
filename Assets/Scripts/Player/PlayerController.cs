@@ -1,4 +1,4 @@
-﻿
+
 /*
  * Copyright (c) 2020 Razeware LLC
  * 
@@ -44,6 +44,9 @@ namespace RW.MonumentValley
         //  time to move one unit
         [Range(0.25f, 2f)]
         [SerializeField] private float moveTime = 0.5f;
+
+        // dynamic zoomies mechanic
+        private float currentZoomieMultiplier = 0.2f;
 
         // click indicator
         [SerializeField] Cursor cursor;
@@ -95,6 +98,8 @@ namespace RW.MonumentValley
             {
                 c.clickAction += OnClick;
             }
+
+            StartCoroutine(RandomZoomiesRoutine());
         }
 
         private void OnDisable()
@@ -113,8 +118,9 @@ namespace RW.MonumentValley
                 return;
             }
 
-            // find the best path to the any Nodes under the Clickable; gives the user some flexibility
-            List<Node> newPath = pathfinder.FindBestPath(currentNode, clickable.ChildNodes);
+            // For custom continuous meshes with many nodes, find the specific node closest to where the user clicked!
+            Node targetNode = graph.FindClosestNode(clickable.ChildNodes, position);
+            List<Node> newPath = pathfinder.FindPath(currentNode, targetNode);
 
             // if we are already moving and we click again, stop all previous Animation/motion
             if (isMoving)
@@ -159,6 +165,18 @@ namespace RW.MonumentValley
                 // loop through all Nodes
                 for (int i = 0; i < path.Count; i++)
                 {
+                    // Check if we should skip the current node in the path
+                    if (i + 1 < path.Count)
+                    {
+                        Node nextNodeToCheck = path[i];
+
+                        // The user requested to skip ONLY the nodes that have the tag "Skipable"
+                        if (nextNodeToCheck.CompareTag("Skipable"))
+                        {
+                            i++; // Skip this node and aim for the one after it!
+                        }
+                    }
+
                     // use the current Node as the next waypoint
                     nextNode = path[i];
 
@@ -169,6 +187,10 @@ namespace RW.MonumentValley
 
                     // move to the next Node
                     yield return StartCoroutine(MoveToNodeRoutine(transform.position, nextNode));
+                    
+                    // WebGL Safety: Ensure we yield at least once per node to prevent 
+                    // a 'Maximum call stack size exceeded' error if many nodes are skipped synchronously
+                    yield return null;
                 }
             }
 
@@ -185,25 +207,46 @@ namespace RW.MonumentValley
 
             // validate move time
             moveTime = Mathf.Clamp(moveTime, 0.1f, 5f);
+            
+            Vector3 targetPos = targetNode.transform.position;
+            
+            // The user requested to jump if the target node has the tag "Jumpable", 
+            // OR if the node we are launching from (currentNode) is "Jumpable"!
+            bool isJumping = targetNode.CompareTag("Jumpable") || (currentNode != null && currentNode.CompareTag("Jumpable"));
+            
+            // Configure cat-like bouncy jump height - adjust as needed
+            float jumpHeight = isJumping ? 1.25f : 0.0f;
 
             while (elapsedTime < moveTime && targetNode != null && !HasReachedNode(targetNode))
             {
 
-                elapsedTime += Time.deltaTime;
+                // dynamically speed up elapsed time tracking using the multiplier
+                elapsedTime += Time.deltaTime / currentZoomieMultiplier;
                 float lerpValue = Mathf.Clamp(elapsedTime / moveTime, 0f, 1f);
 
-                Vector3 targetPos = targetNode.transform.position;
-                transform.position = Vector3.Lerp(startPosition, targetPos, lerpValue);
+                // Start with linear interpolation
+                Vector3 currentPos = Vector3.Lerp(startPosition, targetPos, lerpValue);
+                
+                // Add the jump arc if applicable
+                if (isJumping)
+                {
+                    float jumpOffset = Mathf.Sin(lerpValue * Mathf.PI) * jumpHeight;
+                    currentPos.y += jumpOffset;
+                }
+
+                transform.position = currentPos;
 
                 // if over halfway, change parent to next node
-                if (lerpValue > 0.51f)
+                if (lerpValue > 0.51f && currentNode != targetNode)
                 {
                     transform.parent = targetNode.transform;
                     currentNode = targetNode;
 
-                    // invoke UnityEvent associated with next Node
-                    targetNode.gameEvent.Invoke();
-                    //Debug.Log("invoked GameEvent from targetNode: " + targetNode.name);
+                    // invoke UnityEvent associated with next Node ONCE
+                    if (targetNode.gameEvent != null)
+                    {
+                        targetNode.gameEvent.Invoke();
+                    }
                 }
 
                 // wait one frame
@@ -290,6 +333,73 @@ namespace RW.MonumentValley
         public void EnableControls(bool state)
         {
             isControlEnabled = state;
+        }
+
+        // background routine to casually check for randomly triggering the zoomies
+        private IEnumerator RandomZoomiesRoutine()
+        {
+            while (true)
+            {
+                // Only roll for zoomies while currently moving and not already zooming
+                if (isMoving && currentZoomieMultiplier == 1.0f)
+                {
+                    // 15% chance to start zoomies
+                    if (Random.value < 0.15f) 
+                    {
+                        yield return StartCoroutine(ExecuteZoomiesBurst());
+                    }
+                }
+                yield return new WaitForSeconds(0.5f); // Check twice a second
+            }
+        }
+
+        // eases in and out of a 5x speed boost
+        private IEnumerator ExecuteZoomiesBurst()
+        {
+            float easeTime = 0.5f; // half a second to accelerate
+            float burstDuration = Random.Range(1f, 2.5f); // 1-2.5 seconds of pure sprint
+            
+            // Ease In (Accelerate)
+            float t = 0;
+            while (t < easeTime)
+            {
+                t += Time.deltaTime;
+                // smoothstep from 1.0 down to 0.2 (which means 5x faster since we divide by it)
+                currentZoomieMultiplier = Mathf.SmoothStep(1.0f, 0.2f, t / easeTime);
+                yield return null;
+            }
+
+            // Sprint
+            currentZoomieMultiplier = 0.2f;
+            yield return new WaitForSeconds(burstDuration);
+
+            // Ease Out (Decelerate)
+            t = 0;
+            while (t < easeTime)
+            {
+                t += Time.deltaTime;
+                currentZoomieMultiplier = Mathf.SmoothStep(0.2f, 1.0f, t / easeTime);
+                yield return null;
+            }
+            
+            currentZoomieMultiplier = 1.0f;
+        }
+
+        public void TeleportToNode(Node targetNode)
+        {
+            if (targetNode == null)
+                return;
+
+            StopAllCoroutines();
+
+            isMoving = false;
+
+            transform.position = targetNode.transform.position;
+            transform.parent = targetNode.transform;
+
+            currentNode = targetNode;
+
+            UpdateAnimation();
         }
     }
 }
