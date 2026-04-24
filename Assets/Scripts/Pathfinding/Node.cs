@@ -58,6 +58,11 @@ namespace RW.MonumentValley
         // invoked when Player enters this node
         public UnityEvent gameEvent;
 
+        [Header("Strict Connections")]
+        [Tooltip("If true, this node will ONLY connect to nodes in the strictNeighbours list, completely ignoring the automatic distance check. Other automatic nodes will also ignore this node unless they are in this list.")]
+        public bool hasStrictNeighbours = false;
+        public List<Node> strictNeighbours = new List<Node>();
+
         // properties
         
         public Node PreviousNode { get { return previousNode; } set { previousNode = value; } }
@@ -148,6 +153,22 @@ namespace RW.MonumentValley
             // If this node is physically covered by a block, it cannot be walked on. Do not establish connections from it.
             if (IsCovered()) return;
 
+            // If this node uses strict neighbours, we ONLY connect to the ones in the manual list!
+            if (hasStrictNeighbours)
+            {
+                foreach (Node neighbor in strictNeighbours)
+                {
+                    if (neighbor != null && !neighbor.IsCovered() && !excludedNodes.Contains(neighbor))
+                    {
+                        if (!HasNeighbor(neighbor))
+                        {
+                            edges.Add(new Edge { neighbor = neighbor, isActive = true });
+                        }
+                    }
+                }
+                return; // SKIP the automatic distance check completely for this node!
+            }
+
             // Freeform Distance Check: Instead of strict 1.0 unit grid vectors, we check all nodes in the graph
             // and automatically connect to any node that is within a traversable distance (e.g. 2.5 units).
             if (graph != null)
@@ -155,6 +176,13 @@ namespace RW.MonumentValley
                 foreach (Node otherNode in graph.GetAllNodes())
                 {
                     if (otherNode == this || otherNode == null) continue;
+
+                    // IMPORTANT: If the OTHER node has strict neighbours, and it DOES NOT include THIS node in its manual list,
+                    // we MUST NOT automatically connect to it. This prevents automatic nodes from bypassing strict rules!
+                    if (otherNode.hasStrictNeighbours && !otherNode.strictNeighbours.Contains(this))
+                    {
+                        continue;
+                    }
 
                     float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
                     

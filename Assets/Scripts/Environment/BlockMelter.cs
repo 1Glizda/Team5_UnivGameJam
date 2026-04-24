@@ -14,24 +14,74 @@ namespace RW.MonumentValley
         [Tooltip("If true, the puddle covers the exact surfaces of blocks underneath. If false, it spawns a single puddle at the bottom of THIS block.")]
         public bool fillUnderlyingSurfaces = true;
 
-        private Material blockMat;
+        [Header("Material Override")]
+        [Tooltip("If assigned, the script will instantly swap the object to this material right before it melts!")]
+        public Material meltingMaterialOverride;
+
+        private List<Material> blockMats = new List<Material>();
         private bool isMelting = false;
 
         private void Start()
         {
-            Renderer rend = GetComponentInChildren<Renderer>();
-            if (rend != null) blockMat = rend.material; 
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            
+            if (renderers.Length == 0)
+            {
+                Debug.LogWarning($"[BlockMelter] No Renderers found on {gameObject.name} or its children! Cannot melt visuals.");
+            }
+
+            foreach (Renderer rend in renderers)
+            {
+                if (rend != null)
+                {
+                    blockMats.Add(rend.material); 
+                    
+                    if (!rend.material.HasProperty("_MeltAmount"))
+                    {
+                        Debug.LogWarning($"[BlockMelter] The material '{rend.material.name}' on '{rend.gameObject.name}' DOES NOT have a '_MeltAmount' property! Make sure you assigned the custom melting shader to this FBX!");
+                    }
+                }
+            }
         }
 
         public void TriggerMelt()
         {
+            Debug.Log($"[BlockMelter] TriggerMelt called on {gameObject.name}");
             if (isMelting) return;
             isMelting = true;
+            
+            // Hot-swap material if an override is provided!
+            if (meltingMaterialOverride != null)
+            {
+                Renderer[] renderers = GetComponentsInChildren<Renderer>();
+                blockMats.Clear(); // Clear the old standard materials we found in Start
+                
+                foreach (Renderer rend in renderers)
+                {
+                    if (rend != null)
+                    {
+                        // Save the original texture so the new material looks the same!
+                        Texture originalTexture = rend.material.mainTexture;
+                        
+                        rend.material = meltingMaterialOverride;
+                        
+                        if (originalTexture != null)
+                        {
+                            if (rend.material.HasProperty("_BaseMap")) rend.material.SetTexture("_BaseMap", originalTexture);
+                            else if (rend.material.HasProperty("_MainTex")) rend.material.SetTexture("_MainTex", originalTexture);
+                        }
+
+                        blockMats.Add(rend.material);
+                    }
+                }
+            }
+
             StartCoroutine(MeltRoutine());
         }
 
         private IEnumerator MeltRoutine()
         {
+            Debug.Log("[BlockMelter] MeltRoutine started.");
             Transform t = transform;
             Vector3 startPos = t.position;
             Vector3 startScale = t.localScale;
@@ -68,17 +118,22 @@ namespace RW.MonumentValley
             // 2. Spawn Visuals
             SpawnParticles(startPos + Vector3.up * 0.6f, t);
             
+            // Calculate footprint size using actual colliders rather than local scale (which might be wrong for FBXs)
+            Collider col = GetComponentInChildren<Collider>();
+            Vector3 footprintSize = col != null ? col.bounds.size : startScale;
+            Debug.Log($"[BlockMelter] Calculated footprint size: {footprintSize}. Spawning puddles...");
+
             if (acidPuddlePrefab != null)
             {
                 // Spawn a puddle on the TOP face of this block
-                Vector3 topPuddlePos = transform.position + (Vector3.up * (startScale.y / 2f + 0.01f));
-                SpawnPuddle(topPuddlePos, this.transform, startScale, false);
+                Vector3 topPuddlePos = transform.position + (Vector3.up * (footprintSize.y / 2f + 0.01f));
+                SpawnPuddle(topPuddlePos, this.transform, footprintSize, false);
 
                 // Bottom Puddles (permanent)
                 if (isBottomBlock || !fillUnderlyingSurfaces)
                 {
                     // Spawn a single footprint perfectly at the bottom of the melting block
-                    SpawnPuddle(startPos - new Vector3(0, startScale.y / 2f - 0.02f, 0), null, startScale, true);
+                    SpawnPuddle(startPos - new Vector3(0, footprintSize.y / 2f - 0.02f, 0), null, footprintSize, true);
                 }
                 else
                 {
@@ -125,20 +180,28 @@ namespace RW.MonumentValley
                         // Place exactly at the highest surface + 0.02f to prevent Z-fighting
                         Vector3 pos = new Vector3(uBlock.position.x, highestSurfaceY + 0.02f, uBlock.position.z);
                         
+                        Collider uCol = uBlock.GetComponentInChildren<Collider>();
+                        Vector3 targetFootprint = uCol != null ? uCol.bounds.size : uBlock.localScale;
+
                         // Scale the puddle to perfectly match the size of the block it landed on
-                        SpawnPuddle(pos, uBlock, uBlock.localScale, true);
+                        SpawnPuddle(pos, uBlock, targetFootprint, true);
                     }
                 }
             }
 
+            Debug.Log("[BlockMelter] Starting Melt Animation Loop...");
             // 3. Melt Animation Loop
             float timer = 0f;
             int meltId = Shader.PropertyToID("_MeltAmount");
 
+            int frameCount = 0;
             while (timer < meltDuration)
             {
                 timer += Time.deltaTime;
                 float rawP = Mathf.Clamp01(timer / meltDuration);
+                
+                if (frameCount == 0) Debug.Log("[BlockMelter] First frame of melt loop executing. Squishing localScale...");
+                frameCount++;
                 
                 // Continuous stack easing
                 float easedP = rawP;
@@ -146,7 +209,10 @@ namespace RW.MonumentValley
                 else if (isTopBlock) easedP = rawP * rawP; // Ease In
                 else if (isBottomBlock) easedP = 1f - (1f - rawP) * (1f - rawP); // Ease Out
 
-                if (blockMat != null && blockMat.HasProperty(meltId)) blockMat.SetFloat(meltId, easedP);
+                foreach (Material mat in blockMats)
+                {
+                    if (mat != null && mat.HasProperty(meltId)) mat.SetFloat(meltId, easedP);
+                }
 
                 // Squash Y and offset position to lock bottom face
                 float curY = Mathf.Lerp(startScale.y, 0.05f, easedP);
@@ -156,6 +222,7 @@ namespace RW.MonumentValley
                 yield return null;
             }
 
+            Debug.Log("[BlockMelter] Melt loop finished! Destroying object...");
             // 4. Cleanup & Cascade
             foreach (Collider c in GetComponentsInChildren<Collider>()) c.enabled = false;
 
@@ -178,11 +245,14 @@ namespace RW.MonumentValley
             if (parent == transform) Destroy(p, meltDuration + 2f); // Temporary particles
         }
 
-        private void SpawnPuddle(Vector3 pos, Transform parent, Vector3 sourceScale, bool includeParticles = false)
+        private void SpawnPuddle(Vector3 pos, Transform parent, Vector3 sourceFootprintSize, bool includeParticles = false)
         {
             // Instantiate unparented first to establish global size
             GameObject puddle = Instantiate(acidPuddlePrefab, pos, Quaternion.Euler(90, 0, 0));
-            puddle.transform.localScale = new Vector3(sourceScale.x, sourceScale.z, sourceScale.y); // Match block X/Z explicitly
+            
+            // sourceFootprintSize is global bounding box size. 
+            // Puddle is rotated 90 on X, so its local X maps to global X, and local Y maps to global Z!
+            puddle.transform.localScale = new Vector3(sourceFootprintSize.x, sourceFootprintSize.z, 1f); 
             
             // Put the puddle on the "Ignore Raycast" layer so it never blocks the player's mouse clicks!
             int ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");

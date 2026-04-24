@@ -45,8 +45,7 @@ namespace RW.MonumentValley
         [Range(0.25f, 2f)]
         [SerializeField] private float moveTime = 0.5f;
 
-        // dynamic zoomies mechanic
-        private float currentZoomieMultiplier = 0.2f;
+        // dynamic zoomies mechanic removed
 
         // click indicator
         [SerializeField] Cursor cursor;
@@ -99,7 +98,6 @@ namespace RW.MonumentValley
                 c.clickAction += OnClick;
             }
 
-            StartCoroutine(RandomZoomiesRoutine());
         }
 
         private void OnDisable()
@@ -220,8 +218,8 @@ namespace RW.MonumentValley
             while (elapsedTime < moveTime && targetNode != null && !HasReachedNode(targetNode))
             {
 
-                // dynamically speed up elapsed time tracking using the multiplier
-                elapsedTime += Time.deltaTime / currentZoomieMultiplier;
+                // elapsed time tracking
+                elapsedTime += Time.deltaTime;
                 float lerpValue = Mathf.Clamp(elapsedTime / moveTime, 0f, 1f);
 
                 // Start with linear interpolation
@@ -335,55 +333,7 @@ namespace RW.MonumentValley
             isControlEnabled = state;
         }
 
-        // background routine to casually check for randomly triggering the zoomies
-        private IEnumerator RandomZoomiesRoutine()
-        {
-            while (true)
-            {
-                // Only roll for zoomies while currently moving and not already zooming
-                if (isMoving && currentZoomieMultiplier == 1.0f)
-                {
-                    // 15% chance to start zoomies
-                    if (Random.value < 0.15f) 
-                    {
-                        yield return StartCoroutine(ExecuteZoomiesBurst());
-                    }
-                }
-                yield return new WaitForSeconds(0.5f); // Check twice a second
-            }
-        }
 
-        // eases in and out of a 5x speed boost
-        private IEnumerator ExecuteZoomiesBurst()
-        {
-            float easeTime = 0.5f; // half a second to accelerate
-            float burstDuration = Random.Range(1f, 2.5f); // 1-2.5 seconds of pure sprint
-            
-            // Ease In (Accelerate)
-            float t = 0;
-            while (t < easeTime)
-            {
-                t += Time.deltaTime;
-                // smoothstep from 1.0 down to 0.2 (which means 5x faster since we divide by it)
-                currentZoomieMultiplier = Mathf.SmoothStep(1.0f, 0.2f, t / easeTime);
-                yield return null;
-            }
-
-            // Sprint
-            currentZoomieMultiplier = 0.2f;
-            yield return new WaitForSeconds(burstDuration);
-
-            // Ease Out (Decelerate)
-            t = 0;
-            while (t < easeTime)
-            {
-                t += Time.deltaTime;
-                currentZoomieMultiplier = Mathf.SmoothStep(0.2f, 1.0f, t / easeTime);
-                yield return null;
-            }
-            
-            currentZoomieMultiplier = 1.0f;
-        }
 
         public void TeleportToNode(Node targetNode)
         {
@@ -400,6 +350,53 @@ namespace RW.MonumentValley
             currentNode = targetNode;
 
             UpdateAnimation();
+        }
+
+        // Instantly teleports the player to a target node, then forcefully walks them to an exit node, disabling controls during the process.
+        public void PortalToNode(Node teleportTarget, Node walkTarget)
+        {
+            Debug.Log($"[PlayerController] PortalToNode called! Target: {teleportTarget?.name}, Walk To: {walkTarget?.name}");
+            StopAllCoroutines();
+            StartCoroutine(PortalRoutine(teleportTarget, walkTarget));
+        }
+
+        private IEnumerator PortalRoutine(Node teleportTarget, Node walkTarget)
+        {
+            if (teleportTarget == null)
+            {
+                Debug.LogError("[PlayerController] Teleport target is NULL! Aborting teleport.");
+                yield break;
+            }
+
+            // 1. Disable controls
+            EnableControls(false);
+
+            // 2. Instantly Teleport
+            isMoving = false;
+            transform.position = teleportTarget.transform.position;
+            transform.parent = teleportTarget.transform;
+            currentNode = teleportTarget;
+            UpdateAnimation();
+            
+            Debug.Log($"[PlayerController] Teleported to {teleportTarget.name}");
+
+            // Wait a frame just in case Cinemachine or other physics need to catch up
+            yield return null;
+
+            // 3. Force Walk to target (if provided)
+            if (walkTarget != null)
+            {
+                Debug.Log($"[PlayerController] Forcing walk to {walkTarget.name}");
+                List<Node> newPath = pathfinder.FindPath(currentNode, walkTarget);
+                if (newPath != null && newPath.Count > 1)
+                {
+                    yield return StartCoroutine(FollowPathRoutine(newPath));
+                }
+            }
+
+            // 4. Re-enable controls
+            EnableControls(true);
+            Debug.Log("[PlayerController] Portal routine finished. Controls restored.");
         }
     }
 }
