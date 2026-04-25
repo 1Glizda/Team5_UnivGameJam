@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueSystem : MonoBehaviour
 {
     public static DialogueSystem Instance;
     private DialogueUIController ui;
     private DialogueComponent activeDialogue;
+
+    public UnityEvent OnDialogueEnded;
 
     private void Awake()
     {
@@ -20,6 +23,15 @@ public class DialogueSystem : MonoBehaviour
 
         ui = DialogueUIController.Instance;
         activeDialogue = null;
+    }
+
+    private void Update()
+    {
+        // If dialogue is active, listen for left-clicks to progress
+        if (activeDialogue != null && Input.GetMouseButtonDown(0))
+        {
+            NextLine();
+        }
     }
 
     public void HandleInteraction(DialogueComponent dialogue)
@@ -61,6 +73,7 @@ public class DialogueSystem : MonoBehaviour
 
         if (dialogue.isTyping)
         {
+            // Autocomplete the line!
             StopAllCoroutines();
             ui.SetDialogueText(dialogue.dialogueData.dialogueLines[dialogue.dialogueIndex]);
             dialogue.isTyping = false;
@@ -128,6 +141,8 @@ public class DialogueSystem : MonoBehaviour
 
         ui.SetDialogueText("");
         ui.ShowDialogueUI(false);
+
+        OnDialogueEnded?.Invoke();
     }
 
     public bool IsDialogueActive()
