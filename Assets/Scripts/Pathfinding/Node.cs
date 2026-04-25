@@ -127,9 +127,8 @@ namespace RW.MonumentValley
         {
             int levelLayerIndex = LayerMask.NameToLayer("Level");
 
-            // We check the exact spatial center of the block that would be placed above this one (y + 1.0f).
-            // OverlapSphere is infinitely more reliable than a Raycast here because it doesn't care about backfaces or origin points!
-            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1.0f, 0.2f);
+            // We check a sphere slightly above the surface (y + 0.5f) to detect both full-height blocks AND custom FBX boxes!
+            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 0.5f, 0.4f);
             foreach (Collider col in colliders)
             {
                 // Only consider blocks that are on the "Level" layer
@@ -140,8 +139,11 @@ namespace RW.MonumentValley
                 {
                     // If it's an acid puddle, it's a flat hazard, NOT a solid blocking block! We can traverse over it.
                     if (col.GetComponent<AcidPuddle>() != null || col.GetComponentInParent<AcidPuddle>() != null) continue;
+                    
+                    // Same for SpecialZoneEffects, they are triggers, not solid blocks
+                    if (col.GetComponent<SpecialZoneEffect>() != null) continue;
 
-                    return true; // We found a distinct Level block sitting immediately above us!
+                    return true; // We found a distinct solid block sitting immediately above us!
                 }
             }
             return false;
@@ -187,7 +189,7 @@ namespace RW.MonumentValley
                     float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
                     
                     // If the node is within 2.5 units (sqrMagnitude 6.25), consider it a neighbor!
-                    if (distSqr <= 6.25f)
+                    if (distSqr <= 4.25f)
                     {
                         if (!HasNeighbor(otherNode) && !excludedNodes.Contains(otherNode) && !otherNode.IsCovered())
                         {
@@ -222,6 +224,19 @@ namespace RW.MonumentValley
                     e.isActive = state;
                 }
             }
+        }
+
+        // Returns true if the connection to the neighbor exists AND is active
+        public bool IsEdgeActive(Node neighborNode)
+        {
+            foreach (Edge e in edges)
+            {
+                if (e.neighbor.Equals(neighborNode))
+                {
+                    return e.isActive;
+                }
+            }
+            return false;
         }
 
         public void InitGraph(Graph graphToInit)

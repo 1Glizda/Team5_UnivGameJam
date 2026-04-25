@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,6 +53,10 @@ namespace RW.MonumentValley
         // alternative to OnMouseDown
         public void OnPointerDown(PointerEventData eventData)
         {
+            // Only respond to Left Click (which also includes mobile screen taps)
+            // This prevents Right-Click (Special State toggle) from accidentally moving the player!
+            if (eventData.button != PointerEventData.InputButton.Left) return;
+
             if (clickAction != null)
             {
                 // invoke the clickAction with world space raycast hit position

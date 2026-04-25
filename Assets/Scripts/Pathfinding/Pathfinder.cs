@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -190,6 +190,32 @@ namespace RW.MonumentValley
                 {
                     isSearchComplete = true;
                     isPathComplete = false;
+
+                    // FALLBACK: Move to the closest accessible node to the destination!
+                    if (exploredNodes.Count > 0)
+                    {
+                        Node closestNode = null;
+                        float closestDist = float.MaxValue;
+                        foreach (Node n in exploredNodes)
+                        {
+                            if (n == null || n == startNode) continue;
+                            float dist = Vector3.Distance(n.transform.position, destinationNode.transform.position);
+                            if (dist < closestDist)
+                            {
+                                closestDist = dist;
+                                closestNode = n;
+                            }
+                        }
+
+                        if (closestNode != null)
+                        {
+                            // Temporarily change destination so GetPathNodes traces from here
+                            Node originalDest = destinationNode;
+                            destinationNode = closestNode;
+                            newPath = GetPathNodes();
+                            destinationNode = originalDest; // Restore for consistency
+                        }
+                    }
                 }
             }
             return newPath;

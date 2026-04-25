@@ -65,6 +65,95 @@ namespace RW.MonumentValley
         private bool isControlEnabled;
         private PlayerAnimation playerAnimation;
 
+        [Header("Special State")]
+        public bool specialStateUnlocked = false;
+        public bool isInSpecialState = false;
+        public float specialStateDuration = 10f;
+        private float specialStateTimer = 0f;
+        
+        [HideInInspector]
+        public bool isWallWalking = false;
+
+        public UnityEngine.Events.UnityEvent<bool> onSpecialStateToggled;
+
+        // The Call Stack for dynamic zone effects
+        private List<SpecialZoneEffect> activeEffects = new List<SpecialZoneEffect>();
+
+        private void Update()
+        {
+            if (specialStateUnlocked && Input.GetMouseButtonDown(1))
+            {
+                if (!isInSpecialState) ActivateSpecialState();
+                else DeactivateSpecialState();
+            }
+
+            if (isInSpecialState)
+            {
+                specialStateTimer -= Time.deltaTime;
+                if (specialStateTimer <= 0)
+                {
+                    DeactivateSpecialState();
+                }
+            }
+        }
+
+        private void ActivateSpecialState()
+        {
+            if (isInSpecialState) return;
+            isInSpecialState = true;
+            specialStateTimer = specialStateDuration;
+            
+            if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(true);
+
+            if (currentNode != null)
+            {
+                NodeSpecialStateEffects fx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                if (fx != null) fx.TurnOn();
+
+                SpecialZoneEffect[] zoneFx = currentNode.GetComponents<SpecialZoneEffect>();
+                foreach (var z in zoneFx) PushEffect(z);
+            }
+        }
+
+        private void DeactivateSpecialState()
+        {
+            if (!isInSpecialState) return;
+            isInSpecialState = false;
+
+            // Force revert all active effects!
+            for (int i = activeEffects.Count - 1; i >= 0; i--)
+            {
+                activeEffects[i].Revert(this);
+            }
+            activeEffects.Clear();
+
+            if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(false);
+
+            if (currentNode != null)
+            {
+                NodeSpecialStateEffects fx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                if (fx != null) fx.TurnOff();
+            }
+        }
+
+        public void PushEffect(SpecialZoneEffect effect)
+        {
+            if (!activeEffects.Contains(effect))
+            {
+                activeEffects.Add(effect);
+                effect.Apply(this);
+            }
+        }
+
+        public void RemoveEffect(SpecialZoneEffect effect)
+        {
+            if (activeEffects.Contains(effect))
+            {
+                effect.Revert(this);
+                activeEffects.Remove(effect);
+            }
+        }
+
         private void Awake()
         {
             //  initialize fields
@@ -178,11 +267,6 @@ namespace RW.MonumentValley
                     // use the current Node as the next waypoint
                     nextNode = path[i];
 
-                    // aim at the Node after that to minimize flipping
-                    int nextAimIndex = Mathf.Clamp(i + 1, 0, path.Count - 1);
-                    Node aimNode = path[nextAimIndex];
-                    FaceNextPosition(transform.position, aimNode.transform.position);
-
                     // move to the next Node
                     yield return StartCoroutine(MoveToNodeRoutine(transform.position, nextNode));
                     
@@ -197,6 +281,31 @@ namespace RW.MonumentValley
 
         }
 
+        // Calculate the correct rotation required to face the next node based on the camera plane
+        private Quaternion GetTargetRotation(Vector3 startPosition, Vector3 nextPosition)
+        {
+            if (Camera.main == null) return transform.rotation;
+
+            Vector3 nextPositionScreen = Camera.main.WorldToScreenPoint(nextPosition);
+            Ray rayToNextPosition = Camera.main.ScreenPointToRay(nextPositionScreen);
+            
+            // If Wall Walking is active, use the exact node's orientation instead of flat ground!
+            Vector3 upVector = (isWallWalking && currentNode != null) ? currentNode.transform.up : Vector3.up;
+            Plane plane = new Plane(upVector, startPosition);
+
+            if (plane.Raycast(rayToNextPosition, out float cameraDistance))
+            {
+                Vector3 nextPositionOnPlane = rayToNextPosition.GetPoint(cameraDistance);
+                Vector3 directionToNextNode = nextPositionOnPlane - startPosition;
+                
+                if (directionToNextNode != Vector3.zero)
+                {
+                    return Quaternion.LookRotation(directionToNextNode, upVector);
+                }
+            }
+            return transform.rotation;
+        }
+
         //  lerp to another Node from current position
         private IEnumerator MoveToNodeRoutine(Vector3 startPosition, Node targetNode)
         {
@@ -208,6 +317,13 @@ namespace RW.MonumentValley
             
             Vector3 targetPos = targetNode.transform.position;
             
+            // Calculate the exact distance to the next node
+            float distance = Vector3.Distance(startPosition, targetPos);
+            
+            // If the moveTime is "time per unit", then actual duration is distance * moveTime
+            // This guarantees a perfectly smooth, constant speed regardless of how far apart the nodes are!
+            float actualDuration = distance * moveTime;
+            
             // The user requested to jump if the target node has the tag "Jumpable", 
             // OR if the node we are launching from (currentNode) is "Jumpable"!
             bool isJumping = targetNode.CompareTag("Jumpable") || (currentNode != null && currentNode.CompareTag("Jumpable"));
@@ -215,12 +331,18 @@ namespace RW.MonumentValley
             // Configure cat-like bouncy jump height - adjust as needed
             float jumpHeight = isJumping ? 1.25f : 0.0f;
 
-            while (elapsedTime < moveTime && targetNode != null && !HasReachedNode(targetNode))
+            // Prevent division by zero if nodes are exactly on top of each other
+            if (actualDuration <= 0.001f) actualDuration = 0.001f;
+
+            // Determine what direction we should be facing for this segment
+            Quaternion targetRotation = GetTargetRotation(startPosition, targetPos);
+
+            while (elapsedTime < actualDuration && targetNode != null && !HasReachedNode(targetNode))
             {
 
                 // elapsed time tracking
                 elapsedTime += Time.deltaTime;
-                float lerpValue = Mathf.Clamp(elapsedTime / moveTime, 0f, 1f);
+                float lerpValue = Mathf.Clamp(elapsedTime / actualDuration, 0f, 1f);
 
                 // Start with linear interpolation
                 Vector3 currentPos = Vector3.Lerp(startPosition, targetPos, lerpValue);
@@ -233,17 +355,71 @@ namespace RW.MonumentValley
                 }
 
                 transform.position = currentPos;
+                
+                // Seamlessly rotate towards the target direction while moving!
+                // A lerp speed of 15f means it snaps quickly but smoothly within the first few frames of movement.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 15f);
 
                 // if over halfway, change parent to next node
                 if (lerpValue > 0.51f && currentNode != targetNode)
                 {
+                    // Exit the OLD node's simple UnityEvent effects
+                    if (isInSpecialState && currentNode != null)
+                    {
+                        NodeSpecialStateEffects oldFx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                        if (oldFx != null) oldFx.TurnOff();
+                    }
+
                     transform.parent = targetNode.transform;
                     currentNode = targetNode;
+
+                    if (isInSpecialState)
+                    {
+                        // Enter the NEW node's simple UnityEvent effects
+                        NodeSpecialStateEffects newFx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                        if (newFx != null) newFx.TurnOn();
+
+                        // Manage the Dynamic Call Stack for contiguous Zones
+                        List<SpecialZoneEffect> toRemove = new List<SpecialZoneEffect>();
+                        foreach (var active in activeEffects)
+                        {
+                            // If the new node doesn't have an effect of the exact same TYPE, we have left the zone! Remove it!
+                            if (currentNode.GetComponent(active.GetType()) == null)
+                            {
+                                toRemove.Add(active);
+                            }
+                        }
+
+                        foreach (var r in toRemove) RemoveEffect(r);
+
+                        // Apply new effects
+                        SpecialZoneEffect[] newZoneFx = currentNode.GetComponents<SpecialZoneEffect>();
+                        foreach (var z in newZoneFx)
+                        {
+                            // If we don't already have an effect of this type active, push it!
+                            bool alreadyHasType = false;
+                            foreach (var active in activeEffects)
+                            {
+                                if (active.GetType() == z.GetType()) alreadyHasType = true;
+                            }
+                            if (!alreadyHasType) PushEffect(z);
+                        }
+                    }
 
                     // invoke UnityEvent associated with next Node ONCE
                     if (targetNode.gameEvent != null)
                     {
                         targetNode.gameEvent.Invoke();
+                    }
+
+                    // Automatic Special State Melting
+                    if (isInSpecialState)
+                    {
+                        SpecialMeltableNode meltable = targetNode.GetComponent<SpecialMeltableNode>();
+                        if (meltable != null && meltable.linkedMelter != null)
+                        {
+                            meltable.linkedMelter.TriggerMelt();
+                        }
                     }
                 }
 
@@ -352,15 +528,15 @@ namespace RW.MonumentValley
             UpdateAnimation();
         }
 
-        // Instantly teleports the player to a target node, then forcefully walks them to an exit node, disabling controls during the process.
-        public void PortalToNode(Node teleportTarget, Node walkTarget)
+        // Instantly teleports the player to a target node, optionally walking to nodes before and after.
+        public void PortalToNode(Node preWalkTarget, Node teleportTarget, Node postWalkTarget)
         {
-            Debug.Log($"[PlayerController] PortalToNode called! Target: {teleportTarget?.name}, Walk To: {walkTarget?.name}");
+            Debug.Log($"[PlayerController] PortalToNode called! Pre-Walk: {preWalkTarget?.name}, Teleport: {teleportTarget?.name}, Post-Walk: {postWalkTarget?.name}");
             StopAllCoroutines();
-            StartCoroutine(PortalRoutine(teleportTarget, walkTarget));
+            StartCoroutine(PortalRoutine(preWalkTarget, teleportTarget, postWalkTarget));
         }
 
-        private IEnumerator PortalRoutine(Node teleportTarget, Node walkTarget)
+        private IEnumerator PortalRoutine(Node preWalkTarget, Node teleportTarget, Node postWalkTarget)
         {
             if (teleportTarget == null)
             {
@@ -371,30 +547,70 @@ namespace RW.MonumentValley
             // 1. Disable controls
             EnableControls(false);
 
-            // 2. Instantly Teleport
-            isMoving = false;
-            transform.position = teleportTarget.transform.position;
-            transform.parent = teleportTarget.transform;
-            currentNode = teleportTarget;
-            UpdateAnimation();
-            
-            Debug.Log($"[PlayerController] Teleported to {teleportTarget.name}");
-
-            // Wait a frame just in case Cinemachine or other physics need to catch up
-            yield return null;
-
-            // 3. Force Walk to target (if provided)
-            if (walkTarget != null)
+            // 2. Pre-Teleport Walk (if provided)
+            if (preWalkTarget != null && preWalkTarget != currentNode)
             {
-                Debug.Log($"[PlayerController] Forcing walk to {walkTarget.name}");
-                List<Node> newPath = pathfinder.FindPath(currentNode, walkTarget);
+                Debug.Log($"[PlayerController] Forcing pre-walk to {preWalkTarget.name}");
+                List<Node> newPath = pathfinder.FindPath(currentNode, preWalkTarget);
                 if (newPath != null && newPath.Count > 1)
                 {
                     yield return StartCoroutine(FollowPathRoutine(newPath));
                 }
             }
 
-            // 4. Re-enable controls
+            // 3. Instantly Teleport
+            isMoving = false;
+            transform.position = teleportTarget.transform.position;
+            transform.parent = teleportTarget.transform;
+            currentNode = teleportTarget;
+            UpdateAnimation();
+            
+            // TRIGGER SPECIAL STATE EFFECTS UPON LANDING
+            if (isInSpecialState)
+            {
+                // Manage the Dynamic Call Stack for contiguous Zones
+                List<SpecialZoneEffect> toRemove = new List<SpecialZoneEffect>();
+                foreach (var active in activeEffects)
+                {
+                    // If the new node doesn't have an effect of the exact same TYPE, we have left the zone!
+                    if (currentNode.GetComponent(active.GetType()) == null)
+                    {
+                        toRemove.Add(active);
+                    }
+                }
+
+                foreach (var r in toRemove) RemoveEffect(r);
+
+                // Apply new effects from the destination node
+                SpecialZoneEffect[] newZoneFx = currentNode.GetComponents<SpecialZoneEffect>();
+                foreach (var z in newZoneFx)
+                {
+                    bool alreadyHasType = false;
+                    foreach (var active in activeEffects)
+                    {
+                        if (active.GetType() == z.GetType()) alreadyHasType = true;
+                    }
+                    if (!alreadyHasType) PushEffect(z);
+                }
+            }
+
+            Debug.Log($"[PlayerController] Teleported to {teleportTarget.name}");
+
+            // Wait a frame just in case Cinemachine or other physics need to catch up
+            yield return null;
+
+            // 4. Post-Teleport Walk (if provided)
+            if (postWalkTarget != null && postWalkTarget != currentNode)
+            {
+                Debug.Log($"[PlayerController] Forcing post-walk to {postWalkTarget.name}");
+                List<Node> newPath = pathfinder.FindPath(currentNode, postWalkTarget);
+                if (newPath != null && newPath.Count > 1)
+                {
+                    yield return StartCoroutine(FollowPathRoutine(newPath));
+                }
+            }
+
+            // 5. Re-enable controls
             EnableControls(true);
             Debug.Log("[PlayerController] Portal routine finished. Controls restored.");
         }

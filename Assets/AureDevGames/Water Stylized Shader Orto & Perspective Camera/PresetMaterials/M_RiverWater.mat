@@ -127,7 +127,7 @@ Material:
     - _SecondaryFoamBlend: 0.06
     - _SkyboxForce: 2.5
     - _Steps: 50
-    - _SurfaceFoamDirection: 0.75
+    - _SurfaceFoamDirection: 0.5
     - _SurfaceFoamDistorsion: 0.38
     - _SurfaceFoamSpeed: 0.15
     - _SurfaceFoamTiling: 0.69
