@@ -188,9 +188,17 @@ namespace RW.MonumentValley
 
                     float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
                     
-                    // If the node is within 2.5 units (sqrMagnitude 6.25), consider it a neighbor!
+                    // If the node is within traversable distance
                     if (distSqr <= 4.25f)
                     {
+                        // NEW GRAVITY CHECK:
+                        // Prevent ground nodes from connecting to wall nodes (and vice versa) automatically.
+                        // This forces the player to use Portals to transition between different gravity planes.
+                        bool thisIsWall = GetComponent<WallWalkEffect>() != null;
+                        bool otherIsWall = otherNode.GetComponent<WallWalkEffect>() != null;
+
+                        if (thisIsWall != otherIsWall) continue;
+
                         if (!HasNeighbor(otherNode) && !excludedNodes.Contains(otherNode) && !otherNode.IsCovered())
                         {
                             Edge newEdge = new Edge { neighbor = otherNode, isActive = true };

@@ -83,21 +83,25 @@ namespace RW.MonumentValley
         {
             if (specialStateUnlocked && Input.GetMouseButtonDown(1))
             {
+                // Toggle ON only. Manual deactivation is disabled as requested.
                 if (!isInSpecialState) ActivateSpecialState();
-                else DeactivateSpecialState();
             }
 
             if (isInSpecialState)
             {
-                specialStateTimer -= Time.deltaTime;
-                if (specialStateTimer <= 0)
+                // If we are currently wall-walking, the special state is "locked" on and the timer pauses!
+                if (!isWallWalking)
                 {
-                    DeactivateSpecialState();
+                    specialStateTimer -= Time.deltaTime;
+                    if (specialStateTimer <= 0)
+                    {
+                        DeactivateSpecialState();
+                    }
                 }
             }
         }
 
-        private void ActivateSpecialState()
+        public void ActivateSpecialState()
         {
             if (isInSpecialState) return;
             isInSpecialState = true;
@@ -213,6 +217,8 @@ namespace RW.MonumentValley
             if (isMoving)
             {
                 StopAllCoroutines();
+                isMoving = false;
+                EnableControls(true); // Safety reset
             }
 
             // show a marker for the mouse click
@@ -282,15 +288,26 @@ namespace RW.MonumentValley
         }
 
         // Calculate the correct rotation required to face the next node based on the camera plane
-        private Quaternion GetTargetRotation(Vector3 startPosition, Vector3 nextPosition)
+        private Quaternion GetTargetRotation(Vector3 startPosition, Node targetNode)
         {
-            if (Camera.main == null) return transform.rotation;
+            if (Camera.main == null || targetNode == null) return transform.rotation;
 
+            Vector3 nextPosition = targetNode.transform.position;
             Vector3 nextPositionScreen = Camera.main.WorldToScreenPoint(nextPosition);
             Ray rayToNextPosition = Camera.main.ScreenPointToRay(nextPositionScreen);
             
-            // If Wall Walking is active, use the exact node's orientation instead of flat ground!
-            Vector3 upVector = (isWallWalking && currentNode != null) ? currentNode.transform.up : Vector3.up;
+            // PREDICTIVE GRAVITY:
+            // Use the UP vector of the node we are MOVING TOWARDS.
+            // This ensures we rotate to the wall's orientation as we approach it!
+            bool targetIsWall = targetNode.GetComponent<WallWalkEffect>() != null;
+            Vector3 upVector = targetIsWall ? targetNode.transform.up : Vector3.up;
+            
+            // Safety: if target isn't a wall, but WE are currently on one, stay sideways until we land on the ground
+            if (!targetIsWall && isWallWalking && currentNode != null)
+            {
+                upVector = currentNode.transform.up;
+            }
+
             Plane plane = new Plane(upVector, startPosition);
 
             if (plane.Raycast(rayToNextPosition, out float cameraDistance))
@@ -335,7 +352,7 @@ namespace RW.MonumentValley
             if (actualDuration <= 0.001f) actualDuration = 0.001f;
 
             // Determine what direction we should be facing for this segment
-            Quaternion targetRotation = GetTargetRotation(startPosition, targetPos);
+            Quaternion targetRotation = GetTargetRotation(startPosition, targetNode);
 
             while (elapsedTime < actualDuration && targetNode != null && !HasReachedNode(targetNode))
             {
@@ -373,30 +390,38 @@ namespace RW.MonumentValley
                     transform.parent = targetNode.transform;
                     currentNode = targetNode;
 
+                    // EXIT EFFECTS
+                    if (isInSpecialState && currentNode != null)
+                    {
+                        NodeSpecialStateEffects oldFx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                        if (oldFx != null) oldFx.TurnOff();
+                    }
+
+                    // ENTER EFFECTS
+                    // Check for WallWalkEffect to force-activate special state if needed!
+                    WallWalkEffect w = currentNode.GetComponent<WallWalkEffect>();
+                    if (w != null && !isInSpecialState)
+                    {
+                        ActivateSpecialState();
+                    }
+
                     if (isInSpecialState)
                     {
-                        // Enter the NEW node's simple UnityEvent effects
-                        NodeSpecialStateEffects newFx = currentNode.GetComponent<NodeSpecialStateEffects>();
-                        if (newFx != null) newFx.TurnOn();
-
                         // Manage the Dynamic Call Stack for contiguous Zones
                         List<SpecialZoneEffect> toRemove = new List<SpecialZoneEffect>();
                         foreach (var active in activeEffects)
                         {
-                            // If the new node doesn't have an effect of the exact same TYPE, we have left the zone! Remove it!
                             if (currentNode.GetComponent(active.GetType()) == null)
                             {
                                 toRemove.Add(active);
                             }
                         }
-
                         foreach (var r in toRemove) RemoveEffect(r);
 
                         // Apply new effects
                         SpecialZoneEffect[] newZoneFx = currentNode.GetComponents<SpecialZoneEffect>();
                         foreach (var z in newZoneFx)
                         {
-                            // If we don't already have an effect of this type active, push it!
                             bool alreadyHasType = false;
                             foreach (var active in activeEffects)
                             {
@@ -532,7 +557,12 @@ namespace RW.MonumentValley
         public void PortalToNode(Node preWalkTarget, Node teleportTarget, Node postWalkTarget)
         {
             Debug.Log($"[PlayerController] PortalToNode called! Pre-Walk: {preWalkTarget?.name}, Teleport: {teleportTarget?.name}, Post-Walk: {postWalkTarget?.name}");
+            
+            // Safety: If we were already in a portal routine or moving, ensure controls are reset if we interrupt!
             StopAllCoroutines();
+            isMoving = false;
+            EnableControls(true); 
+
             StartCoroutine(PortalRoutine(preWalkTarget, teleportTarget, postWalkTarget));
         }
 
@@ -565,7 +595,32 @@ namespace RW.MonumentValley
             currentNode = teleportTarget;
             UpdateAnimation();
             
+            // NEW: Always check for WallWalkEffect to force-activate special state if needed!
+            WallWalkEffect landingWall = currentNode.GetComponent<WallWalkEffect>();
+
+            // Immediately orient the player to the wall's UP vector
+            // This prevents them from being "stuck upwards" while on a wall.
+            if (landingWall != null)
+            {
+                // We use our current forward but the wall's UP
+                // If forward is too close to up, we use a fallback
+                Vector3 wallUp = teleportTarget.transform.up;
+                if (Mathf.Abs(Vector3.Dot(transform.forward, wallUp)) > 0.99f)
+                {
+                    transform.rotation = Quaternion.LookRotation(Vector3.Cross(transform.right, wallUp), wallUp);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.LookRotation(transform.forward, wallUp);
+                }
+            }
+
             // TRIGGER SPECIAL STATE EFFECTS UPON LANDING
+            if (landingWall != null && !isInSpecialState)
+            {
+                ActivateSpecialState();
+            }
+
             if (isInSpecialState)
             {
                 // Manage the Dynamic Call Stack for contiguous Zones

@@ -120,6 +120,131 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &48145285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48145286}
+  - component: {fileID: 48145287}
+  m_Layer: 0
+  m_Name: Node (91)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48145286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48145285}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: 0.0122, y: -0.0123, z: 0.0269}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48145287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48145285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
+--- !u!1 &64925854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 64925855}
+  - component: {fileID: 64925857}
+  - component: {fileID: 64925856}
+  m_Layer: 0
+  m_Name: Node (70)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &64925855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64925854}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.06179, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &64925856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64925854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &64925857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64925854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &69923867
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +355,61 @@ MonoBehaviour:
       m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours: []
+--- !u!1 &77228011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77228012}
+  - component: {fileID: 77228013}
+  m_Layer: 0
+  m_Name: Node (84)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &77228012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77228011}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.0063, y: 0.00319, z: 0.02581}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77228013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77228011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1001 &84286225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,6 +483,61 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e792a8077fa419a9b2da6f0e42994e, type: 3}
+--- !u!1 &87215732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87215733}
+  - component: {fileID: 87215734}
+  m_Layer: 0
+  m_Name: Node (86)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87215733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87215732}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.0063, y: 0.01352, z: 0.01571}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87215734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87215732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1 &87740466
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +1022,114 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 809274505}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1457845702}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1264281946}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2004842286}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 950050009}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2032756204}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545339012}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1874068622}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 247066169}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 119817862}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1896370811}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2022916086}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 364090598}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 64925855}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 626362622}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 913011907}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 994424784}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 950260185}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 349237174}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1981769619}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 176237720}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 382157589}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1480016736}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1919008894}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 920995837}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637217657}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 171186448}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1791472633}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
         type: 3}
@@ -1019,6 +1362,58 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 550547188}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1474686210}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946504517}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1437350155}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 48145286}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1923759417}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1643646494}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77228012}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1805870317}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 87215733}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2016654988}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2001932476}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242865020}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 463536742}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 644a9ebbe669143a2b77922b7cf9812a,
@@ -1190,6 +1585,76 @@ MonoBehaviour:
       m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours: []
+--- !u!1 &119817861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119817862}
+  - component: {fileID: 119817864}
+  - component: {fileID: 119817863}
+  m_Layer: 0
+  m_Name: Node (66)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &119817862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119817861}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.09058, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &119817863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119817861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &119817864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119817861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &120816585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,7 +2073,7 @@ Transform:
   m_GameObject: {fileID: 161197166}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: 0.0006000011, y: -0.09820001, z: 0.0062000207}
+  m_LocalPosition: {x: 0.00281, y: -0.09820001, z: 0.0062000207}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1635,10 +2100,80 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
+  hasStrictNeighbours: 1
+  strictNeighbours:
+  - {fileID: 1006682763}
+  - {fileID: 102635356}
+--- !u!1 &171186447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171186448}
+  - component: {fileID: 171186450}
+  - component: {fileID: 171186449}
+  m_Layer: 0
+  m_Name: Teleport Node 4 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171186448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171186447}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0223, y: 0.0553, z: 0.00608}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &171186449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171186447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &171186450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171186447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &172445495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +2242,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e326b41d6309b44bf80af310030dc21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.PancakeEffect
+--- !u!1 &176237719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176237720}
+  - component: {fileID: 176237722}
+  - component: {fileID: 176237721}
+  m_Layer: 0
+  m_Name: Node (77)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &176237720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176237719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0122, y: -0.0055, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &176237721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176237719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &176237722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176237719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &185358425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +2457,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &247066168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247066169}
+  - component: {fileID: 247066171}
+  - component: {fileID: 247066170}
+  m_Layer: 0
+  m_Name: Node (65)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &247066169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247066168}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.09692, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &247066170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247066168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &247066171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247066168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &256728528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,12 +2834,222 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 111918734}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &349237173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349237174}
+  - component: {fileID: 349237176}
+  - component: {fileID: 349237175}
+  m_Layer: 0
+  m_Name: Node (75)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349237174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349237173}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0122, y: -0.0253, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &349237175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349237173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &349237176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349237173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!4 &361630887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828984016094391282, guid: 2230feb93c9fe496aa22349a4aad3007,
     type: 3}
   m_PrefabInstance: {fileID: 933471480}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &364090597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364090598}
+  - component: {fileID: 364090600}
+  - component: {fileID: 364090599}
+  m_Layer: 0
+  m_Name: Node (69)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &364090598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364090597}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.06934, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &364090599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364090597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &364090600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364090597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!1 &382157588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382157589}
+  - component: {fileID: 382157591}
+  - component: {fileID: 382157590}
+  m_Layer: 0
+  m_Name: Node (78)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &382157589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382157588}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0122, y: 0.00241, z: 0.00524}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &382157590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382157588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &382157591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382157588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &395937293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +3489,103 @@ MonoBehaviour:
         m_CallState: 2
   hasStrictNeighbours: 0
   strictNeighbours: []
+--- !u!1001 &517551688
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: moveTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.579
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205572, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_Name
+      value: CatPrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6767428620746205572, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1057213529}
+  m_SourcePrefab: {fileID: 100100000, guid: cca622578e4cb2741b8ca72800309847, type: 3}
 --- !u!1 &519518210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,6 +3826,61 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &550547187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550547188}
+  - component: {fileID: 550547189}
+  m_Layer: 0
+  m_Name: Node (90)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &550547188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550547187}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: 0.0031200002, y: -0.0168, z: 0.02689}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550547189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550547187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1 &559271849
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,6 +4161,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 342027578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &626362621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626362622}
+  - component: {fileID: 626362624}
+  - component: {fileID: 626362623}
+  m_Layer: 0
+  m_Name: Node (71)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &626362622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626362621}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.05423, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &626362623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626362621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &626362624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626362621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &657441392
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,10 +4309,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1425056317}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1425056323}
+        m_TargetAssemblyTypeName: RW.MonumentValley.NodeConnectionToggler, Assembly-CSharp
+        m_MethodName: Disconnect
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3214,10 +4321,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2144829969}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2144829973}
+        m_TargetAssemblyTypeName: RW.MonumentValley.NodeConnectionToggler, Assembly-CSharp
+        m_MethodName: Disconnect
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3256,8 +4363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Portal
   preTeleportWalkTarget: {fileID: 1852437525}
-  teleportTarget: {fileID: 621382057}
-  postTeleportWalkTarget: {fileID: 1432240061}
+  teleportTarget: {fileID: 878191091}
+  postTeleportWalkTarget: {fileID: 1019691154}
   isActive: 1
 --- !u!1 &708340292
 GameObject:
@@ -3750,6 +4857,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 342027578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &809274504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809274505}
+  - component: {fileID: 809274507}
+  - component: {fileID: 809274506}
+  m_Layer: 0
+  m_Name: Node (57)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809274505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809274504}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0.0407, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &809274506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809274504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &809274507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809274504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &830333295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,8 +5053,9 @@ GameObject:
   m_Component:
   - component: {fileID: 878191090}
   - component: {fileID: 878191091}
+  - component: {fileID: 878191092}
   m_Layer: 0
-  m_Name: Node (4)
+  m_Name: antigravity node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3892,7 +5070,7 @@ Transform:
   m_GameObject: {fileID: 878191089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
-  m_LocalPosition: {x: 0.0888, y: -0.1087, z: 0.0016}
+  m_LocalPosition: {x: 0.0855, y: -0.1087, z: 0.0016}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3923,6 +5101,18 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1979313971}
   - {fileID: 475141676}
+--- !u!114 &878191092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878191089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
 --- !u!1 &882604308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3345f7b64ceb54f64a938d7e921a8e2b,
@@ -4233,6 +5423,146 @@ MonoBehaviour:
       m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours: []
+--- !u!1 &913011906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 913011907}
+  - component: {fileID: 913011909}
+  - component: {fileID: 913011908}
+  m_Layer: 0
+  m_Name: Node (72)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &913011907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913011906}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.0477, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &913011908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913011906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &913011909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913011906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!1 &920995836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920995837}
+  - component: {fileID: 920995839}
+  - component: {fileID: 920995838}
+  m_Layer: 0
+  m_Name: Node (81)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920995837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920995836}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0223, y: 0.0318, z: 0.00608}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &920995838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920995836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &920995839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920995836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1001 &933471480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4374,6 +5704,146 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1521064860}
   m_SourcePrefab: {fileID: 100100000, guid: 2230feb93c9fe496aa22349a4aad3007, type: 3}
+--- !u!1 &950050008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950050009}
+  - component: {fileID: 950050011}
+  - component: {fileID: 950050010}
+  m_Layer: 0
+  m_Name: Node (61)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &950050009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950050008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0.0036, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &950050010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950050008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &950050011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950050008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!1 &950260184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950260185}
+  - component: {fileID: 950260187}
+  - component: {fileID: 950260186}
+  m_Layer: 0
+  m_Name: Node (74)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &950260185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950260184}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0122, y: -0.0338, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &950260186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950260184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &950260187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950260184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!114 &976108475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2423906599848667261, guid: 1a4ea91619c2c48b99dc4648f2819953,
@@ -4513,6 +5983,76 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &994424783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994424784}
+  - component: {fileID: 994424786}
+  - component: {fileID: 994424785}
+  m_Layer: 0
+  m_Name: Node (73)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &994424784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994424783}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0174, y: -0.0427, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &994424785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994424783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &994424786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994424783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1006682761
 GameObject:
   m_ObjectHideFlags: 0
@@ -4569,6 +6109,7 @@ MonoBehaviour:
   hasStrictNeighbours: 1
   strictNeighbours:
   - {fileID: 161197168}
+  - {fileID: 1202763830}
 --- !u!1 &1012823132
 GameObject:
   m_ObjectHideFlags: 0
@@ -4637,8 +6178,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1019691153}
   - component: {fileID: 1019691154}
+  - component: {fileID: 1019691155}
   m_Layer: 0
-  m_Name: Node (9)
+  m_Name: antigravirty node 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4653,7 +6195,7 @@ Transform:
   m_GameObject: {fileID: 1019691152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
-  m_LocalPosition: {x: 0.06087, y: -0.1087, z: 0.0016}
+  m_LocalPosition: {x: 0.0627, y: -0.1087, z: 0.0016}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4684,6 +6226,18 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1979313971}
   - {fileID: 475141676}
+--- !u!114 &1019691155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019691152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
 --- !u!1001 &1046395960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4800,7 +6354,7 @@ PrefabInstance:
     - target: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
@@ -4930,6 +6484,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 463536742}
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: -121.925}
+--- !u!1 &1057213528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6767428620746205572, guid: cca622578e4cb2741b8ca72800309847,
+    type: 3}
+  m_PrefabInstance: {fileID: 517551688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1057213529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057213528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb5c80fa979d4ca7a4ca4f881e133dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.CatSquasher
+  catModel: {fileID: 0}
+  squashSpeed: 0.2
+  pancakeScale: {x: 1.8, y: 0.05, z: 1.8}
 --- !u!1 &1064560936
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,6 +7017,131 @@ MonoBehaviour:
       m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours: []
+--- !u!1 &1242865019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242865020}
+  - component: {fileID: 1242865021}
+  m_Layer: 0
+  m_Name: Node (89)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1242865020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242865019}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.01617, y: 0.0369, z: 0.0157}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242865021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242865019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
+--- !u!1 &1264281945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264281946}
+  - component: {fileID: 1264281948}
+  - component: {fileID: 1264281947}
+  m_Layer: 0
+  m_Name: Node (59)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1264281946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264281945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0.0215, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &1264281947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264281945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1264281948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264281945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1307625021
 GameObject:
   m_ObjectHideFlags: 0
@@ -5954,6 +7654,7 @@ GameObject:
   - component: {fileID: 1425056318}
   - component: {fileID: 1425056321}
   - component: {fileID: 1425056322}
+  - component: {fileID: 1425056323}
   m_Layer: 0
   m_Name: Teleport Node 2
   m_TagString: Untagged
@@ -6051,6 +7752,21 @@ MonoBehaviour:
   teleportTarget: {fileID: 1852437525}
   postTeleportWalkTarget: {fileID: 395937294}
   isActive: 1
+--- !u!114 &1425056323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425056317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2950dd66b923348f583738ec6067aa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.NodeConnectionToggler
+  nodeA: {fileID: 1425056321}
+  nodeB: {fileID: 1507338220}
+  startConnected: 1
 --- !u!1 &1432240059
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,6 +7832,61 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hasStrictNeighbours: 0
+  strictNeighbours: []
+--- !u!1 &1437350154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1437350155}
+  - component: {fileID: 1437350156}
+  m_Layer: 0
+  m_Name: Node (93)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1437350155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437350154}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: 0.0031200002, y: 0.0042, z: 0.03558}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1437350156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437350154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours: []
 --- !u!1 &1441660609
@@ -6193,6 +7964,201 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 35.264, y: -45, z: 0}
+--- !u!1 &1457845701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1457845702}
+  - component: {fileID: 1457845704}
+  - component: {fileID: 1457845703}
+  m_Layer: 0
+  m_Name: Node (58)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1457845702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457845701}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0.0317, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &1457845703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457845701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1457845704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457845701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!1 &1474686209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1474686210}
+  - component: {fileID: 1474686211}
+  m_Layer: 0
+  m_Name: Node (53)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1474686210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474686209}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: 0.0031200002, y: -0.0125, z: 0.0269}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1474686211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474686209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
+--- !u!1 &1480016735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480016736}
+  - component: {fileID: 1480016738}
+  - component: {fileID: 1480016737}
+  m_Layer: 0
+  m_Name: Node (79)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1480016736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480016735}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0193, y: 0.0109, z: 0.00671}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &1480016737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480016735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1480016738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480016735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1507338218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6557,6 +8523,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.SkyboxRotator
   rotationSpeed: 1.5
+--- !u!1 &1545339011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545339012}
+  - component: {fileID: 1545339014}
+  - component: {fileID: 1545339013}
+  m_Layer: 0
+  m_Name: Node (63)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1545339012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545339011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: -0.0104, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &1545339013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545339011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1545339014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545339011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1595379667
 GameObject:
   m_ObjectHideFlags: 0
@@ -6585,8 +8621,8 @@ Transform:
   m_GameObject: {fileID: 1595379667}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8919, y: -0.78, z: 3.0071}
-  m_LocalScale: {x: 39.6582, y: 1, z: 31.268492}
+  m_LocalPosition: {x: 3.7683, y: -0.78, z: 1.8698}
+  m_LocalScale: {x: 39.90408, y: 1, z: 33.541714}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6930,6 +8966,160 @@ MonoBehaviour:
   - {fileID: 71929719}
   - {fileID: 124834601}
   - {fileID: 119716592}
+--- !u!1 &1637217656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637217657}
+  - component: {fileID: 1637217659}
+  - component: {fileID: 1637217658}
+  - component: {fileID: 1637217660}
+  m_Layer: 0
+  m_Name: Teleport Node 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637217657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637217656}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0223, y: 0.0428, z: 0.00608}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &1637217658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637217656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1637217659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637217656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1637217660}
+        m_TargetAssemblyTypeName: RW.MonumentValley.Portal, Assembly-CSharp
+        m_MethodName: ActivatePortal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!114 &1637217660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637217656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620dc8fdf1db448e3b2493dd32ba6ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Portal
+  preTeleportWalkTarget: {fileID: 171186450}
+  teleportTarget: {fileID: 621382057}
+  postTeleportWalkTarget: {fileID: 1432240061}
+  isActive: 1
+--- !u!1 &1643646493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643646494}
+  - component: {fileID: 1643646495}
+  m_Layer: 0
+  m_Name: Node (83)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1643646494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643646493}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.0063, y: -0.0032, z: 0.0269}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1643646495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643646493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1 &1667143318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8029,6 +10219,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e326b41d6309b44bf80af310030dc21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.PancakeEffect
+--- !u!1 &1805870316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1805870317}
+  - component: {fileID: 1805870318}
+  m_Layer: 0
+  m_Name: Node (85)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1805870317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805870316}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.0063, y: 0.00838, z: 0.02091}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1805870318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805870316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1001 &1826817581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8196,6 +10441,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 342027578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1874068621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874068622}
+  - component: {fileID: 1874068624}
+  - component: {fileID: 1874068623}
+  m_Layer: 0
+  m_Name: Node (64)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874068622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874068621}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.9396927, w: -0.34202012}
+  m_LocalPosition: {x: -0.01742, y: -0.10386, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -220}
+--- !u!114 &1874068623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874068621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1874068624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874068621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1879579649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
@@ -8232,6 +10547,76 @@ MonoBehaviour:
   patrolNodes:
   - {fileID: 1432240061}
   - {fileID: 2129868054}
+--- !u!1 &1896370810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896370811}
+  - component: {fileID: 1896370813}
+  - component: {fileID: 1896370812}
+  m_Layer: 0
+  m_Name: Node (67)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896370811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896370810}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.08317, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &1896370812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896370810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1896370813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896370810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1917000785
 GameObject:
   m_ObjectHideFlags: 0
@@ -8287,6 +10672,131 @@ Transform:
   m_Children: []
   m_Father: {fileID: 342027578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1919008893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1919008894}
+  - component: {fileID: 1919008896}
+  - component: {fileID: 1919008895}
+  m_Layer: 0
+  m_Name: Node (80)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1919008894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919008893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0223, y: 0.0224, z: 0.00608}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &1919008895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919008893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1919008896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919008893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!1 &1923759416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923759417}
+  - component: {fileID: 1923759418}
+  m_Layer: 0
+  m_Name: Node (82)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1923759417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923759416}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.0063, y: -0.013, z: 0.0269}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923759418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923759416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1 &1937540292
 GameObject:
   m_ObjectHideFlags: 0
@@ -8297,8 +10807,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1937540293}
   - component: {fileID: 1937540294}
+  - component: {fileID: 1937540295}
   m_Layer: 0
-  m_Name: Node (53)
+  m_Name: antigravirty node 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8344,6 +10855,18 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1979313971}
   - {fileID: 475141676}
+--- !u!114 &1937540295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937540292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
 --- !u!1 &1943079212
 GameObject:
   m_ObjectHideFlags: 0
@@ -8383,6 +10906,61 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943079212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
+--- !u!1 &1946504516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946504517}
+  - component: {fileID: 1946504518}
+  m_Layer: 0
+  m_Name: Node (92)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1946504517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946504516}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: 0.0031200002, y: -0.0028, z: 0.0302}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1946504518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946504516}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
@@ -8679,6 +11257,76 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1700794768}
   - {fileID: 1733228034}
+--- !u!1 &1981769618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981769619}
+  - component: {fileID: 1981769621}
+  - component: {fileID: 1981769620}
+  m_Layer: 0
+  m_Name: Node (76)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1981769619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981769618}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.0122, y: -0.0168, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &1981769620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981769618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &1981769621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981769618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &1991286850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9012,6 +11660,61 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314e64351ce074b5e8577c3ce7f2c5f8, type: 3}
+--- !u!1 &2001932475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001932476}
+  - component: {fileID: 2001932477}
+  m_Layer: 0
+  m_Name: Node (88)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2001932476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001932475}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.01617, y: 0.02739, z: 0.0157}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2001932477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001932475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
 --- !u!1 &2004432839
 GameObject:
   m_ObjectHideFlags: 0
@@ -9022,8 +11725,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2004432840}
   - component: {fileID: 2004432841}
+  - component: {fileID: 2004432842}
   m_Layer: 0
-  m_Name: Node (7)
+  m_Name: antigravirty node 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9051,6 +11755,88 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004432839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!114 &2004432842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004432839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!1 &2004842285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2004842286}
+  - component: {fileID: 2004842288}
+  - component: {fileID: 2004842287}
+  m_Layer: 0
+  m_Name: Node (60)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2004842286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004842285}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0.0122, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &2004842287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004842285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &2004842288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004842285}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
@@ -9144,6 +11930,201 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 27.51, y: -45, z: 0}
+--- !u!1 &2016654987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016654988}
+  - component: {fileID: 2016654989}
+  m_Layer: 0
+  m_Name: Node (87)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2016654988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016654987}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
+  m_LocalPosition: {x: -0.01164, y: 0.0211, z: 0.0157}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016654989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016654987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours: []
+--- !u!1 &2022916085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022916086}
+  - component: {fileID: 2022916088}
+  - component: {fileID: 2022916087}
+  m_Layer: 0
+  m_Name: Node (68)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2022916086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022916085}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: -0.02228, y: -0.07607, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
+--- !u!114 &2022916087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022916085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &2022916088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022916085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
+--- !u!1 &2032756203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032756204}
+  - component: {fileID: 2032756206}
+  - component: {fileID: 2032756205}
+  m_Layer: 0
+  m_Name: Node (62)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2032756204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032756203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: -0.0042, y: -0.1087, z: 0.0016}
+  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 342027578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &2032756205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032756203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4390867078cb547838d9ee01211b6e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.WallWalkEffect
+--- !u!114 &2032756206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032756203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
+  gizmoRadius: 0.1
+  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  edges: []
+  excludedNodes: []
+  gameEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  hasStrictNeighbours: 0
+  strictNeighbours:
+  - {fileID: 1979313971}
+  - {fileID: 475141676}
 --- !u!1 &2055198065
 GameObject:
   m_ObjectHideFlags: 0
@@ -9607,6 +12588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144829970}
   - component: {fileID: 2144829972}
+  - component: {fileID: 2144829973}
   m_Layer: 0
   m_Name: Back node 3
   m_TagString: Untagged
@@ -9652,6 +12634,21 @@ MonoBehaviour:
       m_Calls: []
   hasStrictNeighbours: 0
   strictNeighbours: []
+--- !u!114 &2144829973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144829969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2950dd66b923348f583738ec6067aa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.NodeConnectionToggler
+  nodeA: {fileID: 2144829972}
+  nodeB: {fileID: 1425056321}
+  startConnected: 1
 --- !u!1001 &279268737136965566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9830,3 +12827,4 @@ SceneRoots:
   - {fileID: 1826817581}
   - {fileID: 1046395960}
   - {fileID: 1147231069}
+  - {fileID: 517551688}
