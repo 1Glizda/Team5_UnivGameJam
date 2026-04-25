@@ -723,18 +723,23 @@ namespace RW.MonumentValley
             Material startSkybox = RenderSettings.skybox;
             RenderSettings.skybox = skyboxBlendMaterial;
             
-            // Define the 6 sides of a standard Unity skybox
+            // Standard 6-Sided skybox properties
             string[] sides = { "_FrontTex", "_BackTex", "_LeftTex", "_RightTex", "_UpTex", "_DownTex" };
 
-            // Copy all 12 textures (6 from start, 6 from target) into the blending material
             foreach (string side in sides)
             {
+                // Copy from current skybox to Slot 1
                 if (startSkybox.HasProperty(side)) 
                     skyboxBlendMaterial.SetTexture(side + "1", startSkybox.GetTexture(side));
                 
+                // Copy from target skybox to Slot 2
                 if (targetSkybox.HasProperty(side)) 
                     skyboxBlendMaterial.SetTexture(side + "2", targetSkybox.GetTexture(side));
             }
+
+            // Sync rotation so there is no visual snap during transition
+            if (startSkybox.HasProperty("_Rotation"))
+                skyboxBlendMaterial.SetFloat("_Rotation", startSkybox.GetFloat("_Rotation"));
 
             float elapsed = 0f;
             float duration = 1.0f; 

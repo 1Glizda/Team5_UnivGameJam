@@ -162,6 +162,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1676578425}
   - {fileID: 32533438}
+  requireSpecialState: 0
 --- !u!4 &16731277
 Transform:
   m_ObjectHideFlags: 0
@@ -219,6 +220,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 16731276}
   - {fileID: 1754868417}
+  requireSpecialState: 0
 --- !u!4 &32533439
 Transform:
   m_ObjectHideFlags: 0
@@ -575,10 +577,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 573013861}
+  - {fileID: 1937647030}
+  requireSpecialState: 0
 --- !u!4 &186695134
 Transform:
   m_ObjectHideFlags: 0
@@ -724,10 +727,10 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1106753335}
+  requireSpecialState: 0
 --- !u!4 &282808329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b58f7c727d8f4380991819c065bf4c2,
@@ -867,10 +870,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1676578425}
-  - {fileID: 0}
+  - {fileID: 1886625474}
+  - {fileID: 2122364186}
+  requireSpecialState: 1
 --- !u!1 &327523225
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,10 +913,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1968047499}
+  - {fileID: 506413171}
+  requireSpecialState: 0
 --- !u!4 &327523227
 Transform:
   m_ObjectHideFlags: 0
@@ -981,10 +986,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 672757768}
+  - {fileID: 569787343}
+  requireSpecialState: 0
 --- !u!1 &368348419
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368348420}
   - component: {fileID: 368348421}
+  - component: {fileID: 368348422}
   m_Layer: 0
   m_Name: Node (33)
   m_TagString: Untagged
@@ -1038,10 +1045,23 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 828934030}
+  - {fileID: 680528199}
+  requireSpecialState: 0
+--- !u!114 &368348422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368348419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc4d3ba9f2db435e8cf2bf947766a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.GravityTransitionNode
 --- !u!1001 &368514737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1197,10 +1217,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1208963195}
+  - {fileID: 1654381831}
+  requireSpecialState: 0
 --- !u!1 &399199270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1264,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 0}
   - {fileID: 0}
+  requireSpecialState: 0
 --- !u!4 &399199272
 Transform:
   m_ObjectHideFlags: 0
@@ -1359,6 +1381,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
+  requireSpecialState: 0
 --- !u!1 &437369522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1424,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 0}
   - {fileID: 0}
+  requireSpecialState: 0
 --- !u!4 &437369524
 Transform:
   m_ObjectHideFlags: 0
@@ -1458,6 +1482,7 @@ MonoBehaviour:
   hasStrictNeighbours: 1
   strictNeighbours:
   - {fileID: 573013861}
+  requireSpecialState: 0
 --- !u!114 &437873207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,10 +1563,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 672757768}
+  - {fileID: 1208963195}
+  requireSpecialState: 0
 --- !u!1 &506413170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1610,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 0}
   - {fileID: 0}
+  requireSpecialState: 0
 --- !u!4 &506413172
 Transform:
   m_ObjectHideFlags: 0
@@ -1627,6 +1654,11 @@ PrefabInstance:
       propertyPath: trippySkybox
       value: 
       objectReference: {fileID: 2100000, guid: ea9a5bc00ebaac54f8597c1b0071a4c8, type: 2}
+    - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: skyboxBlendMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 74b2c270a5f614d7f9ba1dc5acde001a, type: 2}
     - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
       propertyPath: specialStateUnlocked
@@ -1974,10 +2006,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1937647030}
+  - {fileID: 331892055}
+  requireSpecialState: 0
 --- !u!1 &573013860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2054,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 186695133}
   - {fileID: 573013861}
+  requireSpecialState: 0
 --- !u!114 &573013862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2493,10 +2527,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 331892055}
+  - {fileID: 475644033}
+  requireSpecialState: 0
 --- !u!1 &680528196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2602,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
+  requireSpecialState: 0
 --- !u!1 &694087775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,6 +2693,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 759431797}
   - {fileID: 986629660}
+  requireSpecialState: 0
 --- !u!4 &758389224
 Transform:
   m_ObjectHideFlags: 0
@@ -2714,6 +2751,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1815787309}
   - {fileID: 758389223}
+  requireSpecialState: 0
 --- !u!4 &759431798
 Transform:
   m_ObjectHideFlags: 0
@@ -2818,6 +2856,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 0}
   - {fileID: 0}
+  requireSpecialState: 0
 --- !u!4 &787548711
 Transform:
   m_ObjectHideFlags: 0
@@ -2892,10 +2931,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 2076455666}
+  - {fileID: 368348421}
+  requireSpecialState: 0
 --- !u!4 &884601876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30944506ccb9a47f7825c442f1d0ddfe,
@@ -3252,10 +3292,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1968047499}
+  - {fileID: 506413171}
+  requireSpecialState: 0
 --- !u!4 &942267771
 Transform:
   m_ObjectHideFlags: 0
@@ -3265,7 +3306,7 @@ Transform:
   m_GameObject: {fileID: 942267769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071067, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -0.0024, y: -0.035109993, z: -0.010800004}
+  m_LocalPosition: {x: 0.0002, y: -0.035109993, z: -0.010800004}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3439,6 +3480,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 758389223}
   - {fileID: 1044944126}
+  requireSpecialState: 0
 --- !u!4 &986629661
 Transform:
   m_ObjectHideFlags: 0
@@ -3579,6 +3621,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 986629660}
   - {fileID: 1076842882}
+  requireSpecialState: 0
 --- !u!4 &1044944127
 Transform:
   m_ObjectHideFlags: 0
@@ -3663,6 +3706,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1044944126}
   - {fileID: 1115711472}
+  requireSpecialState: 0
 --- !u!4 &1076842883
 Transform:
   m_ObjectHideFlags: 0
@@ -3777,10 +3821,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1384938735}
+  - {fileID: 281324183}
+  requireSpecialState: 0
 --- !u!1 &1115711471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,6 +3868,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1076842882}
   - {fileID: 1676578425}
+  requireSpecialState: 0
 --- !u!4 &1115711473
 Transform:
   m_ObjectHideFlags: 0
@@ -4053,6 +4099,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
+  requireSpecialState: 0
 --- !u!1 &1212024578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4096,6 +4143,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
+  requireSpecialState: 0
 --- !u!114 &1212024580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,6 +4394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1356705934}
   - component: {fileID: 1356705935}
+  - component: {fileID: 1356705936}
   m_Layer: 0
   m_Name: Node (37)
   m_TagString: Untagged
@@ -4389,10 +4438,23 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1710766084}
+  - {fileID: 1384938735}
+  requireSpecialState: 0
+--- !u!114 &1356705936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356705933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc4d3ba9f2db435e8cf2bf947766a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.GravityTransitionNode
 --- !u!1 &1384938733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4446,10 +4508,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1356705935}
+  - {fileID: 1106753335}
+  requireSpecialState: 0
 --- !u!1 &1404489445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,10 +4566,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 2076455666}
+  - {fileID: 1654381831}
+  requireSpecialState: 0
 --- !u!1001 &1440720180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4726,6 +4790,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 437369523}
   - {fileID: 1815787309}
+  requireSpecialState: 0
 --- !u!4 &1445150837
 Transform:
   m_ObjectHideFlags: 0
@@ -4901,6 +4966,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1968047499}
   - {fileID: 787548710}
+  requireSpecialState: 0
 --- !u!4 &1646131027
 Transform:
   m_ObjectHideFlags: 0
@@ -4969,10 +5035,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1404489447}
+  - {fileID: 389702207}
+  requireSpecialState: 0
 --- !u!1 &1676578424
 GameObject:
   m_ObjectHideFlags: 0
@@ -5015,6 +5082,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1115711472}
   - {fileID: 16731276}
+  requireSpecialState: 0
 --- !u!4 &1676578426
 Transform:
   m_ObjectHideFlags: 0
@@ -5100,6 +5168,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
+  requireSpecialState: 0
 --- !u!1 &1754868416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,10 +5207,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1676578425}
-  - {fileID: 0}
+  - {fileID: 32533438}
+  - {fileID: 1212024579}
+  requireSpecialState: 0
 --- !u!4 &1754868418
 Transform:
   m_ObjectHideFlags: 0
@@ -5199,6 +5269,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 759431797}
   - {fileID: 1445150836}
+  requireSpecialState: 0
 --- !u!4 &1815787310
 Transform:
   m_ObjectHideFlags: 0
@@ -5480,6 +5551,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1212024579}
   - {fileID: 302474549}
+  requireSpecialState: 0
 --- !u!114 &1886625475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,10 +5638,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 186695133}
+  - {fileID: 569787343}
+  requireSpecialState: 0
 --- !u!1 &1968047498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,6 +5687,7 @@ MonoBehaviour:
   - {fileID: 506413171}
   - {fileID: 942267770}
   - {fileID: 1646131026}
+  requireSpecialState: 0
 --- !u!4 &1968047500
 Transform:
   m_ObjectHideFlags: 0
@@ -6082,10 +6156,11 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
+  hasStrictNeighbours: 1
   strictNeighbours:
-  - {fileID: 1754868417}
-  - {fileID: 1886625474}
+  - {fileID: 1404489447}
+  - {fileID: 828934030}
+  requireSpecialState: 0
 --- !u!1 &2122364182
 GameObject:
   m_ObjectHideFlags: 0
@@ -6173,6 +6248,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1676578425}
   - {fileID: 0}
+  requireSpecialState: 0
 --- !u!1001 &2139177946
 PrefabInstance:
   m_ObjectHideFlags: 0

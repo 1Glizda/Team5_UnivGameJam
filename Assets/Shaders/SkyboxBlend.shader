@@ -1,8 +1,9 @@
-Shader "Custom/Skybox6SidedBlend"
+Shader "Skybox/CrossfadeBlend"
 {
     Properties
     {
         _Blend ("Blend", Range(0.0, 1.0)) = 0.0
+        _Rotation ("Rotation", Range(0, 360)) = 0
         
         [Header(Skybox 1)]
         _FrontTex1 ("Front 1", 2D) = "white" {}
@@ -23,70 +24,109 @@ Shader "Custom/Skybox6SidedBlend"
 
     SubShader
     {
-        Tags { "Queue"="Background" "RenderType"="Background" "PreviewType"="Skybox" }
+        Tags { "Queue"="Background" "RenderType"="Background" "PreviewType"="Skybox" "RenderPipeline"="UniversalPipeline"}
         Cull Off ZWrite Off
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #include "UnityCG.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct appdata
+            struct Attributes
             {
-                float4 vertex : POSITION;
+                float4 positionOS : POSITION;
             };
 
-            struct v2f
+            struct Varyings
             {
-                float4 vertex : SV_POSITION;
+                float4 positionCS : SV_POSITION;
                 float3 texcoord : TEXCOORD0;
             };
 
             float _Blend;
-            sampler2D _FrontTex1, _BackTex1, _LeftTex1, _RightTex1, _UpTex1, _DownTex1;
-            sampler2D _FrontTex2, _BackTex2, _LeftTex2, _RightTex2, _UpTex2, _DownTex2;
+            float _Rotation;
+            
+            TEXTURE2D(_FrontTex1); SAMPLER(sampler_FrontTex1);
+            TEXTURE2D(_BackTex1); SAMPLER(sampler_BackTex1);
+            TEXTURE2D(_LeftTex1); SAMPLER(sampler_LeftTex1);
+            TEXTURE2D(_RightTex1); SAMPLER(sampler_RightTex1);
+            TEXTURE2D(_UpTex1); SAMPLER(sampler_UpTex1);
+            TEXTURE2D(_DownTex1); SAMPLER(sampler_DownTex1);
+            
+            TEXTURE2D(_FrontTex2); SAMPLER(sampler_FrontTex2);
+            TEXTURE2D(_BackTex2); SAMPLER(sampler_BackTex2);
+            TEXTURE2D(_LeftTex2); SAMPLER(sampler_LeftTex2);
+            TEXTURE2D(_RightTex2); SAMPLER(sampler_RightTex2);
+            TEXTURE2D(_UpTex2); SAMPLER(sampler_UpTex2);
+            TEXTURE2D(_DownTex2); SAMPLER(sampler_DownTex2);
 
-            v2f vert (appdata v)
+            float3 RotateAroundYInDegrees (float3 vertex, float degrees)
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.texcoord = v.vertex.xyz;
+                float alpha = degrees * PI / 180.0;
+                float sina, cosa;
+                sincos(alpha, sina, cosa);
+                float2x2 m = float2x2(cosa, -sina, sina, cosa);
+                float2 xz = mul(m, vertex.xz);
+                return float3(xz.x, vertex.y, xz.y);
+            }
+
+            Varyings vert (Attributes v)
+            {
+                Varyings o;
+                o.positionCS = TransformObjectToHClip(v.positionOS.xyz);
+                o.texcoord = RotateAroundYInDegrees(v.positionOS.xyz, -_Rotation);
                 return o;
             }
 
-            fixed4 Sample6Sided(float3 uv, sampler2D f, sampler2D b, sampler2D l, sampler2D r, sampler2D u, sampler2D d)
+            float4 SampleFace(float2 uv, TEXTURE2D_PARAM(tex, samp))
+            {
+                // Edge padding: slightly scale the UVs to prevent seam bleeding
+                return SAMPLE_TEXTURE2D(tex, samp, uv * 0.5 + 0.5);
+            }
+
+            float4 Sample6Sided(float3 uv, 
+                TEXTURE2D_PARAM(f, sf), TEXTURE2D_PARAM(b, sb), 
+                TEXTURE2D_PARAM(l, sl), TEXTURE2D_PARAM(r, sr), 
+                TEXTURE2D_PARAM(u, su), TEXTURE2D_PARAM(d, sd))
             {
                 float3 absUV = abs(uv);
-                fixed4 color = fixed4(0,0,0,1);
+                float maxAxis = max(absUV.x, max(absUV.y, absUV.z));
                 
-                if (absUV.x > absUV.y && absUV.x > absUV.z)
+                if (maxAxis == absUV.x)
                 {
-                    if (uv.x > 0) color = tex2D(r, (uv.zy / uv.x + 1.0) * 0.5);
-                    else color = tex2D(l, (float2(uv.z, -uv.y) / -uv.x + 1.0) * 0.5);
+                    if (uv.x > 0) return SampleFace(float2(-uv.z, -uv.y) / uv.x, TEXTURE2D_ARGS(r, sr));
+                    else return SampleFace(float2(uv.z, -uv.y) / -uv.x, TEXTURE2D_ARGS(l, sl));
                 }
-                else if (absUV.y > absUV.z)
+                else if (maxAxis == absUV.y)
                 {
-                    if (uv.y > 0) color = tex2D(u, (uv.xz / uv.y + 1.0) * 0.5);
-                    else color = tex2D(d, (float2(uv.x, -uv.z) / -uv.y + 1.0) * 0.5);
+                    if (uv.y > 0) return SampleFace(float2(uv.x, uv.z) / uv.y, TEXTURE2D_ARGS(u, su));
+                    else return SampleFace(float2(uv.x, -uv.z) / -uv.y, TEXTURE2D_ARGS(d, sd));
                 }
                 else
                 {
-                    if (uv.z > 0) color = tex2D(f, (float2(-uv.x, uv.y) / uv.z + 1.0) * 0.5);
-                    else color = tex2D(b, (uv.xy / -uv.z + 1.0) * 0.5);
+                    if (uv.z > 0) return SampleFace(float2(uv.x, -uv.y) / uv.z, TEXTURE2D_ARGS(f, sf));
+                    else return SampleFace(float2(-uv.x, -uv.y) / -uv.z, TEXTURE2D_ARGS(b, sb));
                 }
-                return color;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            float4 frag (Varyings i) : SV_Target
             {
                 float3 uv = normalize(i.texcoord);
-                fixed4 col1 = Sample6Sided(uv, _FrontTex1, _BackTex1, _LeftTex1, _RightTex1, _UpTex1, _DownTex1);
-                fixed4 col2 = Sample6Sided(uv, _FrontTex2, _BackTex2, _LeftTex2, _RightTex2, _UpTex2, _DownTex2);
+                float4 col1 = Sample6Sided(uv, 
+                    TEXTURE2D_ARGS(_FrontTex1, sampler_FrontTex1), TEXTURE2D_ARGS(_BackTex1, sampler_BackTex1), 
+                    TEXTURE2D_ARGS(_LeftTex1, sampler_LeftTex1), TEXTURE2D_ARGS(_RightTex1, sampler_RightTex1), 
+                    TEXTURE2D_ARGS(_UpTex1, sampler_UpTex1), TEXTURE2D_ARGS(_DownTex1, sampler_DownTex1));
+                    
+                float4 col2 = Sample6Sided(uv, 
+                    TEXTURE2D_ARGS(_FrontTex2, sampler_FrontTex2), TEXTURE2D_ARGS(_BackTex2, sampler_BackTex2), 
+                    TEXTURE2D_ARGS(_LeftTex2, sampler_LeftTex2), TEXTURE2D_ARGS(_RightTex2, sampler_RightTex2), 
+                    TEXTURE2D_ARGS(_UpTex2, sampler_UpTex2), TEXTURE2D_ARGS(_DownTex2, sampler_DownTex2));
+                    
                 return lerp(col1, col2, _Blend);
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }
