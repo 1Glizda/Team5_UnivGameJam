@@ -130,7 +130,19 @@ namespace RW.MonumentValley
                 // create PreviousNode breadcrumb trail if Edge is active
                 if (node.Edges[i].isActive && node.Edges[i].neighbor != null)
                 {
-                    node.Edges[i].neighbor.PreviousNode = node;
+                    Node neighbor = node.Edges[i].neighbor;
+
+                    // NEW: Accessibility check for "Pancake Mode"
+                    if (neighbor.requireSpecialState)
+                    {
+                        PlayerController player = FindFirstObjectByType<PlayerController>();
+                        if (player != null && !player.isInSpecialState)
+                        {
+                            continue; // This path is invisible/locked if not in special state!
+                        }
+                    }
+
+                    neighbor.PreviousNode = node;
 
                     // add neighbor Nodes to frontier Nodes
                     frontierNodes.Add(node.Edges[i].neighbor);

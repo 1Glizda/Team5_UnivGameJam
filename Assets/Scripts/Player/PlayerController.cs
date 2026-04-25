@@ -76,6 +76,11 @@ namespace RW.MonumentValley
 
         public UnityEngine.Events.UnityEvent<bool> onSpecialStateToggled;
 
+        [Header("Skyboxes")]
+        public Material normalSkybox;
+        public Material trippySkybox;
+        public Material skyboxBlendMaterial;
+
         // The Call Stack for dynamic zone effects
         private List<SpecialZoneEffect> activeEffects = new List<SpecialZoneEffect>();
 
@@ -108,6 +113,8 @@ namespace RW.MonumentValley
             specialStateTimer = specialStateDuration;
             
             if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(true);
+            
+            StartCoroutine(SkyboxTransition(trippySkybox));
 
             if (currentNode != null)
             {
@@ -132,6 +139,8 @@ namespace RW.MonumentValley
             activeEffects.Clear();
 
             if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(false);
+
+            StartCoroutine(SkyboxTransition(normalSkybox));
 
             if (currentNode != null)
             {
@@ -204,14 +213,39 @@ namespace RW.MonumentValley
 
         private void OnClick(Clickable clickable, Vector3 position)
         {
-            if (!isControlEnabled || clickable == null || pathfinder == null)
+            if (!isControlEnabled)
             {
+                Debug.Log("[PlayerController] Click ignored: Controls are DISABLED.");
+                return;
+            }
+
+            if (clickable == null) return;
+
+            if (pathfinder == null)
+            {
+                Debug.LogError("[PlayerController] Pathfinder is MISSING from the scene!");
                 return;
             }
 
             // For custom continuous meshes with many nodes, find the specific node closest to where the user clicked!
             Node targetNode = graph.FindClosestNode(clickable.ChildNodes, position);
+            
+            if (targetNode == null)
+            {
+                Debug.LogWarning("[PlayerController] Clicked on an object with no valid Nodes!");
+                return;
+            }
+
+            if (currentNode == null)
+            {
+                Debug.LogWarning("[PlayerController] Player is not standing on any Node! Attempting to snap...");
+                SnapToNearestNode();
+                if (currentNode == null) return;
+            }
+
             List<Node> newPath = pathfinder.FindPath(currentNode, targetNode);
+            Debug.Log($"[PlayerController] Clicked on {targetNode.name}. Path found: {(newPath != null && newPath.Count > 1 ? "YES" : "NO")} (Nodes: {newPath?.Count})");
+
 
             // if we are already moving and we click again, stop all previous Animation/motion
             if (isMoving)
@@ -568,6 +602,8 @@ namespace RW.MonumentValley
 
         private IEnumerator PortalRoutine(Node preWalkTarget, Node teleportTarget, Node postWalkTarget)
         {
+            bool startedOnWall = isWallWalking;
+
             if (teleportTarget == null)
             {
                 Debug.LogError("[PlayerController] Teleport target is NULL! Aborting teleport.");
@@ -620,6 +656,11 @@ namespace RW.MonumentValley
             {
                 ActivateSpecialState();
             }
+            else if (landingWall == null && startedOnWall && isInSpecialState)
+            {
+                // REVERT TO NORMAL MODE WHEN COMING OUT OF THE PORTAL AFTER ANTIGRAVITY
+                DeactivateSpecialState();
+            }
 
             if (isInSpecialState)
             {
@@ -668,6 +709,46 @@ namespace RW.MonumentValley
             // 5. Re-enable controls
             EnableControls(true);
             Debug.Log("[PlayerController] Portal routine finished. Controls restored.");
+        }
+
+        private IEnumerator SkyboxTransition(Material targetSkybox)
+        {
+            if (targetSkybox == null || skyboxBlendMaterial == null)
+            {
+                RenderSettings.skybox = targetSkybox;
+                DynamicGI.UpdateEnvironment();
+                yield break;
+            }
+
+            Material startSkybox = RenderSettings.skybox;
+            RenderSettings.skybox = skyboxBlendMaterial;
+            
+            // Define the 6 sides of a standard Unity skybox
+            string[] sides = { "_FrontTex", "_BackTex", "_LeftTex", "_RightTex", "_UpTex", "_DownTex" };
+
+            // Copy all 12 textures (6 from start, 6 from target) into the blending material
+            foreach (string side in sides)
+            {
+                if (startSkybox.HasProperty(side)) 
+                    skyboxBlendMaterial.SetTexture(side + "1", startSkybox.GetTexture(side));
+                
+                if (targetSkybox.HasProperty(side)) 
+                    skyboxBlendMaterial.SetTexture(side + "2", targetSkybox.GetTexture(side));
+            }
+
+            float elapsed = 0f;
+            float duration = 1.0f; 
+            
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                skyboxBlendMaterial.SetFloat("_Blend", t);
+                yield return null;
+            }
+
+            RenderSettings.skybox = targetSkybox;
+            DynamicGI.UpdateEnvironment();
         }
     }
 }

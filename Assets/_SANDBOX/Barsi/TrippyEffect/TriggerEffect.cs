@@ -1,8 +1,10 @@
 using UnityEngine;
+using RW.MonumentValley;
+using Unity.Cinemachine;
 
 public class TriggerEffect : MonoBehaviour
 {
-    public Camera cam;
+    public CinemachineCamera cam;
     public Material fullscreenMaterial;
     public GameObject player;
 
@@ -24,12 +26,19 @@ public class TriggerEffect : MonoBehaviour
 
     void Update()
     {
-        if (fullscreenMaterial != null)
+        if (fullscreenMaterial != null && player != null)
         {
             fullscreenMaterial.SetVector("_PlayerPos", player.transform.position);
+            
+            // Pass camera distance to shader
+            float dist = Vector3.Distance(cam.transform.position, player.transform.position);
+            fullscreenMaterial.SetFloat("_Distance", dist);
+            
+            // Pass FOV to shader if you want it to warp based on zoom
+            fullscreenMaterial.SetFloat("_FOV", cam.Lens.FieldOfView);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(1))
         {
             isActive = !isActive;
             if (fullscreenMaterial != null)

@@ -1535,6 +1535,8 @@ MonoBehaviour:
   acidPuddlePrefab: {fileID: 1952586106206091599, guid: 7647b6c6c0ca346469b352775b8f037b,
     type: 3}
   fillUnderlyingSurfaces: 0
+  isBlenderFBX: 0
+  spawnTopPuddle: 0
   meltingMaterialOverride: {fileID: -876546973899608171, guid: e49c353e1b8b94eaa87aa103e6f8ffed,
     type: 3}
 --- !u!114 &422562920
@@ -3043,6 +3045,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1521064860}
+    - targetCorrespondingSourceObject: {fileID: 4914362807450694325, guid: 2230feb93c9fe496aa22349a4aad3007,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1521064863}
   m_SourcePrefab: {fileID: 100100000, guid: 2230feb93c9fe496aa22349a4aad3007, type: 3}
 --- !u!114 &976108475 stripped
 MonoBehaviour:
@@ -4138,6 +4144,12 @@ MonoBehaviour:
   catModel: {fileID: 1514364514}
   squashSpeed: 1
   pancakeScale: {x: 1.8, y: 0.05, z: 1.8}
+--- !u!1 &1517727303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6767428620746205572, guid: cca622578e4cb2741b8ca72800309847,
+    type: 3}
+  m_PrefabInstance: {fileID: 2105199407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1521064857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4914362807450694325, guid: 2230feb93c9fe496aa22349a4aad3007,
@@ -4157,6 +4169,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.SkyboxRotator
   rotationSpeed: 1.5
+--- !u!114 &1521064863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521064857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536a8adf55b152342b9d611049e53ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerEffect
+  cam: {fileID: 2007829015}
+  fullscreenMaterial: {fileID: 2100000, guid: 594a8369e2950084a913ea945cb6fdd9, type: 2}
+  player: {fileID: 1517727303}
+  wiggleAmount: 0.05
+  wiggleSpeed: 2
+  blurBase: 2
+  blurAmplitude: 0.5
 --- !u!1 &1536948632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4202,6 +4233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4667a1b61b19e4caee1c22fac98e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem
+  OnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1536948635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4853,8 +4887,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620dc8fdf1db448e3b2493dd32ba6ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Portal
+  preTeleportWalkTarget: {fileID: 0}
   teleportTarget: {fileID: 804043448}
-  walkTarget: {fileID: 2074155618}
+  postTeleportWalkTarget: {fileID: 0}
+  isActive: 1
 --- !u!114 &1733228034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5219,10 +5255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5da12cb9034bc439d2548ad7fc279e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  moveTime: 1
+  moveSpeed: 5
   patrolNodes:
   - {fileID: 1432240061}
   - {fileID: 2129868054}
+  teleportToNode: 
 --- !u!95 &1943140870 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8009836189553980335, guid: cca622578e4cb2741b8ca72800309847,
@@ -5959,7 +5996,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2105199407}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1517727303}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3bbc918567f2b84698810113f8f7e95, type: 3}

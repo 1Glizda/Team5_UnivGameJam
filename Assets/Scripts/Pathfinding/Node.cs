@@ -58,10 +58,12 @@ namespace RW.MonumentValley
         // invoked when Player enters this node
         public UnityEvent gameEvent;
 
-        [Header("Strict Connections")]
-        [Tooltip("If true, this node will ONLY connect to nodes in the strictNeighbours list, completely ignoring the automatic distance check. Other automatic nodes will also ignore this node unless they are in this list.")]
         public bool hasStrictNeighbours = false;
         public List<Node> strictNeighbours = new List<Node>();
+
+        [Header("Accessibility")]
+        public bool requireSpecialState = false;
+
 
         // properties
         
@@ -134,8 +136,8 @@ namespace RW.MonumentValley
                 // Only consider blocks that are on the "Level" layer
                 if (levelLayerIndex != -1 && col.gameObject.layer != levelLayerIndex) continue;
 
-                // Ignore our own colliders or any child visual meshes
-                if (col.transform != this.transform && !col.transform.IsChildOf(this.transform))
+                // Ignore our own colliders, child visual meshes, or the PARENT container (e.g. the Staircase model)
+                if (col.transform != this.transform && !col.transform.IsChildOf(this.transform) && !this.transform.IsChildOf(col.transform))
                 {
                     // If it's an acid puddle, it's a flat hazard, NOT a solid blocking block! We can traverse over it.
                     if (col.GetComponent<AcidPuddle>() != null || col.GetComponentInParent<AcidPuddle>() != null) continue;
@@ -188,8 +190,8 @@ namespace RW.MonumentValley
 
                     float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
                     
-                    // If the node is within traversable distance
-                    if (distSqr <= 4.25f)
+                    // If the node is within traversable distance (Relaxed to 2.5 units for stairs)
+                    if (distSqr <= 6.25f)
                     {
                         // NEW GRAVITY CHECK:
                         // Prevent ground nodes from connecting to wall nodes (and vice versa) automatically.
@@ -197,7 +199,11 @@ namespace RW.MonumentValley
                         bool thisIsWall = GetComponent<WallWalkEffect>() != null;
                         bool otherIsWall = otherNode.GetComponent<WallWalkEffect>() != null;
 
-                        if (thisIsWall != otherIsWall) continue;
+                        // OFFICIAL WAY TO CONNECT WALL TO NORMAL:
+                        // If either node is a GravityTransitionNode, we ignore the gravity check!
+                        bool isTransition = GetComponent<GravityTransitionNode>() != null || otherNode.GetComponent<GravityTransitionNode>() != null;
+
+                        if (thisIsWall != otherIsWall && !isTransition) continue;
 
                         if (!HasNeighbor(otherNode) && !excludedNodes.Contains(otherNode) && !otherNode.IsCovered())
                         {
