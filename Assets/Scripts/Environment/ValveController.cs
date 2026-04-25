@@ -40,7 +40,8 @@ namespace RW.MonumentValley
         private void OnValveClicked(Clickable c, Vector3 pos)
         {
             if (isAnimating) return;
-            
+            SoundManager.PlaySound(SoundType.VALVE);
+
             // 1. Rotate the L-shapes
             foreach (var block in targetBlocks)
             {

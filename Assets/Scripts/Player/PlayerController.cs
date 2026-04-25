@@ -52,6 +52,8 @@ namespace RW.MonumentValley
 
         // cursor AnimationController
         private Animator cursorAnimController;
+        [SerializeField] private float stepDistance = 0.6f;
+        private float distanceSinceLastStep = 0f;
 
         // pathfinding fields
         private Clickable[] clickables;
@@ -113,7 +115,8 @@ namespace RW.MonumentValley
             specialStateTimer = specialStateDuration;
             
             if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(true);
-            
+            SoundManager.PlaySound(SoundType.SMOKE);
+
             StartCoroutine(SkyboxTransition(trippySkybox));
 
             if (currentNode != null)
@@ -388,9 +391,10 @@ namespace RW.MonumentValley
             // Determine what direction we should be facing for this segment
             Quaternion targetRotation = GetTargetRotation(startPosition, targetNode);
 
+            Vector3 previousPosition = transform.position;
+
             while (elapsedTime < actualDuration && targetNode != null && !HasReachedNode(targetNode))
             {
-
                 // elapsed time tracking
                 elapsedTime += Time.deltaTime;
                 float lerpValue = Mathf.Clamp(elapsedTime / actualDuration, 0f, 1f);
@@ -405,8 +409,20 @@ namespace RW.MonumentValley
                     currentPos.y += jumpOffset;
                 }
 
-                transform.position = currentPos;
+                transform.position = currentPos; 
                 
+                float movedDistance = Vector3.Distance(transform.position, previousPosition);
+                distanceSinceLastStep += movedDistance;
+
+                // Play step sound only when grounded (not jumping)
+                if (!isJumping && distanceSinceLastStep >= stepDistance)
+                {
+                    SoundManager.PlaySound(SoundType.STEPS);
+                    distanceSinceLastStep = 0f;
+                }
+
+                previousPosition = transform.position;
+
                 // Seamlessly rotate towards the target direction while moving!
                 // A lerp speed of 15f means it snaps quickly but smoothly within the first few frames of movement.
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 15f);

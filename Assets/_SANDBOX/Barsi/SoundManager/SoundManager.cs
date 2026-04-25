@@ -2,7 +2,10 @@ using UnityEngine;
 
 public enum SoundType
 {
-
+    VALVE,
+    SMOKE,
+    STEPS,
+    PLANK
 }
 
 public enum MusicType

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BucketDialogue
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogue
   characterName: Bucket
-  characterPortrait: {fileID: 0}
+  characterPortrait: {fileID: 21300000, guid: f1d810bbc09b32447a001c8d55498ada, type: 3}
   dialogueLines:
   - Ceau frate
   - Cf

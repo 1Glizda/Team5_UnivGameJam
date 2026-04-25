@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class DialogueSystem : MonoBehaviour
 {
     public static DialogueSystem Instance;
-    private DialogueUIController ui;
+    [SerializeField] private DialogueUIController ui;
     private DialogueComponent activeDialogue;
 
     public UnityEvent OnDialogueEnded;
@@ -21,7 +21,6 @@ public class DialogueSystem : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        ui = DialogueUIController.Instance;
         activeDialogue = null;
     }
 

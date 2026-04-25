@@ -1668,7 +1668,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1920963988}
+      objectReference: {fileID: 0}
     - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5579,12 +5579,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1106526418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1920963988 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8009836189553980335, guid: cca622578e4cb2741b8ca72800309847,
-    type: 3}
-  m_PrefabInstance: {fileID: 517551688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1937647028
 GameObject:
   m_ObjectHideFlags: 0
