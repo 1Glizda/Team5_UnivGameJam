@@ -191,7 +191,7 @@ namespace RW.MonumentValley
                     float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
                     
                     // If the node is within traversable distance (Relaxed to 2.5 units for stairs)
-                    if (distSqr <= 6.25f)
+                    if (distSqr <= 4.25f)
                     {
                         // NEW GRAVITY CHECK:
                         // Prevent ground nodes from connecting to wall nodes (and vice versa) automatically.
