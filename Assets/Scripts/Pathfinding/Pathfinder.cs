@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -130,7 +130,19 @@ namespace RW.MonumentValley
                 // create PreviousNode breadcrumb trail if Edge is active
                 if (node.Edges[i].isActive && node.Edges[i].neighbor != null)
                 {
-                    node.Edges[i].neighbor.PreviousNode = node;
+                    Node neighbor = node.Edges[i].neighbor;
+
+                    // NEW: Accessibility check for "Pancake Mode"
+                    if (neighbor.requireSpecialState)
+                    {
+                        PlayerController player = FindFirstObjectByType<PlayerController>();
+                        if (player != null && !player.isInSpecialState)
+                        {
+                            continue; // This path is invisible/locked if not in special state!
+                        }
+                    }
+
+                    neighbor.PreviousNode = node;
 
                     // add neighbor Nodes to frontier Nodes
                     frontierNodes.Add(node.Edges[i].neighbor);
@@ -190,6 +202,32 @@ namespace RW.MonumentValley
                 {
                     isSearchComplete = true;
                     isPathComplete = false;
+
+                    // FALLBACK: Move to the closest accessible node to the destination!
+                    if (exploredNodes.Count > 0)
+                    {
+                        Node closestNode = null;
+                        float closestDist = float.MaxValue;
+                        foreach (Node n in exploredNodes)
+                        {
+                            if (n == null || n == startNode) continue;
+                            float dist = Vector3.Distance(n.transform.position, destinationNode.transform.position);
+                            if (dist < closestDist)
+                            {
+                                closestDist = dist;
+                                closestNode = n;
+                            }
+                        }
+
+                        if (closestNode != null)
+                        {
+                            // Temporarily change destination so GetPathNodes traces from here
+                            Node originalDest = destinationNode;
+                            destinationNode = closestNode;
+                            newPath = GetPathNodes();
+                            destinationNode = originalDest; // Restore for consistency
+                        }
+                    }
                 }
             }
             return newPath;

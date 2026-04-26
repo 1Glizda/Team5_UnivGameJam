@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361aa58592b282d48b15d927c4a05cae, type: 3}
+  m_Name: BucketDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogue
+  characterName: Bucket
+  characterPortrait: {fileID: 21300000, guid: f1d810bbc09b32447a001c8d55498ada, type: 3}
+  dialogueLines:
+  - Ceau frate
+  - Cf
+  autoProgressLines: 0101
+  endDialogueLines: 0001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05

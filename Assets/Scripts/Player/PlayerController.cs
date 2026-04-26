@@ -45,14 +45,15 @@ namespace RW.MonumentValley
         [Range(0.25f, 2f)]
         [SerializeField] private float moveTime = 0.5f;
 
-        // dynamic zoomies mechanic
-        private float currentZoomieMultiplier = 0.2f;
+        // dynamic zoomies mechanic removed
 
         // click indicator
         [SerializeField] Cursor cursor;
 
         // cursor AnimationController
         private Animator cursorAnimController;
+        [SerializeField] private float stepDistance = 0.6f;
+        private float distanceSinceLastStep = 0f;
 
         // pathfinding fields
         private Clickable[] clickables;
@@ -65,6 +66,109 @@ namespace RW.MonumentValley
         private bool isMoving;
         private bool isControlEnabled;
         private PlayerAnimation playerAnimation;
+
+        [Header("Special State")]
+        public bool specialStateUnlocked = false;
+        public bool isInSpecialState = false;
+        public float specialStateDuration = 10f;
+        private float specialStateTimer = 0f;
+        
+        [HideInInspector]
+        public bool isWallWalking = false;
+
+        public UnityEngine.Events.UnityEvent<bool> onSpecialStateToggled;
+
+        [Header("Skyboxes")]
+        public Material normalSkybox;
+        public Material trippySkybox;
+        public Material skyboxBlendMaterial;
+
+        // The Call Stack for dynamic zone effects
+        private List<SpecialZoneEffect> activeEffects = new List<SpecialZoneEffect>();
+
+        private void Update()
+        {
+            if (specialStateUnlocked && Input.GetMouseButtonDown(1))
+            {
+                // Toggle ON only. Manual deactivation is disabled as requested.
+                if (!isInSpecialState) ActivateSpecialState();
+            }
+
+            if (isInSpecialState)
+            {
+                // If we are currently wall-walking, the special state is "locked" on and the timer pauses!
+                if (!isWallWalking)
+                {
+                    specialStateTimer -= Time.deltaTime;
+                    if (specialStateTimer <= 0)
+                    {
+                        DeactivateSpecialState();
+                    }
+                }
+            }
+        }
+
+        public void ActivateSpecialState()
+        {
+            if (isInSpecialState) return;
+            isInSpecialState = true;
+            specialStateTimer = specialStateDuration;
+            
+            if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(true);
+            SoundManager.PlaySound(SoundType.SMOKE);
+
+            StartCoroutine(SkyboxTransition(trippySkybox));
+
+            if (currentNode != null)
+            {
+                NodeSpecialStateEffects fx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                if (fx != null) fx.TurnOn();
+
+                SpecialZoneEffect[] zoneFx = currentNode.GetComponents<SpecialZoneEffect>();
+                foreach (var z in zoneFx) PushEffect(z);
+            }
+        }
+
+        private void DeactivateSpecialState()
+        {
+            if (!isInSpecialState) return;
+            isInSpecialState = false;
+
+            // Force revert all active effects!
+            for (int i = activeEffects.Count - 1; i >= 0; i--)
+            {
+                activeEffects[i].Revert(this);
+            }
+            activeEffects.Clear();
+
+            if (onSpecialStateToggled != null) onSpecialStateToggled.Invoke(false);
+
+            StartCoroutine(SkyboxTransition(normalSkybox));
+
+            if (currentNode != null)
+            {
+                NodeSpecialStateEffects fx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                if (fx != null) fx.TurnOff();
+            }
+        }
+
+        public void PushEffect(SpecialZoneEffect effect)
+        {
+            if (!activeEffects.Contains(effect))
+            {
+                activeEffects.Add(effect);
+                effect.Apply(this);
+            }
+        }
+
+        public void RemoveEffect(SpecialZoneEffect effect)
+        {
+            if (activeEffects.Contains(effect))
+            {
+                effect.Revert(this);
+                activeEffects.Remove(effect);
+            }
+        }
 
         private void Awake()
         {
@@ -99,7 +203,6 @@ namespace RW.MonumentValley
                 c.clickAction += OnClick;
             }
 
-            StartCoroutine(RandomZoomiesRoutine());
         }
 
         private void OnDisable()
@@ -113,19 +216,46 @@ namespace RW.MonumentValley
 
         private void OnClick(Clickable clickable, Vector3 position)
         {
-            if (!isControlEnabled || clickable == null || pathfinder == null)
+            if (!isControlEnabled)
             {
+                Debug.Log("[PlayerController] Click ignored: Controls are DISABLED.");
+                return;
+            }
+
+            if (clickable == null) return;
+
+            if (pathfinder == null)
+            {
+                Debug.LogError("[PlayerController] Pathfinder is MISSING from the scene!");
                 return;
             }
 
             // For custom continuous meshes with many nodes, find the specific node closest to where the user clicked!
             Node targetNode = graph.FindClosestNode(clickable.ChildNodes, position);
+            
+            if (targetNode == null)
+            {
+                Debug.LogWarning("[PlayerController] Clicked on an object with no valid Nodes!");
+                return;
+            }
+
+            if (currentNode == null)
+            {
+                Debug.LogWarning("[PlayerController] Player is not standing on any Node! Attempting to snap...");
+                SnapToNearestNode();
+                if (currentNode == null) return;
+            }
+
             List<Node> newPath = pathfinder.FindPath(currentNode, targetNode);
+            Debug.Log($"[PlayerController] Clicked on {targetNode.name}. Path found: {(newPath != null && newPath.Count > 1 ? "YES" : "NO")} (Nodes: {newPath?.Count})");
+
 
             // if we are already moving and we click again, stop all previous Animation/motion
             if (isMoving)
             {
                 StopAllCoroutines();
+                isMoving = false;
+                EnableControls(true); // Safety reset
             }
 
             // show a marker for the mouse click
@@ -180,11 +310,6 @@ namespace RW.MonumentValley
                     // use the current Node as the next waypoint
                     nextNode = path[i];
 
-                    // aim at the Node after that to minimize flipping
-                    int nextAimIndex = Mathf.Clamp(i + 1, 0, path.Count - 1);
-                    Node aimNode = path[nextAimIndex];
-                    FaceNextPosition(transform.position, aimNode.transform.position);
-
                     // move to the next Node
                     yield return StartCoroutine(MoveToNodeRoutine(transform.position, nextNode));
                     
@@ -199,6 +324,42 @@ namespace RW.MonumentValley
 
         }
 
+        // Calculate the correct rotation required to face the next node based on the camera plane
+        private Quaternion GetTargetRotation(Vector3 startPosition, Node targetNode)
+        {
+            if (Camera.main == null || targetNode == null) return transform.rotation;
+
+            Vector3 nextPosition = targetNode.transform.position;
+            Vector3 nextPositionScreen = Camera.main.WorldToScreenPoint(nextPosition);
+            Ray rayToNextPosition = Camera.main.ScreenPointToRay(nextPositionScreen);
+            
+            // PREDICTIVE GRAVITY:
+            // Use the UP vector of the node we are MOVING TOWARDS.
+            // This ensures we rotate to the wall's orientation as we approach it!
+            bool targetIsWall = targetNode.GetComponent<WallWalkEffect>() != null;
+            Vector3 upVector = targetIsWall ? targetNode.transform.up : Vector3.up;
+            
+            // Safety: if target isn't a wall, but WE are currently on one, stay sideways until we land on the ground
+            if (!targetIsWall && isWallWalking && currentNode != null)
+            {
+                upVector = currentNode.transform.up;
+            }
+
+            Plane plane = new Plane(upVector, startPosition);
+
+            if (plane.Raycast(rayToNextPosition, out float cameraDistance))
+            {
+                Vector3 nextPositionOnPlane = rayToNextPosition.GetPoint(cameraDistance);
+                Vector3 directionToNextNode = nextPositionOnPlane - startPosition;
+                
+                if (directionToNextNode != Vector3.zero)
+                {
+                    return Quaternion.LookRotation(directionToNextNode, upVector);
+                }
+            }
+            return transform.rotation;
+        }
+
         //  lerp to another Node from current position
         private IEnumerator MoveToNodeRoutine(Vector3 startPosition, Node targetNode)
         {
@@ -210,6 +371,13 @@ namespace RW.MonumentValley
             
             Vector3 targetPos = targetNode.transform.position;
             
+            // Calculate the exact distance to the next node
+            float distance = Vector3.Distance(startPosition, targetPos);
+            
+            // If the moveTime is "time per unit", then actual duration is distance * moveTime
+            // This guarantees a perfectly smooth, constant speed regardless of how far apart the nodes are!
+            float actualDuration = distance * moveTime;
+            
             // The user requested to jump if the target node has the tag "Jumpable", 
             // OR if the node we are launching from (currentNode) is "Jumpable"!
             bool isJumping = targetNode.CompareTag("Jumpable") || (currentNode != null && currentNode.CompareTag("Jumpable"));
@@ -217,12 +385,19 @@ namespace RW.MonumentValley
             // Configure cat-like bouncy jump height - adjust as needed
             float jumpHeight = isJumping ? 1.25f : 0.0f;
 
-            while (elapsedTime < moveTime && targetNode != null && !HasReachedNode(targetNode))
-            {
+            // Prevent division by zero if nodes are exactly on top of each other
+            if (actualDuration <= 0.001f) actualDuration = 0.001f;
 
-                // dynamically speed up elapsed time tracking using the multiplier
-                elapsedTime += Time.deltaTime / currentZoomieMultiplier;
-                float lerpValue = Mathf.Clamp(elapsedTime / moveTime, 0f, 1f);
+            // Determine what direction we should be facing for this segment
+            Quaternion targetRotation = GetTargetRotation(startPosition, targetNode);
+
+            Vector3 previousPosition = transform.position;
+
+            while (elapsedTime < actualDuration && targetNode != null && !HasReachedNode(targetNode))
+            {
+                // elapsed time tracking
+                elapsedTime += Time.deltaTime;
+                float lerpValue = Mathf.Clamp(elapsedTime / actualDuration, 0f, 1f);
 
                 // Start with linear interpolation
                 Vector3 currentPos = Vector3.Lerp(startPosition, targetPos, lerpValue);
@@ -234,18 +409,92 @@ namespace RW.MonumentValley
                     currentPos.y += jumpOffset;
                 }
 
-                transform.position = currentPos;
+                transform.position = currentPos; 
+                
+                float movedDistance = Vector3.Distance(transform.position, previousPosition);
+                distanceSinceLastStep += movedDistance;
+
+                // Play step sound only when grounded (not jumping)
+                if (!isJumping && distanceSinceLastStep >= stepDistance)
+                {
+                    SoundManager.PlaySound(SoundType.STEPS);
+                    distanceSinceLastStep = 0f;
+                }
+
+                previousPosition = transform.position;
+
+                // Seamlessly rotate towards the target direction while moving!
+                // A lerp speed of 15f means it snaps quickly but smoothly within the first few frames of movement.
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 15f);
 
                 // if over halfway, change parent to next node
                 if (lerpValue > 0.51f && currentNode != targetNode)
                 {
+                    // Exit the OLD node's simple UnityEvent effects
+                    if (isInSpecialState && currentNode != null)
+                    {
+                        NodeSpecialStateEffects oldFx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                        if (oldFx != null) oldFx.TurnOff();
+                    }
+
                     transform.parent = targetNode.transform;
                     currentNode = targetNode;
+
+                    // EXIT EFFECTS
+                    if (isInSpecialState && currentNode != null)
+                    {
+                        NodeSpecialStateEffects oldFx = currentNode.GetComponent<NodeSpecialStateEffects>();
+                        if (oldFx != null) oldFx.TurnOff();
+                    }
+
+                    // ENTER EFFECTS
+                    // Check for WallWalkEffect to force-activate special state if needed!
+                    WallWalkEffect w = currentNode.GetComponent<WallWalkEffect>();
+                    if (w != null && !isInSpecialState)
+                    {
+                        ActivateSpecialState();
+                    }
+
+                    if (isInSpecialState)
+                    {
+                        // Manage the Dynamic Call Stack for contiguous Zones
+                        List<SpecialZoneEffect> toRemove = new List<SpecialZoneEffect>();
+                        foreach (var active in activeEffects)
+                        {
+                            if (currentNode.GetComponent(active.GetType()) == null)
+                            {
+                                toRemove.Add(active);
+                            }
+                        }
+                        foreach (var r in toRemove) RemoveEffect(r);
+
+                        // Apply new effects
+                        SpecialZoneEffect[] newZoneFx = currentNode.GetComponents<SpecialZoneEffect>();
+                        foreach (var z in newZoneFx)
+                        {
+                            bool alreadyHasType = false;
+                            foreach (var active in activeEffects)
+                            {
+                                if (active.GetType() == z.GetType()) alreadyHasType = true;
+                            }
+                            if (!alreadyHasType) PushEffect(z);
+                        }
+                    }
 
                     // invoke UnityEvent associated with next Node ONCE
                     if (targetNode.gameEvent != null)
                     {
                         targetNode.gameEvent.Invoke();
+                    }
+
+                    // Automatic Special State Melting
+                    if (isInSpecialState)
+                    {
+                        SpecialMeltableNode meltable = targetNode.GetComponent<SpecialMeltableNode>();
+                        if (meltable != null && meltable.linkedMelter != null)
+                        {
+                            meltable.linkedMelter.TriggerMelt();
+                        }
                     }
                 }
 
@@ -335,55 +584,7 @@ namespace RW.MonumentValley
             isControlEnabled = state;
         }
 
-        // background routine to casually check for randomly triggering the zoomies
-        private IEnumerator RandomZoomiesRoutine()
-        {
-            while (true)
-            {
-                // Only roll for zoomies while currently moving and not already zooming
-                if (isMoving && currentZoomieMultiplier == 1.0f)
-                {
-                    // 15% chance to start zoomies
-                    if (Random.value < 0.15f) 
-                    {
-                        yield return StartCoroutine(ExecuteZoomiesBurst());
-                    }
-                }
-                yield return new WaitForSeconds(0.5f); // Check twice a second
-            }
-        }
 
-        // eases in and out of a 5x speed boost
-        private IEnumerator ExecuteZoomiesBurst()
-        {
-            float easeTime = 0.5f; // half a second to accelerate
-            float burstDuration = Random.Range(1f, 2.5f); // 1-2.5 seconds of pure sprint
-            
-            // Ease In (Accelerate)
-            float t = 0;
-            while (t < easeTime)
-            {
-                t += Time.deltaTime;
-                // smoothstep from 1.0 down to 0.2 (which means 5x faster since we divide by it)
-                currentZoomieMultiplier = Mathf.SmoothStep(1.0f, 0.2f, t / easeTime);
-                yield return null;
-            }
-
-            // Sprint
-            currentZoomieMultiplier = 0.2f;
-            yield return new WaitForSeconds(burstDuration);
-
-            // Ease Out (Decelerate)
-            t = 0;
-            while (t < easeTime)
-            {
-                t += Time.deltaTime;
-                currentZoomieMultiplier = Mathf.SmoothStep(0.2f, 1.0f, t / easeTime);
-                yield return null;
-            }
-            
-            currentZoomieMultiplier = 1.0f;
-        }
 
         public void TeleportToNode(Node targetNode)
         {
@@ -400,6 +601,175 @@ namespace RW.MonumentValley
             currentNode = targetNode;
 
             UpdateAnimation();
+        }
+
+        // Instantly teleports the player to a target node, optionally walking to nodes before and after.
+        public void PortalToNode(Node preWalkTarget, Node teleportTarget, Node postWalkTarget)
+        {
+            Debug.Log($"[PlayerController] PortalToNode called! Pre-Walk: {preWalkTarget?.name}, Teleport: {teleportTarget?.name}, Post-Walk: {postWalkTarget?.name}");
+            
+            // Safety: If we were already in a portal routine or moving, ensure controls are reset if we interrupt!
+            StopAllCoroutines();
+            isMoving = false;
+            EnableControls(true); 
+
+            StartCoroutine(PortalRoutine(preWalkTarget, teleportTarget, postWalkTarget));
+        }
+
+        private IEnumerator PortalRoutine(Node preWalkTarget, Node teleportTarget, Node postWalkTarget)
+        {
+            bool startedOnWall = isWallWalking;
+
+            if (teleportTarget == null)
+            {
+                Debug.LogError("[PlayerController] Teleport target is NULL! Aborting teleport.");
+                yield break;
+            }
+
+            // 1. Disable controls
+            EnableControls(false);
+
+            // 2. Pre-Teleport Walk (if provided)
+            if (preWalkTarget != null && preWalkTarget != currentNode)
+            {
+                Debug.Log($"[PlayerController] Forcing pre-walk to {preWalkTarget.name}");
+                List<Node> newPath = pathfinder.FindPath(currentNode, preWalkTarget);
+                if (newPath != null && newPath.Count > 1)
+                {
+                    yield return StartCoroutine(FollowPathRoutine(newPath));
+                }
+            }
+
+            // 3. Instantly Teleport
+            isMoving = false;
+            transform.position = teleportTarget.transform.position;
+            transform.parent = teleportTarget.transform;
+            currentNode = teleportTarget;
+            UpdateAnimation();
+            
+            // NEW: Always check for WallWalkEffect to force-activate special state if needed!
+            WallWalkEffect landingWall = currentNode.GetComponent<WallWalkEffect>();
+
+            // Immediately orient the player to the wall's UP vector
+            // This prevents them from being "stuck upwards" while on a wall.
+            if (landingWall != null)
+            {
+                // We use our current forward but the wall's UP
+                // If forward is too close to up, we use a fallback
+                Vector3 wallUp = teleportTarget.transform.up;
+                if (Mathf.Abs(Vector3.Dot(transform.forward, wallUp)) > 0.99f)
+                {
+                    transform.rotation = Quaternion.LookRotation(Vector3.Cross(transform.right, wallUp), wallUp);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.LookRotation(transform.forward, wallUp);
+                }
+            }
+
+            // TRIGGER SPECIAL STATE EFFECTS UPON LANDING
+            if (landingWall != null && !isInSpecialState)
+            {
+                ActivateSpecialState();
+            }
+            else if (landingWall == null && startedOnWall && isInSpecialState)
+            {
+                // REVERT TO NORMAL MODE WHEN COMING OUT OF THE PORTAL AFTER ANTIGRAVITY
+                DeactivateSpecialState();
+            }
+
+            if (isInSpecialState)
+            {
+                // Manage the Dynamic Call Stack for contiguous Zones
+                List<SpecialZoneEffect> toRemove = new List<SpecialZoneEffect>();
+                foreach (var active in activeEffects)
+                {
+                    // If the new node doesn't have an effect of the exact same TYPE, we have left the zone!
+                    if (currentNode.GetComponent(active.GetType()) == null)
+                    {
+                        toRemove.Add(active);
+                    }
+                }
+
+                foreach (var r in toRemove) RemoveEffect(r);
+
+                // Apply new effects from the destination node
+                SpecialZoneEffect[] newZoneFx = currentNode.GetComponents<SpecialZoneEffect>();
+                foreach (var z in newZoneFx)
+                {
+                    bool alreadyHasType = false;
+                    foreach (var active in activeEffects)
+                    {
+                        if (active.GetType() == z.GetType()) alreadyHasType = true;
+                    }
+                    if (!alreadyHasType) PushEffect(z);
+                }
+            }
+
+            Debug.Log($"[PlayerController] Teleported to {teleportTarget.name}");
+
+            // Wait a frame just in case Cinemachine or other physics need to catch up
+            yield return null;
+
+            // 4. Post-Teleport Walk (if provided)
+            if (postWalkTarget != null && postWalkTarget != currentNode)
+            {
+                Debug.Log($"[PlayerController] Forcing post-walk to {postWalkTarget.name}");
+                List<Node> newPath = pathfinder.FindPath(currentNode, postWalkTarget);
+                if (newPath != null && newPath.Count > 1)
+                {
+                    yield return StartCoroutine(FollowPathRoutine(newPath));
+                }
+            }
+
+            // 5. Re-enable controls
+            EnableControls(true);
+            Debug.Log("[PlayerController] Portal routine finished. Controls restored.");
+        }
+
+        private IEnumerator SkyboxTransition(Material targetSkybox)
+        {
+            if (targetSkybox == null || skyboxBlendMaterial == null)
+            {
+                RenderSettings.skybox = targetSkybox;
+                DynamicGI.UpdateEnvironment();
+                yield break;
+            }
+
+            Material startSkybox = RenderSettings.skybox;
+            RenderSettings.skybox = skyboxBlendMaterial;
+            
+            // Standard 6-Sided skybox properties
+            string[] sides = { "_FrontTex", "_BackTex", "_LeftTex", "_RightTex", "_UpTex", "_DownTex" };
+
+            foreach (string side in sides)
+            {
+                // Copy from current skybox to Slot 1
+                if (startSkybox.HasProperty(side)) 
+                    skyboxBlendMaterial.SetTexture(side + "1", startSkybox.GetTexture(side));
+                
+                // Copy from target skybox to Slot 2
+                if (targetSkybox.HasProperty(side)) 
+                    skyboxBlendMaterial.SetTexture(side + "2", targetSkybox.GetTexture(side));
+            }
+
+            // Sync rotation so there is no visual snap during transition
+            if (startSkybox.HasProperty("_Rotation"))
+                skyboxBlendMaterial.SetFloat("_Rotation", startSkybox.GetFloat("_Rotation"));
+
+            float elapsed = 0f;
+            float duration = 1.0f; 
+            
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                skyboxBlendMaterial.SetFloat("_Blend", t);
+                yield return null;
+            }
+
+            RenderSettings.skybox = targetSkybox;
+            DynamicGI.UpdateEnvironment();
         }
     }
 }

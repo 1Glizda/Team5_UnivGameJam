@@ -58,6 +58,13 @@ namespace RW.MonumentValley
         // invoked when Player enters this node
         public UnityEvent gameEvent;
 
+        public bool hasStrictNeighbours = false;
+        public List<Node> strictNeighbours = new List<Node>();
+
+        [Header("Accessibility")]
+        public bool requireSpecialState = false;
+
+
         // properties
         
         public Node PreviousNode { get { return previousNode; } set { previousNode = value; } }
@@ -122,21 +129,23 @@ namespace RW.MonumentValley
         {
             int levelLayerIndex = LayerMask.NameToLayer("Level");
 
-            // We check the exact spatial center of the block that would be placed above this one (y + 1.0f).
-            // OverlapSphere is infinitely more reliable than a Raycast here because it doesn't care about backfaces or origin points!
-            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1.0f, 0.2f);
+            // We check a sphere slightly above the surface (y + 0.5f) to detect both full-height blocks AND custom FBX boxes!
+            Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 0.5f, 0.4f);
             foreach (Collider col in colliders)
             {
                 // Only consider blocks that are on the "Level" layer
                 if (levelLayerIndex != -1 && col.gameObject.layer != levelLayerIndex) continue;
 
-                // Ignore our own colliders or any child visual meshes
-                if (col.transform != this.transform && !col.transform.IsChildOf(this.transform))
+                // Ignore our own colliders, child visual meshes, or the PARENT container (e.g. the Staircase model)
+                if (col.transform != this.transform && !col.transform.IsChildOf(this.transform) && !this.transform.IsChildOf(col.transform))
                 {
                     // If it's an acid puddle, it's a flat hazard, NOT a solid blocking block! We can traverse over it.
                     if (col.GetComponent<AcidPuddle>() != null || col.GetComponentInParent<AcidPuddle>() != null) continue;
+                    
+                    // Same for SpecialZoneEffects, they are triggers, not solid blocks
+                    if (col.GetComponent<SpecialZoneEffect>() != null) continue;
 
-                    return true; // We found a distinct Level block sitting immediately above us!
+                    return true; // We found a distinct solid block sitting immediately above us!
                 }
             }
             return false;
@@ -148,6 +157,22 @@ namespace RW.MonumentValley
             // If this node is physically covered by a block, it cannot be walked on. Do not establish connections from it.
             if (IsCovered()) return;
 
+            // If this node uses strict neighbours, we ONLY connect to the ones in the manual list!
+            if (hasStrictNeighbours)
+            {
+                foreach (Node neighbor in strictNeighbours)
+                {
+                    if (neighbor != null && !neighbor.IsCovered() && !excludedNodes.Contains(neighbor))
+                    {
+                        if (!HasNeighbor(neighbor))
+                        {
+                            edges.Add(new Edge { neighbor = neighbor, isActive = true });
+                        }
+                    }
+                }
+                return; // SKIP the automatic distance check completely for this node!
+            }
+
             // Freeform Distance Check: Instead of strict 1.0 unit grid vectors, we check all nodes in the graph
             // and automatically connect to any node that is within a traversable distance (e.g. 2.5 units).
             if (graph != null)
@@ -156,11 +181,30 @@ namespace RW.MonumentValley
                 {
                     if (otherNode == this || otherNode == null) continue;
 
+                    // IMPORTANT: If the OTHER node has strict neighbours, and it DOES NOT include THIS node in its manual list,
+                    // we MUST NOT automatically connect to it. This prevents automatic nodes from bypassing strict rules!
+                    if (otherNode.hasStrictNeighbours && !otherNode.strictNeighbours.Contains(this))
+                    {
+                        continue;
+                    }
+
                     float distSqr = (transform.position - otherNode.transform.position).sqrMagnitude;
                     
-                    // If the node is within 2.5 units (sqrMagnitude 6.25), consider it a neighbor!
+                    // If the node is within traversable distance (Relaxed to 2.5 units for stairs)
                     if (distSqr <= 6.25f)
                     {
+                        // NEW GRAVITY CHECK:
+                        // Prevent ground nodes from connecting to wall nodes (and vice versa) automatically.
+                        // This forces the player to use Portals to transition between different gravity planes.
+                        bool thisIsWall = GetComponent<WallWalkEffect>() != null;
+                        bool otherIsWall = otherNode.GetComponent<WallWalkEffect>() != null;
+
+                        // OFFICIAL WAY TO CONNECT WALL TO NORMAL:
+                        // If either node is a GravityTransitionNode, we ignore the gravity check!
+                        bool isTransition = GetComponent<GravityTransitionNode>() != null || otherNode.GetComponent<GravityTransitionNode>() != null;
+
+                        if (thisIsWall != otherIsWall && !isTransition) continue;
+
                         if (!HasNeighbor(otherNode) && !excludedNodes.Contains(otherNode) && !otherNode.IsCovered())
                         {
                             Edge newEdge = new Edge { neighbor = otherNode, isActive = true };
@@ -194,6 +238,19 @@ namespace RW.MonumentValley
                     e.isActive = state;
                 }
             }
+        }
+
+        // Returns true if the connection to the neighbor exists AND is active
+        public bool IsEdgeActive(Node neighborNode)
+        {
+            foreach (Edge e in edges)
+            {
+                if (e.neighbor.Equals(neighborNode))
+                {
+                    return e.isActive;
+                }
+            }
+            return false;
         }
 
         public void InitGraph(Graph graphToInit)

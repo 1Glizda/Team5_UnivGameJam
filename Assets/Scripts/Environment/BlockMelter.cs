@@ -13,28 +13,91 @@ namespace RW.MonumentValley
         
         [Tooltip("If true, the puddle covers the exact surfaces of blocks underneath. If false, it spawns a single puddle at the bottom of THIS block.")]
         public bool fillUnderlyingSurfaces = true;
+        
+        [Tooltip("Check this if the object is an imported Blender FBX. This swaps the Y and Z axes for squashing and puddles.")]
+        public bool isBlenderFBX = false;
+        
+        [Tooltip("If true, a puddle spawns on the top face of the block and rides it down as it melts. Turn OFF for open/hollow meshes!")]
+        public bool spawnTopPuddle = false;
 
-        private Material blockMat;
+        [Header("Material Override")]
+        [Tooltip("If assigned, the script will instantly swap the object to this material right before it melts!")]
+        public Material meltingMaterialOverride;
+
+        private List<Material> blockMats = new List<Material>();
         private bool isMelting = false;
 
         private void Start()
         {
-            Renderer rend = GetComponentInChildren<Renderer>();
-            if (rend != null) blockMat = rend.material; 
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            
+            if (renderers.Length == 0)
+            {
+                Debug.LogWarning($"[BlockMelter] No Renderers found on {gameObject.name} or its children! Cannot melt visuals.");
+            }
+
+            foreach (Renderer rend in renderers)
+            {
+                if (rend != null)
+                {
+                    blockMats.Add(rend.material); 
+                }
+            }
         }
 
         public void TriggerMelt()
         {
+            Debug.Log($"[BlockMelter] TriggerMelt called on {gameObject.name}");
             if (isMelting) return;
             isMelting = true;
+            
+            // Hot-swap material if an override is provided!
+            if (meltingMaterialOverride != null)
+            {
+                Renderer[] renderers = GetComponentsInChildren<Renderer>();
+                blockMats.Clear(); // Clear the old standard materials we found in Start
+                
+                foreach (Renderer rend in renderers)
+                {
+                    if (rend != null)
+                    {
+                        // Save the original texture so the new material looks the same!
+                        Texture originalTexture = rend.material.mainTexture;
+                        
+                        rend.material = meltingMaterialOverride;
+                        
+                        if (originalTexture != null)
+                        {
+                            if (rend.material.HasProperty("_BaseMap")) rend.material.SetTexture("_BaseMap", originalTexture);
+                            else if (rend.material.HasProperty("_MainTex")) rend.material.SetTexture("_MainTex", originalTexture);
+                        }
+
+                        blockMats.Add(rend.material);
+                    }
+                }
+            }
+
             StartCoroutine(MeltRoutine());
         }
 
         private IEnumerator MeltRoutine()
         {
+            Debug.Log("[BlockMelter] MeltRoutine started.");
             Transform t = transform;
             Vector3 startPos = t.position;
             Vector3 startScale = t.localScale;
+            
+            Collider col = GetComponentInChildren<Collider>();
+            if (col == null)
+            {
+                Debug.LogWarning("[BlockMelter] No Collider found! Cannot calculate bounds for melting.");
+                yield break;
+            }
+
+            // Get absolute world space metrics! This completely ignores local scale weirdness (46, 180, etc)
+            Vector3 worldBoundsSize = col.bounds.size;
+            float startBottomY = col.bounds.min.y;
+            float pivotOffset = startPos.y - startBottomY; // The distance from the object's pivot to its bottom face
             
             // 1. Detect Stack Position
             List<BlockMelter> nextMelters = new List<BlockMelter>();
@@ -42,11 +105,12 @@ namespace RW.MonumentValley
             bool isTopBlock = true;
             bool isBottomBlock = true;
             
-            Vector3 halfExtents = startScale / 2.1f;
+            // BoxCast needs world space extents!
+            Vector3 halfExtents = worldBoundsSize / 2.1f;
             halfExtents.y = 0.1f; 
             
             // Check below
-            foreach (RaycastHit hit in Physics.BoxCastAll(startPos, halfExtents, Vector3.down, t.rotation, 1.5f))
+            foreach (RaycastHit hit in Physics.BoxCastAll(col.bounds.center, halfExtents, Vector3.down, Quaternion.identity, 1.5f))
             {
                 if (hit.transform == t || hit.transform.IsChildOf(t)) continue;
                 
@@ -58,7 +122,7 @@ namespace RW.MonumentValley
             }
 
             // Check above
-            foreach (RaycastHit hit in Physics.BoxCastAll(startPos, halfExtents, Vector3.up, t.rotation, 1.5f))
+            foreach (RaycastHit hit in Physics.BoxCastAll(col.bounds.center, halfExtents, Vector3.up, Quaternion.identity, 1.5f))
             {
                 if (hit.transform == t || hit.transform.IsChildOf(t)) continue;
                 isTopBlock = false;
@@ -67,18 +131,23 @@ namespace RW.MonumentValley
 
             // 2. Spawn Visuals
             SpawnParticles(startPos + Vector3.up * 0.6f, t);
-            
+
             if (acidPuddlePrefab != null)
             {
-                // Spawn a puddle on the TOP face of this block
-                Vector3 topPuddlePos = transform.position + (Vector3.up * (startScale.y / 2f + 0.01f));
-                SpawnPuddle(topPuddlePos, this.transform, startScale, false);
+                // Because worldBoundsSize is ALWAYS in true world space, we don't need to swap Y and Z! Width is X, Depth is Z.
+                Vector3 puddleScale = new Vector3(worldBoundsSize.x, worldBoundsSize.z, 1f);
+
+                if (spawnTopPuddle)
+                {
+                    // Spawn a puddle on the TOP face of this block
+                    Vector3 topPuddlePos = new Vector3(startPos.x, col.bounds.max.y + 0.01f, startPos.z);
+                    SpawnPuddle(topPuddlePos, this.transform, puddleScale, false);
+                }
 
                 // Bottom Puddles (permanent)
                 if (isBottomBlock || !fillUnderlyingSurfaces)
                 {
-                    // Spawn a single footprint perfectly at the bottom of the melting block
-                    SpawnPuddle(startPos - new Vector3(0, startScale.y / 2f - 0.02f, 0), null, startScale, true);
+                    SpawnPuddle(new Vector3(startPos.x, startBottomY - 0.02f, startPos.z), null, puddleScale, true);
                 }
                 else
                 {
@@ -125,20 +194,29 @@ namespace RW.MonumentValley
                         // Place exactly at the highest surface + 0.02f to prevent Z-fighting
                         Vector3 pos = new Vector3(uBlock.position.x, highestSurfaceY + 0.02f, uBlock.position.z);
                         
-                        // Scale the puddle to perfectly match the size of the block it landed on
-                        SpawnPuddle(pos, uBlock, uBlock.localScale, true);
+                        Collider uCol = uBlock.GetComponentInChildren<Collider>();
+                        if (uCol != null)
+                        {
+                            Vector3 targetFootprint = new Vector3(uCol.bounds.size.x, uCol.bounds.size.z, 1f);
+                            SpawnPuddle(pos, uBlock, targetFootprint, true);
+                        }
                     }
                 }
             }
 
+            Debug.Log("[BlockMelter] Starting Melt Animation Loop...");
             // 3. Melt Animation Loop
             float timer = 0f;
             int meltId = Shader.PropertyToID("_MeltAmount");
 
+            int frameCount = 0;
             while (timer < meltDuration)
             {
                 timer += Time.deltaTime;
                 float rawP = Mathf.Clamp01(timer / meltDuration);
+                
+                if (frameCount == 0) Debug.Log("[BlockMelter] First frame of melt loop executing. Squishing localScale...");
+                frameCount++;
                 
                 // Continuous stack easing
                 float easedP = rawP;
@@ -146,16 +224,37 @@ namespace RW.MonumentValley
                 else if (isTopBlock) easedP = rawP * rawP; // Ease In
                 else if (isBottomBlock) easedP = 1f - (1f - rawP) * (1f - rawP); // Ease Out
 
-                if (blockMat != null && blockMat.HasProperty(meltId)) blockMat.SetFloat(meltId, easedP);
+                foreach (Material mat in blockMats)
+                {
+                    if (mat != null && mat.HasProperty(meltId)) mat.SetFloat(meltId, easedP);
+                }
 
-                // Squash Y and offset position to lock bottom face
-                float curY = Mathf.Lerp(startScale.y, 0.05f, easedP);
-                t.localScale = new Vector3(startScale.x, curY, startScale.z);
-                t.position = startPos - new Vector3(0, (startScale.y - curY) / 2f, 0);
+                float scaleFactor = 1f;
+
+                if (isBlenderFBX)
+                {
+                    // Squash Z (which points UP due to Blender rotation) down to 5% of its ORIGINAL scale
+                    float targetZ = startScale.z * 0.05f;
+                    float curZ = Mathf.Lerp(startScale.z, targetZ, easedP);
+                    t.localScale = new Vector3(startScale.x, startScale.y, curZ);
+                    scaleFactor = curZ / startScale.z;
+                }
+                else
+                {
+                    // Squash Y down to 5% of its ORIGINAL scale
+                    float targetY = startScale.y * 0.05f;
+                    float curY = Mathf.Lerp(startScale.y, targetY, easedP);
+                    t.localScale = new Vector3(startScale.x, curY, startScale.z);
+                    scaleFactor = curY / startScale.y;
+                }
+
+                // Perfectly lock the bottom face by mathematically keeping the pivot relative to the scale
+                t.position = new Vector3(startPos.x, startBottomY + (pivotOffset * scaleFactor), startPos.z);
 
                 yield return null;
             }
 
+            Debug.Log("[BlockMelter] Melt loop finished! Destroying object...");
             // 4. Cleanup & Cascade
             foreach (Collider c in GetComponentsInChildren<Collider>()) c.enabled = false;
 
@@ -178,11 +277,11 @@ namespace RW.MonumentValley
             if (parent == transform) Destroy(p, meltDuration + 2f); // Temporary particles
         }
 
-        private void SpawnPuddle(Vector3 pos, Transform parent, Vector3 sourceScale, bool includeParticles = false)
+        private void SpawnPuddle(Vector3 pos, Transform parent, Vector3 directScale, bool includeParticles = false)
         {
             // Instantiate unparented first to establish global size
             GameObject puddle = Instantiate(acidPuddlePrefab, pos, Quaternion.Euler(90, 0, 0));
-            puddle.transform.localScale = new Vector3(sourceScale.x, sourceScale.z, sourceScale.y); // Match block X/Z explicitly
+            puddle.transform.localScale = directScale;
             
             // Put the puddle on the "Ignore Raycast" layer so it never blocks the player's mouse clicks!
             int ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
@@ -192,10 +291,102 @@ namespace RW.MonumentValley
                 child.gameObject.layer = ignoreRaycastLayer;
             }
 
+            // Add the fader script so it dries up when the Special State ends!
+            PuddleFader fader = puddle.AddComponent<PuddleFader>();
+            fader.fadeDuration = 2f;
+
             // Parent it now, keeping the global size exactly as we set it
             if (parent != null) puddle.transform.SetParent(parent, true);
 
             if (includeParticles) SpawnParticles(pos + Vector3.up * 0.1f, puddle.transform);
+        }
+    }
+
+    // Helper script attached to puddles to make them dry up and disappear
+    public class PuddleFader : MonoBehaviour
+    {
+        public float fadeDuration = 2f;
+        private PlayerController player;
+        private bool isFading = false;
+
+        private void Start()
+        {
+#if UNITY_2023_1_OR_NEWER
+            player = FindFirstObjectByType<PlayerController>();
+#else
+            player = FindObjectOfType<PlayerController>();
+#endif
+            if (player != null)
+            {
+                player.onSpecialStateToggled.AddListener(OnSpecialStateChanged);
+                
+                // If spawned while state is ALREADY OFF (edge case), fade immediately
+                if (!player.isInSpecialState) StartCoroutine(FadeOutRoutine());
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (player != null)
+            {
+                player.onSpecialStateToggled.RemoveListener(OnSpecialStateChanged);
+            }
+        }
+
+        private void OnSpecialStateChanged(bool isSpecialStateActive)
+        {
+            if (!isSpecialStateActive && !isFading)
+            {
+                StartCoroutine(FadeOutRoutine());
+            }
+        }
+
+        private IEnumerator FadeOutRoutine()
+        {
+            isFading = true;
+
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            List<Material> mats = new List<Material>();
+            foreach (Renderer r in renderers)
+            {
+                if (r != null) mats.Add(r.material);
+            }
+
+            Vector3 startScale = transform.localScale;
+            float timer = 0f;
+
+            while (timer < fadeDuration)
+            {
+                timer += Time.deltaTime;
+                float p = timer / fadeDuration;
+                
+                // Shrink it down so it looks like it's drying up
+                transform.localScale = Vector3.Lerp(startScale, Vector3.zero, p);
+                
+                // Try to fade the alpha too, just in case the shader supports transparency
+                foreach (Material m in mats)
+                {
+                    if (m != null)
+                    {
+                        if (m.HasProperty("_Color"))
+                        {
+                            Color c = m.color;
+                            c.a = Mathf.Lerp(1f, 0f, p);
+                            m.color = c;
+                        }
+                        else if (m.HasProperty("_BaseColor"))
+                        {
+                            Color c = m.GetColor("_BaseColor");
+                            c.a = Mathf.Lerp(1f, 0f, p);
+                            m.SetColor("_BaseColor", c);
+                        }
+                    }
+                }
+                
+                yield return null;
+            }
+
+            Destroy(gameObject);
         }
     }
 }

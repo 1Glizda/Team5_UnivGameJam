@@ -84,9 +84,13 @@ namespace RW.MonumentValley
                         DestroyImmediate(sphere.GetComponent<Collider>()); // No colliders needed
                         
                         // Add the Collectible script IN THE EDITOR so the user can click it and configure it!
-                        Collectible collectible = sphere.AddComponent<Collectible>();
-                        
-                        // Pre-fill the linked melter
+                        sphere.AddComponent<Collectible>();
+                    }
+
+                    Collectible collectible = sphere.GetComponent<Collectible>();
+                    if (collectible != null)
+                    {
+                        // ALWAYS update the linked melter, even if the sphere already existed!
                         if (data.targetMelters != null && data.targetMelters.Count > 0)
                         {
                             collectible.linkedMelter = data.targetMelters[0];
