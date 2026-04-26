@@ -7937,6 +7937,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6767428621962013196, guid: 6dd9802aa7d754063890458f384c215b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428621962013196, guid: 6dd9802aa7d754063890458f384c215b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428621962013196, guid: 6dd9802aa7d754063890458f384c215b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.308
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2433121920540270167, guid: 6dd9802aa7d754063890458f384c215b, type: 3}
     m_RemovedGameObjects: []
@@ -9475,7 +9490,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 2.6
+    OrthographicSize: -6.31
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -9501,13 +9516,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441660609}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27984518, y: -0.3647056, z: 0.11591566, w: 0.88047725}
-  m_LocalPosition: {x: 15.5, y: 13.1, z: -17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.9096065, y: -0.06762461, z: 0.3758418, w: 0.16366404}
+  m_LocalPosition: {x: -34.14, y: 8.3, z: -6.46}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 35.264, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 159.6, y: -44.9, z: 0}
 --- !u!1 &1457845701
 GameObject:
   m_ObjectHideFlags: 0
@@ -12537,8 +12552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcaee7f69306bd0498c26b56e5549d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInteraction
-  detectionDistance: 0.3
   teleportNode: {fileID: 1917000786}
+  playerController: {fileID: 0}
 --- !u!114 &1879579651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14834,7 +14849,7 @@ PrefabInstance:
     - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: orthographic size
-      value: 2.6
+      value: -6.31
       objectReference: {fileID: 0}
     - target: {fileID: 5206636026417691153, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
@@ -14849,37 +14864,37 @@ PrefabInstance:
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.5
+      value: -34.14
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.1
+      value: 8.3
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17
+      value: -6.46
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.88047725
+      value: 0.16366404
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.27984518
+      value: 0.9096065
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.3647056
+      value: -0.06762461
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.11591566
+      value: 0.3758418
       objectReference: {fileID: 0}
     - target: {fileID: 5749207229577515395, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
