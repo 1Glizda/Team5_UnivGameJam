@@ -6258,6 +6258,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3860493388569108626, guid: 2230feb93c9fe496aa22349a4aad3007,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2105398336}
     - target: {fileID: 4887337895322005163, guid: 2230feb93c9fe496aa22349a4aad3007,
         type: 3}
       propertyPath: cam
