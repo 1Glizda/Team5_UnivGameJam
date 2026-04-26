@@ -45,14 +45,16 @@ public class SoundManager : MonoBehaviour
         PlayMusic(MusicType.BACKGROUNDMUSIC);
     }
 
-    public static void PlaySound(SoundType sound)
+    public static void PlaySound(SoundType sound, float volume = 1f, float pitch = 1f)
     {
         if (Instance == null) return;
 
         if (Instance.soundList.Length > (int)sound)
         {
+            Instance.sfxSource.pitch = pitch;
             Instance.sfxSource.PlayOneShot(
-                Instance.soundList[(int)sound]
+                Instance.soundList[(int)sound],
+                volume
             );
         }
         else

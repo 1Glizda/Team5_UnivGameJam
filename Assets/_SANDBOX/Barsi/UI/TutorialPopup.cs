@@ -6,16 +6,38 @@ public class TutorialPopup : MonoBehaviour
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private float visibleTime = 4f;
 
-    private bool hasShown = false;
+    private float lastTapTime = 0f;
+    private const float doubleTapThreshold = 0.3f;
 
-    private void Start()
+    private void Update()
     {
-        if (tutorialPanel != null)
-            tutorialPanel.SetActive(false);
+        if (tutorialPanel == null || !tutorialPanel.activeSelf) return;
 
-        if (DialogueSystem.Instance != null)
+        bool skipDetected = false;
+
+        // Desktop: Right Click
+        if (Input.GetMouseButtonDown(1))
         {
-            DialogueSystem.Instance.OnDialogueEnded.AddListener(HandleDialogueEnded);
+            skipDetected = true;
+        }
+
+        // Mobile: Double Tap
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (Time.time - lastTapTime < doubleTapThreshold)
+                {
+                    skipDetected = true;
+                }
+                lastTapTime = Time.time;
+            }
+        }
+
+        if (skipDetected)
+        {
+            CloseTutorial();
         }
     }
 
@@ -34,7 +56,12 @@ public class TutorialPopup : MonoBehaviour
     private IEnumerator AutoCloseTutorial()
     {
         yield return new WaitForSeconds(visibleTime);
+        CloseTutorial();
+    }
 
+    private void CloseTutorial()
+    {
+        StopAllCoroutines();
         if (tutorialPanel != null)
             tutorialPanel.SetActive(false);
     }

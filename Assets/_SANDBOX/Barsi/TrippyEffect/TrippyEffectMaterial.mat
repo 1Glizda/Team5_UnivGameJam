@@ -38,12 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlurStrength: 1.6451598
+    - _BlurStrength: 0
     - _Radius: 0.2
     - _Softness: 2
-    - _isOn: 1
+    - _isOn: 0
     m_Colors:
     - _Offset: {r: 1.1, g: 1, b: 0, a: 0}
-    - _PlayerPos: {r: 6.442, g: 5.8367496, b: 9.662154, a: 0}
+    - _PlayerPos: {r: 5.1798425, g: 4.3716373, b: -0.03465271, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

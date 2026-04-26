@@ -1482,10 +1482,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1307625023}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 550547188}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 644a9ebbe669143a2b77922b7cf9812a,
         type: 3}
@@ -2126,7 +2122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2950dd66b923348f583738ec6067aa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.NodeConnectionToggler
-  nodeA: {fileID: 1307625022}
+  nodeA: {fileID: 550547189}
   nodeB: {fileID: 1917000786}
   startConnected: 0
 --- !u!114 &130800909
@@ -3743,7 +3739,7 @@ Transform:
   m_GameObject: {fileID: 475141674}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: 0.03150001, y: -0.10424885, z: 0.006230303}
+  m_LocalPosition: {x: 0.0412, y: -0.10424885, z: 0.006230303}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6281,7 +6277,7 @@ PrefabInstance:
     - target: {fileID: 4914362807450694324, guid: 2230feb93c9fe496aa22349a4aad3007,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -102.48416
+      value: -66.4
       objectReference: {fileID: 0}
     - target: {fileID: 4914362807450694324, guid: 2230feb93c9fe496aa22349a4aad3007,
         type: 3}
@@ -6291,7 +6287,7 @@ PrefabInstance:
     - target: {fileID: 4914362807450694324, guid: 2230feb93c9fe496aa22349a4aad3007,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -70.41783
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 4914362807450694324, guid: 2230feb93c9fe496aa22349a4aad3007,
         type: 3}
@@ -6332,6 +6328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266541310078211871, guid: 2230feb93c9fe496aa22349a4aad3007,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7402,7 +7403,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60
+    FieldOfView: 7.16
     OrthographicSize: 2.1
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -7429,13 +7430,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164329653}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22319376, y: -0.37134838, z: 0.09244988, w: 0.8965143}
-  m_LocalPosition: {x: 21.4, y: 18.3, z: -17}
+  m_LocalRotation: {x: 0.2064508, y: -0.46526974, z: 0.112560615, w: 0.8533653}
+  m_LocalPosition: {x: 31.4, y: 21.5, z: -17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 27.96, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.2, y: -57.2, z: 0}
 --- !u!1 &1171413027
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,7 +7599,7 @@ Transform:
   m_GameObject: {fileID: 1237659929}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: 0.040300023, y: -0.10424885, z: 0.006230303}
+  m_LocalPosition: {x: 0.03158, y: -0.10424885, z: 0.006230303}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7793,65 +7794,6 @@ MonoBehaviour:
   requireRotationMatch: 0
   targetRotation: {x: -90, y: 0, z: 0}
   rotationEpsilon: 1
---- !u!1 &1307625021
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1307625023}
-  - component: {fileID: 1307625022}
-  m_Layer: 0
-  m_Name: Node (35)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1307625022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307625021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e382c44da12f4d2a83df3044cc89bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Node
-  gizmoRadius: 0.1
-  defaultGizmoColor: {r: 0, g: 0, b: 0, a: 1}
-  selectedGizmoColor: {r: 0, g: 0, b: 1, a: 1}
-  inactiveGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  edges: []
-  excludedNodes: []
-  gameEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  hasStrictNeighbours: 0
-  strictNeighbours: []
-  requireSpecialState: 0
-  requireRotationMatch: 0
-  targetRotation: {x: -90, y: 0, z: 0}
-  rotationEpsilon: 1
---- !u!4 &1307625023
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307625021}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: 0.0031200002, y: -0.0168, z: 0.02689}
-  m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 342027578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1311104999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8290,7 +8232,7 @@ Transform:
   m_GameObject: {fileID: 1343706561}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9561,7 +9503,7 @@ PrefabInstance:
     - target: {fileID: 29916635749068816, guid: b2b6f15a31d9c43c9a927fe52aabd43c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 29916635749068816, guid: b2b6f15a31d9c43c9a927fe52aabd43c,
         type: 3}
@@ -10257,7 +10199,7 @@ MonoBehaviour:
   hasStrictNeighbours: 1
   strictNeighbours:
   - {fileID: 1979313971}
-  - {fileID: 475141676}
+  - {fileID: 1237659931}
   requireSpecialState: 0
   requireRotationMatch: 0
   targetRotation: {x: -90, y: 0, z: 0}
@@ -10466,6 +10408,42 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 130800908}
+        m_TargetAssemblyTypeName: RW.MonumentValley.NodeConnectionToggler, Assembly-CSharp
+        m_MethodName: Disconnect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 438079001}
+        m_TargetAssemblyTypeName: RW.MonumentValley.NodeConnectionToggler, Assembly-CSharp
+        m_MethodName: Disconnect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1667143324}
+        m_TargetAssemblyTypeName: RW.MonumentValley.NodeConnectionToggler, Assembly-CSharp
+        m_MethodName: Disconnect
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11120,17 +11098,17 @@ PrefabInstance:
     - target: {fileID: 2423906599848667259, guid: 1a4ea91619c2c48b99dc4648f2819953,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 17.22
       objectReference: {fileID: 0}
     - target: {fileID: 2423906599848667259, guid: 1a4ea91619c2c48b99dc4648f2819953,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -9.08
       objectReference: {fileID: 0}
     - target: {fileID: 2423906599848667259, guid: 1a4ea91619c2c48b99dc4648f2819953,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.14
       objectReference: {fileID: 0}
     - target: {fileID: 2423906599848667259, guid: 1a4ea91619c2c48b99dc4648f2819953,
         type: 3}
@@ -11566,8 +11544,10 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
-  strictNeighbours: []
+  hasStrictNeighbours: 1
+  strictNeighbours:
+  - {fileID: 550547189}
+  - {fileID: 1513556135}
   requireSpecialState: 0
   requireRotationMatch: 0
   targetRotation: {x: -90, y: 0, z: 0}
@@ -13370,7 +13350,34 @@ MonoBehaviour:
   ui: {fileID: 150943480}
   OnDialogueEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1164329653}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1164329653}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &2105398337
 Transform:
   m_ObjectHideFlags: 0
@@ -13693,7 +13700,7 @@ PrefabInstance:
     - target: {fileID: 2823547015302497773, guid: d6088317baf1849ab9d8ddb5e9edea5d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 11.51
       objectReference: {fileID: 0}
     - target: {fileID: 2823547015302497773, guid: d6088317baf1849ab9d8ddb5e9edea5d,
         type: 3}

@@ -61,6 +61,10 @@ namespace RW.MonumentValley
         private Graph graph;
         private Node currentNode;
         private Node nextNode;
+        
+        // mobile input
+        private float lastTapTime = 0f;
+        private const float doubleTapThreshold = 0.3f;
 
         // flags
         private bool isMoving;
@@ -88,6 +92,20 @@ namespace RW.MonumentValley
 
         private void Update()
         {
+            // Mobile Double Tap detection
+            if (specialStateUnlocked && Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    if (Time.time - lastTapTime < doubleTapThreshold)
+                    {
+                        if (!isInSpecialState) ActivateSpecialState();
+                    }
+                    lastTapTime = Time.time;
+                }
+            }
+
             if (specialStateUnlocked && Input.GetMouseButtonDown(1))
             {
                 // Toggle ON only. Manual deactivation is disabled as requested.
@@ -121,6 +139,13 @@ namespace RW.MonumentValley
 
             if (currentNode != null)
             {
+                // Immediate Melt check
+                SpecialMeltableNode meltable = currentNode.GetComponent<SpecialMeltableNode>();
+                if (meltable != null && meltable.linkedMelter != null)
+                {
+                    meltable.linkedMelter.TriggerMelt();
+                }
+
                 NodeSpecialStateEffects fx = currentNode.GetComponent<NodeSpecialStateEffects>();
                 if (fx != null) fx.TurnOn();
 
@@ -255,6 +280,7 @@ namespace RW.MonumentValley
             {
                 StopAllCoroutines();
                 isMoving = false;
+                UpdateAnimation(); // Force return to Idle immediately
                 EnableControls(true); // Safety reset
             }
 
@@ -417,7 +443,9 @@ namespace RW.MonumentValley
                 // Play step sound only when grounded (not jumping)
                 if (!isJumping && distanceSinceLastStep >= stepDistance)
                 {
-                    SoundManager.PlaySound(SoundType.STEPS);
+                    float randomVolume = Random.Range(0.3f, 0.5f);
+                    float randomPitch = Random.Range(0.8f, 1.2f);
+                    SoundManager.PlaySound(SoundType.STEPS, randomVolume, randomPitch);
                     distanceSinceLastStep = 0f;
                 }
 

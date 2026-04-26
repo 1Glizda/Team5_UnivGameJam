@@ -9,6 +9,7 @@ public class DialogueSystem : MonoBehaviour
     private DialogueComponent activeDialogue;
 
     public UnityEvent OnDialogueEnded;
+    public UnityEvent OnDialogueStarted;
 
     private void Awake()
     {
@@ -61,6 +62,8 @@ public class DialogueSystem : MonoBehaviour
 
         ui.ShowDialogueUI(true);
         DisplayCurrentLine();
+
+        OnDialogueStarted?.Invoke();
     }
 
     void NextLine()
