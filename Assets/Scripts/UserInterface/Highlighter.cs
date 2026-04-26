@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,13 +34,18 @@ using UnityEngine.EventSystems;
 namespace RW.MonumentValley
 {
     [RequireComponent(typeof(Collider))]
-    public class Highlighter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class Highlighter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         // reference to MeshRenderer component
         [SerializeField] private MeshRenderer[] meshRenderers;
 
         // Property Reference from Shader Graph
         [SerializeField] private string highlightProperty = "_IsHighlighted";
+        [SerializeField] private string colorProperty = "_HighlightColor";
+        [SerializeField] private Color highlightColor = Color.red;
+        [SerializeField] private Color normalColor = Color.white;
+
+
 
         private bool isEnabled;
         public bool IsEnabled { get { return isEnabled; } set { isEnabled = value; } }
@@ -61,6 +66,9 @@ namespace RW.MonumentValley
                 if (meshRenderer != null)
                 {
                     meshRenderer.material.SetFloat(highlightProperty, onOff ? 1f : 0f);
+                    
+                    // Set color based on state
+                    meshRenderer.material.SetColor(colorProperty, onOff ? highlightColor : normalColor);
                 }   
             }
         }
@@ -69,6 +77,10 @@ namespace RW.MonumentValley
         public void EnableHighlight(bool state)
         {
             isEnabled = state;
+            if (!isEnabled)
+            {
+                ToggleHighlight(false);
+            }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -78,6 +90,12 @@ namespace RW.MonumentValley
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            ToggleHighlight(false);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            // Turn off highlight immediately when clicked
             ToggleHighlight(false);
         }
     }

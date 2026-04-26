@@ -37,6 +37,16 @@ namespace RW.MonumentValley
             if (clickable != null) clickable.clickAction -= OnValveClicked;
         }
 
+        private void Update()
+        {
+            // Disable highlighting while the valve is spinning
+            if (highlighter != null)
+            {
+                highlighter.EnableHighlight(!isAnimating);
+            }
+        }
+
+
         private void OnValveClicked(Clickable c, Vector3 pos)
         {
             if (isAnimating) return;

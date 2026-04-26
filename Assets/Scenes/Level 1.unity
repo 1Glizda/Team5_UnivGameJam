@@ -191,6 +191,9 @@ MonoBehaviour:
   - {fileID: 1342473769}
   - {fileID: 1474686211}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &48145288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +281,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &69923867
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +340,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &71929717
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +399,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &77228011
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +460,9 @@ MonoBehaviour:
   - {fileID: 1643646495}
   - {fileID: 1805870318}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &84286225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -577,6 +592,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &87740466
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +734,7 @@ Transform:
   m_GameObject: {fileID: 95251201}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: -0.0127, y: 0.0255, z: 0.0454}
+  m_LocalPosition: {x: -0.01035, y: 0.0255, z: 0.0454}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -746,6 +764,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &99583525
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +937,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &102635354
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +996,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &111918734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1618,6 +1645,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &113724376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,6 +1750,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &119817861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1824,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &120816585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,6 +1996,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &130800903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,6 +2218,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &150708850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 314e64351ce074b5e8577c3ce7f2c5f8,
@@ -2255,6 +2297,9 @@ MonoBehaviour:
   - {fileID: 1006682763}
   - {fileID: 102635356}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &171186447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2371,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &172445495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2431,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &172445498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,6 +2517,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &185358425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,6 +2736,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &256728528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +2893,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &258379132
 Transform:
   m_ObjectHideFlags: 0
@@ -2907,6 +2967,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &284941016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5206636026417691153, guid: 55a3b948cfba94674adb799ae73236da,
@@ -3062,6 +3125,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &364090597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,6 +3199,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &367276796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3294,6 +3363,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &395937293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,6 +3410,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &395937295
 Transform:
   m_ObjectHideFlags: 0
@@ -3442,6 +3517,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &438079001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3526,6 +3604,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &463536741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,6 +3714,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &475141674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,6 +3822,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &517551688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3751,6 +3838,11 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 976108475}
+    - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: specialStateDuration
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 793286839903361057, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
       propertyPath: dialogueController
@@ -3811,7 +3903,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2554345143480779615, guid: cca622578e4cb2741b8ca72800309847, type: 3}
+    - {fileID: 1906700320931966363, guid: cca622578e4cb2741b8ca72800309847, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4112,6 +4206,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &559271849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,6 +4265,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &561825063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4318,6 +4418,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &582565165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,6 +4477,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &614952426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,6 +4565,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &621382058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4561,6 +4670,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &657441392
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,6 +4793,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 1432240061}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &657441395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4768,6 +4883,9 @@ MonoBehaviour:
   - {fileID: 1171413029}
   - {fileID: 1202763830}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &708340295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4849,6 +4967,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &752667249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4905,6 +5026,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &762131650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5036,6 +5160,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &793048698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,7 +5189,7 @@ Transform:
   m_GameObject: {fileID: 793048698}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: -0.02274, y: 0.01686, z: 0.0454}
+  m_LocalPosition: {x: -0.02156, y: 0.01686, z: 0.0454}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5092,6 +5219,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &796929028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,6 +5376,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &804043449
 Transform:
   m_ObjectHideFlags: 0
@@ -5332,6 +5465,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &830333295
 GameObject:
   m_ObjectHideFlags: 0
@@ -5388,6 +5524,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &840964197
 GameObject:
   m_ObjectHideFlags: 0
@@ -5429,6 +5568,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &840964199
 Transform:
   m_ObjectHideFlags: 0
@@ -5506,6 +5648,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &878191089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5710,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &878191092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5719,6 +5867,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &885779969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5889,6 +6040,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &913011906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5960,6 +6114,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &920995836
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,6 +6188,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &930918075
 GameObject:
   m_ObjectHideFlags: 0
@@ -6087,6 +6247,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &933471480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6241,6 +6404,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &950260184
 GameObject:
   m_ObjectHideFlags: 0
@@ -6312,6 +6478,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &976108475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2423906599848667261, guid: 1a4ea91619c2c48b99dc4648f2819953,
@@ -6522,6 +6691,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1006682761
 GameObject:
   m_ObjectHideFlags: 0
@@ -6580,6 +6752,9 @@ MonoBehaviour:
   - {fileID: 161197168}
   - {fileID: 1202763830}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1012823132
 GameObject:
   m_ObjectHideFlags: 0
@@ -6639,6 +6814,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1019691152
 GameObject:
   m_ObjectHideFlags: 0
@@ -6698,6 +6876,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1019691155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7309,6 +7490,9 @@ MonoBehaviour:
   - {fileID: 708340294}
   - {fileID: 1690316718}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1171413030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7380,6 +7564,9 @@ MonoBehaviour:
   - {fileID: 708340294}
   - {fileID: 1006682763}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1237659929
 GameObject:
   m_ObjectHideFlags: 0
@@ -7436,6 +7623,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1242865019
 GameObject:
   m_ObjectHideFlags: 0
@@ -7505,6 +7695,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1242865022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7592,6 +7785,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1307625021
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,6 +7829,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1307625023
 Transform:
   m_ObjectHideFlags: 0
@@ -7969,6 +8168,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1328663916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8038,6 +8240,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1343706561
 GameObject:
   m_ObjectHideFlags: 0
@@ -8211,6 +8416,7 @@ GameObject:
   - component: {fileID: 1425056321}
   - component: {fileID: 1425056322}
   - component: {fileID: 1425056323}
+  - component: {fileID: 1425056324}
   m_Layer: 0
   m_Name: Teleport Node 2
   m_TagString: Untagged
@@ -8290,9 +8496,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  hasStrictNeighbours: 0
-  strictNeighbours: []
+  hasStrictNeighbours: 1
+  strictNeighbours:
+  - {fileID: 2144829972}
+  - {fileID: 1507338220}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1425056322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8324,6 +8535,18 @@ MonoBehaviour:
   nodeA: {fileID: 1425056321}
   nodeB: {fileID: 1507338220}
   startConnected: 1
+--- !u!114 &1425056324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425056317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e326b41d6309b44bf80af310030dc21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.PancakeEffect
 --- !u!1 &1432240059
 GameObject:
   m_ObjectHideFlags: 0
@@ -8392,6 +8615,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1437350154
 GameObject:
   m_ObjectHideFlags: 0
@@ -8448,6 +8674,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1441660609
 GameObject:
   m_ObjectHideFlags: 0
@@ -8594,6 +8823,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1474686209
 GameObject:
   m_ObjectHideFlags: 0
@@ -8650,6 +8882,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1480016735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8721,6 +8956,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1492868475
 GameObject:
   m_ObjectHideFlags: 0
@@ -8762,6 +9000,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1492868477
 Transform:
   m_ObjectHideFlags: 0
@@ -8834,6 +9075,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1507338221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8903,6 +9147,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1510912688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9085,6 +9332,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1513556136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9169,6 +9419,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1596878526
 GameObject:
   m_ObjectHideFlags: 0
@@ -9225,6 +9478,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1599793780
 GameObject:
   m_ObjectHideFlags: 0
@@ -9281,6 +9537,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &1616540655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9433,6 +9692,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1637217656
 GameObject:
   m_ObjectHideFlags: 0
@@ -9517,6 +9779,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1637217660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9591,6 +9856,9 @@ MonoBehaviour:
   - {fileID: 1923759418}
   - {fileID: 77228013}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1667143318
 GameObject:
   m_ObjectHideFlags: 0
@@ -9700,6 +9968,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1667143321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9849,6 +10120,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1690316716
 GameObject:
   m_ObjectHideFlags: 0
@@ -9906,6 +10180,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1690316719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9977,6 +10254,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1705304469
 GameObject:
   m_ObjectHideFlags: 0
@@ -10033,6 +10313,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1706223759
 GameObject:
   m_ObjectHideFlags: 0
@@ -10089,6 +10372,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1733228031
 GameObject:
   m_ObjectHideFlags: 0
@@ -10186,6 +10472,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1734235148
 GameObject:
   m_ObjectHideFlags: 0
@@ -10245,6 +10534,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1737979486
 GameObject:
   m_ObjectHideFlags: 0
@@ -10653,6 +10945,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1783520726
 Transform:
   m_ObjectHideFlags: 0
@@ -10725,6 +11020,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1791472635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10793,6 +11091,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &1826817581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11019,6 +11320,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1852437526
 Transform:
   m_ObjectHideFlags: 0
@@ -11105,6 +11409,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1879579649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
@@ -11213,6 +11520,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1917000785
 GameObject:
   m_ObjectHideFlags: 0
@@ -11254,6 +11564,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1917000787
 Transform:
   m_ObjectHideFlags: 0
@@ -11340,6 +11653,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1923759416
 GameObject:
   m_ObjectHideFlags: 0
@@ -11396,6 +11712,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1937540292
 GameObject:
   m_ObjectHideFlags: 0
@@ -11455,6 +11774,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1937540295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11523,6 +11845,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1946504516
 GameObject:
   m_ObjectHideFlags: 0
@@ -11579,6 +11904,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &1970102299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11706,7 +12034,7 @@ Transform:
   m_GameObject: {fileID: 1978929426}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7069834, z: -0.7072302, w: 0}
-  m_LocalPosition: {x: -0.02274, y: 0.02539, z: 0.0454}
+  m_LocalPosition: {x: -0.02156, y: 0.02539, z: 0.0454}
   m_LocalScale: {x: 0.006666664, y: 0.0066666654, z: 0.0066666654}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11748,6 +12076,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1979313969
 GameObject:
   m_ObjectHideFlags: 0
@@ -11806,6 +12137,9 @@ MonoBehaviour:
   - {fileID: 1700794768}
   - {fileID: 1733228034}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1981769618
 GameObject:
   m_ObjectHideFlags: 0
@@ -11877,6 +12211,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1991286850
 GameObject:
   m_ObjectHideFlags: 0
@@ -12153,6 +12490,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2004432839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12212,6 +12552,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &2004432842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12295,6 +12638,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2007829014
 GameObject:
   m_ObjectHideFlags: 0
@@ -12426,6 +12772,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2022916085
 GameObject:
   m_ObjectHideFlags: 0
@@ -12497,6 +12846,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2032756203
 GameObject:
   m_ObjectHideFlags: 0
@@ -12568,6 +12920,9 @@ MonoBehaviour:
   - {fileID: 1979313971}
   - {fileID: 475141676}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2055198065
 GameObject:
   m_ObjectHideFlags: 0
@@ -12624,6 +12979,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2074155616
 GameObject:
   m_ObjectHideFlags: 0
@@ -12684,6 +13042,9 @@ MonoBehaviour:
   - {fileID: 119716592}
   - {fileID: 1734235150}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2082320414
 GameObject:
   m_ObjectHideFlags: 0
@@ -12856,6 +13217,9 @@ MonoBehaviour:
   - {fileID: 124834601}
   - {fileID: 119716592}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2087244422
 GameObject:
   m_ObjectHideFlags: 0
@@ -13073,6 +13437,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2142546901
 GameObject:
   m_ObjectHideFlags: 0
@@ -13129,6 +13496,9 @@ MonoBehaviour:
   hasStrictNeighbours: 0
   strictNeighbours: []
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2144829969
 GameObject:
   m_ObjectHideFlags: 0
@@ -13183,9 +13553,13 @@ MonoBehaviour:
   gameEvent:
     m_PersistentCalls:
       m_Calls: []
-  hasStrictNeighbours: 0
-  strictNeighbours: []
-  requireSpecialState: 0
+  hasStrictNeighbours: 1
+  strictNeighbours:
+  - {fileID: 1425056321}
+  requireSpecialState: 1
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &2144829973
 MonoBehaviour:
   m_ObjectHideFlags: 0

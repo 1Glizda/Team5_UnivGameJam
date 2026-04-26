@@ -63,6 +63,12 @@ namespace RW.MonumentValley
 
         [Header("Accessibility")]
         public bool requireSpecialState = false;
+        
+        [Header("Rotation Alignment")]
+        public bool requireRotationMatch = false;
+        public Vector3 targetRotation = new Vector3(-90f, 0f, 0f);
+        public float rotationEpsilon = 1.0f;
+
 
 
         // properties
@@ -127,7 +133,30 @@ namespace RW.MonumentValley
         // Checks if this Node is physically covered by another block on top of it
         public bool IsCovered()
         {
+            // NEW: Rotation Match Check
+            // If the node requires its parent block to be at a specific angle, 
+            // and it isn't, we treat it as "Covered" (meaning inaccessible).
+            if (requireRotationMatch)
+            {
+                RotatableBlock block = GetComponentInParent<RotatableBlock>();
+                if (block != null)
+                {
+                    Vector3 currentEuler = block.transform.localEulerAngles;
+                    
+                    // Normalize angles to 0-360 for comparison
+                    float xDist = Mathf.Abs(Mathf.DeltaAngle(currentEuler.x, targetRotation.x));
+                    float yDist = Mathf.Abs(Mathf.DeltaAngle(currentEuler.y, targetRotation.y));
+                    float zDist = Mathf.Abs(Mathf.DeltaAngle(currentEuler.z, targetRotation.z));
+
+                    if (xDist > rotationEpsilon || yDist > rotationEpsilon || zDist > rotationEpsilon)
+                    {
+                        return true; // Inaccessible!
+                    }
+                }
+            }
+
             int levelLayerIndex = LayerMask.NameToLayer("Level");
+
 
             // We check a sphere slightly above the surface (y + 0.5f) to detect both full-height blocks AND custom FBX boxes!
             Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 0.5f, 0.4f);

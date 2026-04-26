@@ -163,6 +163,9 @@ MonoBehaviour:
   - {fileID: 1676578425}
   - {fileID: 32533438}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &16731277
 Transform:
   m_ObjectHideFlags: 0
@@ -221,6 +224,9 @@ MonoBehaviour:
   - {fileID: 16731276}
   - {fileID: 1754868417}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &32533439
 Transform:
   m_ObjectHideFlags: 0
@@ -584,6 +590,9 @@ MonoBehaviour:
   - {fileID: 573013861}
   - {fileID: 1937647030}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &186695134
 Transform:
   m_ObjectHideFlags: 0
@@ -733,6 +742,9 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 1106753335}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &282808329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b58f7c727d8f4380991819c065bf4c2,
@@ -877,6 +889,9 @@ MonoBehaviour:
   - {fileID: 1886625474}
   - {fileID: 2122364186}
   requireSpecialState: 1
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &327523225
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +935,9 @@ MonoBehaviour:
   - {fileID: 1968047499}
   - {fileID: 506413171}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &327523227
 Transform:
   m_ObjectHideFlags: 0
@@ -993,6 +1011,9 @@ MonoBehaviour:
   - {fileID: 672757768}
   - {fileID: 569787343}
   requireSpecialState: 0
+  requireRotationMatch: 1
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &368348419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1073,9 @@ MonoBehaviour:
   - {fileID: 828934030}
   - {fileID: 680528199}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &368348422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,7 +1188,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b58f7c727d8f4380991819c065bf4c2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 971208709}
+      addedObject: {fileID: 971208715}
   m_SourcePrefab: {fileID: 100100000, guid: 5b58f7c727d8f4380991819c065bf4c2, type: 3}
 --- !u!1 &389702205
 GameObject:
@@ -1224,6 +1248,9 @@ MonoBehaviour:
   - {fileID: 1208963195}
   - {fileID: 1654381831}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &399199270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1294,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &399199272
 Transform:
   m_ObjectHideFlags: 0
@@ -1384,6 +1414,9 @@ MonoBehaviour:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &437369522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1460,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &437369524
 Transform:
   m_ObjectHideFlags: 0
@@ -1485,6 +1521,9 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 573013861}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &437873207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,6 +1609,9 @@ MonoBehaviour:
   - {fileID: 672757768}
   - {fileID: 1208963195}
   requireSpecialState: 0
+  requireRotationMatch: 1
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &506413170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,6 +1655,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &506413172
 Transform:
   m_ObjectHideFlags: 0
@@ -1886,6 +1931,9 @@ MonoBehaviour:
   - {fileID: 1937647030}
   - {fileID: 331892055}
   requireSpecialState: 0
+  requireRotationMatch: 1
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &573013860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,6 +1978,9 @@ MonoBehaviour:
   - {fileID: 186695133}
   - {fileID: 573013861}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &573013862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,6 +2292,9 @@ MonoBehaviour:
   - {fileID: 331892055}
   - {fileID: 475644033}
   requireSpecialState: 0
+  requireRotationMatch: 1
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &680528196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2366,9 @@ MonoBehaviour:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &694087775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,6 +2460,9 @@ MonoBehaviour:
   - {fileID: 759431797}
   - {fileID: 986629660}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &758389224
 Transform:
   m_ObjectHideFlags: 0
@@ -2461,6 +2521,9 @@ MonoBehaviour:
   - {fileID: 1815787309}
   - {fileID: 758389223}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &759431798
 Transform:
   m_ObjectHideFlags: 0
@@ -2566,6 +2629,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &787548711
 Transform:
   m_ObjectHideFlags: 0
@@ -2645,6 +2711,9 @@ MonoBehaviour:
   - {fileID: 2076455666}
   - {fileID: 368348421}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &884601876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30944506ccb9a47f7825c442f1d0ddfe,
@@ -2821,6 +2890,9 @@ MonoBehaviour:
   - {fileID: 1968047499}
   - {fileID: 506413171}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &942267771
 Transform:
   m_ObjectHideFlags: 0
@@ -2876,26 +2948,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2484522657982389355, guid: 5b58f7c727d8f4380991819c065bf4c2, type: 3}
---- !u!114 &971208709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 770104009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b774c8626cc354cbc9f103c930cac003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.ValveController
-  targetBlocks:
-  - {fileID: 1015525690}
-  - {fileID: 1197857963}
-  rotationAxis: {x: 0, y: 1, z: 0}
-  valveLocalAxis: {x: 0, y: 0, z: 1}
-  mainTurnDuration: 1
-  anticipationAngle: 20
-  anticipationDuration: 0.2
 --- !u!114 &971208710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2950,6 +3002,30 @@ MonoBehaviour:
   mainTurnDuration: 1
   anticipationAngle: 20
   anticipationDuration: 0.2
+--- !u!23 &971208713 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5b58f7c727d8f4380991819c065bf4c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 368514737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &971208715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770104009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba1b4ffe640f422b8829f5cc1d067f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Highlighter
+  meshRenderers:
+  - {fileID: 971208713}
+  highlightProperty: _IsHighlighted
+  colorProperty: _BaseColor
+  highlightColor: {r: 1, g: 0, b: 0, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &976108475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2423906599848667261, guid: 1a4ea91619c2c48b99dc4648f2819953,
@@ -3005,6 +3081,9 @@ MonoBehaviour:
   - {fileID: 758389223}
   - {fileID: 1044944126}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &986629661
 Transform:
   m_ObjectHideFlags: 0
@@ -3146,6 +3225,9 @@ MonoBehaviour:
   - {fileID: 986629660}
   - {fileID: 1076842882}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1044944127
 Transform:
   m_ObjectHideFlags: 0
@@ -3204,6 +3286,9 @@ MonoBehaviour:
   - {fileID: 1044944126}
   - {fileID: 1115711472}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1076842883
 Transform:
   m_ObjectHideFlags: 0
@@ -3323,6 +3408,9 @@ MonoBehaviour:
   - {fileID: 1384938735}
   - {fileID: 281324183}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1115711471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,6 +3454,9 @@ MonoBehaviour:
   - {fileID: 1076842882}
   - {fileID: 1676578425}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1115711473
 Transform:
   m_ObjectHideFlags: 0
@@ -3597,6 +3688,9 @@ MonoBehaviour:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
   requireSpecialState: 0
+  requireRotationMatch: 1
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1212024578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,6 +3735,9 @@ MonoBehaviour:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1212024580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3940,6 +4037,9 @@ MonoBehaviour:
   - {fileID: 1710766084}
   - {fileID: 1384938735}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1356705936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4010,6 +4110,9 @@ MonoBehaviour:
   - {fileID: 1356705935}
   - {fileID: 1106753335}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1404489445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,6 +4171,9 @@ MonoBehaviour:
   - {fileID: 2076455666}
   - {fileID: 1654381831}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &1440720180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4168,7 +4274,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b58f7c727d8f4380991819c065bf4c2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1873795668}
+      addedObject: {fileID: 1873795674}
   m_SourcePrefab: {fileID: 100100000, guid: 5b58f7c727d8f4380991819c065bf4c2, type: 3}
 --- !u!1 &1441660609
 GameObject:
@@ -4288,6 +4394,9 @@ MonoBehaviour:
   - {fileID: 437369523}
   - {fileID: 1815787309}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1445150837
 Transform:
   m_ObjectHideFlags: 0
@@ -4439,6 +4548,9 @@ MonoBehaviour:
   - {fileID: 1968047499}
   - {fileID: 787548710}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1646131027
 Transform:
   m_ObjectHideFlags: 0
@@ -4512,6 +4624,9 @@ MonoBehaviour:
   - {fileID: 1404489447}
   - {fileID: 389702207}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1676578424
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,6 +4670,9 @@ MonoBehaviour:
   - {fileID: 1115711472}
   - {fileID: 16731276}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1676578426
 Transform:
   m_ObjectHideFlags: 0
@@ -4641,6 +4759,9 @@ MonoBehaviour:
   - {fileID: 1754868417}
   - {fileID: 1886625474}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1754868416
 GameObject:
   m_ObjectHideFlags: 0
@@ -4684,6 +4805,9 @@ MonoBehaviour:
   - {fileID: 32533438}
   - {fileID: 1212024579}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1754868418
 Transform:
   m_ObjectHideFlags: 0
@@ -4742,6 +4866,9 @@ MonoBehaviour:
   - {fileID: 759431797}
   - {fileID: 1445150836}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1815787310
 Transform:
   m_ObjectHideFlags: 0
@@ -4906,26 +5033,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2484522657982389355, guid: 5b58f7c727d8f4380991819c065bf4c2, type: 3}
---- !u!114 &1873795668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873795663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b774c8626cc354cbc9f103c930cac003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.ValveController
-  targetBlocks:
-  - {fileID: 1015525690}
-  - {fileID: 1197857963}
-  rotationAxis: {x: 1, y: 0, z: 0}
-  valveLocalAxis: {x: 0, y: 0, z: 1}
-  mainTurnDuration: 1
-  anticipationAngle: 20
-  anticipationDuration: 0.2
 --- !u!114 &1873795669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4980,6 +5087,30 @@ MonoBehaviour:
   mainTurnDuration: 1
   anticipationAngle: 20
   anticipationDuration: 0.2
+--- !u!23 &1873795672 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5b58f7c727d8f4380991819c065bf4c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1440720180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1873795674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873795663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba1b4ffe640f422b8829f5cc1d067f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.Highlighter
+  meshRenderers:
+  - {fileID: 1873795672}
+  highlightProperty: _IsHighlighted
+  colorProperty: _BaseColor
+  highlightColor: {r: 1, g: 0, b: 0, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1886625473
 GameObject:
   m_ObjectHideFlags: 0
@@ -5024,6 +5155,9 @@ MonoBehaviour:
   - {fileID: 1212024579}
   - {fileID: 302474549}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!114 &1886625475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5109,6 +5243,9 @@ MonoBehaviour:
   - {fileID: 186695133}
   - {fileID: 569787343}
   requireSpecialState: 0
+  requireRotationMatch: 1
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &1968047498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,6 +5291,9 @@ MonoBehaviour:
   - {fileID: 942267770}
   - {fileID: 1646131026}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!4 &1968047500
 Transform:
   m_ObjectHideFlags: 0
@@ -5627,6 +5767,9 @@ MonoBehaviour:
   - {fileID: 1404489447}
   - {fileID: 828934030}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1 &2122364182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,6 +5858,9 @@ MonoBehaviour:
   - {fileID: 1676578425}
   - {fileID: 0}
   requireSpecialState: 0
+  requireRotationMatch: 0
+  targetRotation: {x: -90, y: 0, z: 0}
+  rotationEpsilon: 1
 --- !u!1001 &2139177946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5878,10 +6024,45 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 976108475}
+    - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: specialStateDuration
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: specialStateUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207962683869950116, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: pancakeScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207962683869950116, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: pancakeScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.635
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
@@ -5891,7 +6072,7 @@ PrefabInstance:
     - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.385
+      value: 5.15
       objectReference: {fileID: 0}
     - target: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
@@ -5933,7 +6114,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2554345143480779615, guid: cca622578e4cb2741b8ca72800309847, type: 3}
+    - {fileID: 1906700320931966363, guid: cca622578e4cb2741b8ca72800309847, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
