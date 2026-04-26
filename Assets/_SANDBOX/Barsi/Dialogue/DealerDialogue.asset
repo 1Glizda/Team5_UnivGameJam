@@ -15,9 +15,11 @@ MonoBehaviour:
   characterName: Dealeru
   characterPortrait: {fileID: 21300000, guid: d4d628813a43c30488249603005e036e, type: 3}
   dialogueLines:
-  - Ceau frate
-  - Vrei boaba?
-  autoProgressLines: 0101
-  endDialogueLines: 0001
+  - "Step closer, friend, this isn\u2019t just any herb, it\u2019s the finest nip
+    this side of the alley."
+  - "One sniff, and you\u2019ll be chasing stars."
+  - Intersted?
+  autoProgressLines: 010101
+  endDialogueLines: 000001
   autoProgressDelay: 1.5
   typingSpeed: 0.05

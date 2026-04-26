@@ -67,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.PlayerController
   moveTime: 0.4
   cursor: {fileID: 0}
+  stepDistance: 0.6
   specialStateUnlocked: 0
   isInSpecialState: 0
   specialStateDuration: 6
@@ -76,7 +77,7 @@ MonoBehaviour:
       m_Calls: []
   normalSkybox: {fileID: 2100000, guid: 834dac60a294d4f298a82a53574a92ed, type: 2}
   trippySkybox: {fileID: 2100000, guid: ea9a5bc00ebaac54f8597c1b0071a4c8, type: 2}
-  skyboxBlendMaterial: {fileID: 0}
+  skyboxBlendMaterial: {fileID: 2100000, guid: 74b2c270a5f614d7f9ba1dc5acde001a, type: 2}
 --- !u!114 &793286839903361057
 MonoBehaviour:
   m_ObjectHideFlags: 0
