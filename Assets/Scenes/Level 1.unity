@@ -8422,7 +8422,7 @@ MonoBehaviour:
   strictNeighbours:
   - {fileID: 2144829972}
   - {fileID: 1507338220}
-  requireSpecialState: 0
+  requireSpecialState: 1
   requireRotationMatch: 0
   targetRotation: {x: -90, y: 0, z: 0}
   rotationEpsilon: 1
@@ -13466,6 +13466,7 @@ GameObject:
   - component: {fileID: 2144829970}
   - component: {fileID: 2144829972}
   - component: {fileID: 2144829973}
+  - component: {fileID: 2144829974}
   m_Layer: 0
   m_Name: Back node 3
   m_TagString: Untagged
@@ -13531,6 +13532,18 @@ MonoBehaviour:
   nodeA: {fileID: 2144829972}
   nodeB: {fileID: 1425056321}
   startConnected: 1
+--- !u!114 &2144829974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144829969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e326b41d6309b44bf80af310030dc21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.PancakeEffect
 --- !u!1001 &279268737136965566
 PrefabInstance:
   m_ObjectHideFlags: 0
