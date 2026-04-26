@@ -54,6 +54,15 @@ public class TutorialPopup : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        // Safety: Always remove listeners to prevent WebGL "null function" errors!
+        if (DialogueSystem.Instance != null)
+        {
+            DialogueSystem.Instance.OnDialogueEnded.RemoveListener(HandleDialogueEnded);
+        }
+    }
+
     private void HandleDialogueEnded()
     {
         if (hasShown) return;
