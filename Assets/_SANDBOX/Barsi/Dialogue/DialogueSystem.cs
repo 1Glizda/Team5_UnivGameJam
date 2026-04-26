@@ -22,6 +22,8 @@ public class DialogueSystem : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // Fallback: If not assigned in Inspector, try to find it
+        if (ui == null) ui = FindAnyObjectByType<DialogueUIController>();
         activeDialogue = null;
     }
 
@@ -55,12 +57,14 @@ public class DialogueSystem : MonoBehaviour
         dialogue.isDialogueActive = true;
         dialogue.dialogueIndex = 0;
 
-        ui.SetNPCInfo(
-            dialogue.dialogueData.characterName,
-            dialogue.dialogueData.characterPortrait
-        );
-
-        ui.ShowDialogueUI(true);
+        if (ui != null)
+        {
+            ui.SetNPCInfo(
+                dialogue.dialogueData.characterName,
+                dialogue.dialogueData.characterPortrait
+            );
+            ui.ShowDialogueUI(true);
+        }
         DisplayCurrentLine();
 
         OnDialogueStarted?.Invoke();
