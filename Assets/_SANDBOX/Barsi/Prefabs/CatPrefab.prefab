@@ -12,12 +12,10 @@ GameObject:
   - component: {fileID: 4445811333025644080}
   - component: {fileID: -2433121920540270167}
   - component: {fileID: 793286839903361057}
-  - component: {fileID: 1906700320931966363}
   - component: {fileID: 5207962683869950116}
-  - component: {fileID: 2554345143480779615}
   m_Layer: 10
   m_Name: CatPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +68,7 @@ MonoBehaviour:
   stepDistance: 0.6
   specialStateUnlocked: 0
   isInSpecialState: 0
-  specialStateDuration: 6
+  specialStateDuration: 12
   isWallWalking: 0
   onSpecialStateToggled:
     m_PersistentCalls:
@@ -95,37 +93,7 @@ MonoBehaviour:
   dialogueIndex: 0
   isTyping: 0
   isDialogueActive: 0
---- !u!114 &1906700320931966363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6767428620746205572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb5c80fa979d4ca7a4ca4f881e133dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.CatSquasher
-  catModel: {fileID: 6767428620746205571}
-  squashSpeed: 0.2
-  pancakeScale: {x: 1.8, y: 0.05, z: 1.8}
 --- !u!114 &5207962683869950116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6767428620746205572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb5c80fa979d4ca7a4ca4f881e133dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.CatSquasher
-  catModel: {fileID: 6767428620746205571}
-  squashSpeed: 1
-  pancakeScale: {x: 4, y: 0.05, z: 3}
---- !u!114 &2554345143480779615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,7 +218,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.39
   m_Height: 0.91
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

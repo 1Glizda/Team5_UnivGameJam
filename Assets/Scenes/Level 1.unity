@@ -3838,11 +3838,6 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 976108475}
-    - target: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
-        type: 3}
-      propertyPath: specialStateDuration
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 793286839903361057, guid: cca622578e4cb2741b8ca72800309847,
         type: 3}
       propertyPath: dialogueController
@@ -3903,9 +3898,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2554345143480779615, guid: cca622578e4cb2741b8ca72800309847, type: 3}
-    - {fileID: 1906700320931966363, guid: cca622578e4cb2741b8ca72800309847, type: 3}
+    - target: {fileID: 6767428620746205572, guid: cca622578e4cb2741b8ca72800309847,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5586,12 +5584,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 342027578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &843070485 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4650256937756277850, guid: 6dd9802aa7d754063890458f384c215b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1147231069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &845347729
 GameObject:
   m_ObjectHideFlags: 0
@@ -7262,26 +7254,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2433121920540270167, guid: 6dd9802aa7d754063890458f384c215b,
+    - target: {fileID: 1927090672896768226, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
-      propertyPath: cursor
+      propertyPath: teleportNode
       value: 
-      objectReference: {fileID: 976108475}
-    - target: {fileID: -2433121920540270167, guid: 6dd9802aa7d754063890458f384c215b,
+      objectReference: {fileID: 1917000786}
+    - target: {fileID: 1927090672896768226, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
-      propertyPath: moveTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445811333025644080, guid: 6dd9802aa7d754063890458f384c215b,
-        type: 3}
-      propertyPath: animator
+      propertyPath: playerController
       value: 
-      objectReference: {fileID: 843070485}
-    - target: {fileID: 4445811333025644080, guid: 6dd9802aa7d754063890458f384c215b,
+      objectReference: {fileID: 1057213533}
+    - target: {fileID: 6361303608354260583, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
-      propertyPath: walkAnimSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
+      propertyPath: 'patrolNodes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1342473769}
+    - target: {fileID: 6361303608354260583, guid: 6dd9802aa7d754063890458f384c215b,
+        type: 3}
+      propertyPath: 'patrolNodes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2142546903}
     - target: {fileID: 6767428620746205571, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7337,29 +7329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -2433121920540270167, guid: 6dd9802aa7d754063890458f384c215b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1879579651}
-    - targetCorrespondingSourceObject: {fileID: 6767428620746205572, guid: 6dd9802aa7d754063890458f384c215b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1879579650}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd9802aa7d754063890458f384c215b, type: 3}
 --- !u!1 &1164329653
 GameObject:
@@ -11423,37 +11396,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1147231069}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1879579650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879579649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcaee7f69306bd0498c26b56e5549d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyInteraction
-  detectionDistance: 0.3
-  teleportNode: {fileID: 1917000786}
---- !u!114 &1879579651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879579649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5da12cb9034bc439d2548ad7fc279e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  moveSpeed: 1.75
-  patrolNodes:
-  - {fileID: 1342473769}
-  - {fileID: 2142546903}
-  teleportToNode: 0100
 --- !u!1 &1896370810
 GameObject:
   m_ObjectHideFlags: 0
