@@ -6326,7 +6326,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7198274803331671939, guid: 2230feb93c9fe496aa22349a4aad3007, type: 3}
+    - {fileID: 6092144566242874310, guid: 2230feb93c9fe496aa22349a4aad3007, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7259,7 +7261,7 @@ PrefabInstance:
         type: 3}
       propertyPath: teleportNode
       value: 
-      objectReference: {fileID: 1917000786}
+      objectReference: {fileID: 1437350156}
     - target: {fileID: 1927090672896768226, guid: 6dd9802aa7d754063890458f384c215b,
         type: 3}
       propertyPath: playerController

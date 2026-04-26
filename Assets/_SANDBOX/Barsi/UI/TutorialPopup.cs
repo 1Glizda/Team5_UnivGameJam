@@ -41,6 +41,19 @@ public class TutorialPopup : MonoBehaviour
         }
     }
 
+    private bool hasShown = false;
+
+    private void Start()
+    {
+        if (tutorialPanel != null)
+            tutorialPanel.SetActive(false);
+
+        if (DialogueSystem.Instance != null)
+        {
+            DialogueSystem.Instance.OnDialogueEnded.AddListener(HandleDialogueEnded);
+        }
+    }
+
     private void HandleDialogueEnded()
     {
         if (hasShown) return;
