@@ -3,39 +3,12 @@ using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour
 {
-    [SerializeField] private float detectionDistance = 0.3f;
     [SerializeField] private Node teleportNode;
+    [SerializeField] private PlayerController playerController;
 
-    private Transform player;
-    private PlayerController playerController;
-    private Graph graph;
-
-    private bool hasInteracted = false;
-
-    private void Awake()
+    private void OnTriggerEnter(Collider other)
     {
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        playerController = player?.GetComponent<PlayerController>();
-        graph = FindFirstObjectByType<Graph>();
-    }
-
-    private void Update()
-    {
-        if (player == null || hasInteracted)
-            return;
-
-        float dist = Vector3.Distance(transform.position, player.position);
-
-        if (dist < detectionDistance)
-        {
-            hasInteracted = true;
-            OnPlayerDetected();
-        }
-    }
-
-    private void OnPlayerDetected()
-    {
-        Debug.Log("Interacted with Player");
+        if (!other.CompareTag("Player")) return;
 
         if (playerController != null && teleportNode != null)
         {
