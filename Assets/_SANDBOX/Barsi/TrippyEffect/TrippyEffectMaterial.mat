@@ -44,6 +44,6 @@ Material:
     - _isOn: 0
     m_Colors:
     - _Offset: {r: 1.1, g: 1, b: 0, a: 0}
-    - _PlayerPos: {r: 10.077079, g: 7.308669, b: 12.751969, a: 0}
+    - _PlayerPos: {r: 0.10265827, g: 16.266531, b: -30.825634, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

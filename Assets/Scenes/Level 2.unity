@@ -360,6 +360,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4887337895322005163, guid: 2230feb93c9fe496aa22349a4aad3007,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1441660610}
+    - target: {fileID: 4887337895322005163, guid: 2230feb93c9fe496aa22349a4aad3007,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5753229958591108262}
+    - target: {fileID: 4887337895322005163, guid: 2230feb93c9fe496aa22349a4aad3007,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 5753229958591108261}
     - target: {fileID: 4914362807450694324, guid: 2230feb93c9fe496aa22349a4aad3007,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -695,6 +710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281324182}
   - component: {fileID: 281324183}
+  - component: {fileID: 281324184}
   m_Layer: 0
   m_Name: Node (40)
   m_TagString: Untagged
@@ -737,7 +753,19 @@ MonoBehaviour:
   excludedNodes: []
   gameEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 281324184}
+        m_TargetAssemblyTypeName: RW.MonumentValley.SceneTransitionTrigger, Assembly-CSharp
+        m_MethodName: OnNodeReached
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hasStrictNeighbours: 1
   strictNeighbours:
   - {fileID: 1106753335}
@@ -745,6 +773,22 @@ MonoBehaviour:
   requireRotationMatch: 0
   targetRotation: {x: -90, y: 0, z: 0}
   rotationEpsilon: 1
+--- !u!114 &281324184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281324181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23723c995ad44f25b3bab79e783a030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.SceneTransitionTrigger
+  sceneToLoad: Level 3
+  fadeTime: 1.5
+  fader: {fileID: 973648708}
+  disablePlayerOnTrigger: 1
 --- !u!4 &282808329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b58f7c727d8f4380991819c065bf4c2,
@@ -3026,6 +3070,18 @@ MonoBehaviour:
   colorProperty: _BaseColor
   highlightColor: {r: 1, g: 0, b: 0, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &973648708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4914362807357611264, guid: 2230feb93c9fe496aa22349a4aad3007,
+    type: 3}
+  m_PrefabInstance: {fileID: 122297059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde5e134b5f1d4012a87d69f3936ba99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &976108475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2423906599848667261, guid: 1a4ea91619c2c48b99dc4648f2819953,
@@ -6124,6 +6180,24 @@ PrefabInstance:
 --- !u!4 &5753229958591108260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6767428620746205571, guid: cca622578e4cb2741b8ca72800309847,
+    type: 3}
+  m_PrefabInstance: {fileID: 5753229958591108259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5753229958591108261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2433121920540270167, guid: cca622578e4cb2741b8ca72800309847,
+    type: 3}
+  m_PrefabInstance: {fileID: 5753229958591108259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753229958591108262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48eddec3730f4b2db9f102f113ca0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RW.MonumentValley.PlayerController
+--- !u!1 &5753229958591108262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6767428620746205572, guid: cca622578e4cb2741b8ca72800309847,
     type: 3}
   m_PrefabInstance: {fileID: 5753229958591108259}
   m_PrefabAsset: {fileID: 0}
