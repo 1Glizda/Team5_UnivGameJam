@@ -13554,6 +13554,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
+        type: 3}
       propertyPath: orthographic
       value: 0
       objectReference: {fileID: 0}
@@ -13566,6 +13571,21 @@ PrefabInstance:
         type: 3}
       propertyPath: orthographic size
       value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.054474104
+      objectReference: {fileID: 0}
+    - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.04743683
+      objectReference: {fileID: 0}
+    - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.7735849
       objectReference: {fileID: 0}
     - target: {fileID: 5206636026417691153, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}

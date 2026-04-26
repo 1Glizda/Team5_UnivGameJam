@@ -1,4 +1,4 @@
-name: WebGL Build and Deploy
+name: Build and Deploy
 
 on:
   push:
@@ -47,8 +47,42 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-WebGL
-          # Change: Adding '/*' ensures we upload the CONTENTS, not the folder itself
-          path: build/WebGL/*
+          path: build/WebGL
+
+  buildWindows:
+    name: Build Windows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+
+      - name: Restore Library Cache
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: 2-Library-Windows-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            2-Library-Windows-
+
+      - name: Build Windows
+        uses: game-ci/unity-builder@v4
+        with:
+          targetPlatform: StandaloneWindows64
+          buildsPath: build
+
+      - name: Upload Windows Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-Windows
+          path: build/StandaloneWindows64
 
   deployPages:
     needs: buildWebGL
@@ -62,11 +96,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-WebGL
-          path: build_files # Keep this a temp folder
+          path: build_files
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          # This will take the contents of build_files and put them at the root of gh-pages
           folder: build_files
