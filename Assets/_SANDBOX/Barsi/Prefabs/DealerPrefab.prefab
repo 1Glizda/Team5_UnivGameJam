@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5898362352186258410}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.348, y: 0.751, z: -0.727}
+  m_LocalPosition: {x: -0.098, y: 0.751, z: -0.727}
   m_LocalScale: {x: 2, y: 1.74, z: 0.8749999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DealerAnimator
   animator: {fileID: 6084771673205119681}
   dialogue: {fileID: 7793465858093106546}
+  dialogueSpoken: 0
 --- !u!1 &6767428620746205572
 GameObject:
   m_ObjectHideFlags: 0
