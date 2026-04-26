@@ -13555,7 +13555,7 @@ PrefabInstance:
     - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
       propertyPath: m_ClearFlags
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461848380949152329, guid: 55a3b948cfba94674adb799ae73236da,
         type: 3}
